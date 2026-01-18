@@ -96,3 +96,24 @@ section {
   background-color: #1e88e5 !important;
   color: #ffffff !important;
 }
+
+header .main-buttons a {
+  display: inline-block;
+  padding: 18px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+header .main-buttons .btn-work {
+  background-color: #f9a825;
+  color: #ffffff;
+}
+
+header .main-buttons .btn-find {
+  background-color: #1e88e5;
+  color: #ffffff;
+}
+
+
