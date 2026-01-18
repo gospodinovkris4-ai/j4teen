@@ -209,3 +209,39 @@ header .main-buttons .btn-find {
     color: #666;
   }
 }
+
+
+/* ===== FORCE MOBILE CATEGORY CARDS ===== */
+@media (max-width: 768px) {
+
+  section .cards {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  section .cards .card {
+    display: block !important;
+    background: #ffffff !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08) !important;
+    text-align: center !important;
+  }
+
+  section .cards .card .icon {
+    font-size: 42px !important;
+    margin-bottom: 10px !important;
+    display: block !important;
+  }
+
+  section .cards .card h3 {
+    font-size: 18px !important;
+    margin: 8px 0 4px !important;
+  }
+
+  section .cards .card p {
+    font-size: 14px !important;
+    color: #666 !important;
+  }
+}
