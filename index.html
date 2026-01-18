@@ -1,42 +1,138 @@
 <!DOCTYPE html>
-<html lang=“bg”>
+<html lang="bg">
 <head>
-  
-  <meta charset=“UTF-8” />
-  <meta name=“viewport” content=“width=device-width, initial-scale=1.0” />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>J4Teen</title>
- 
-  <link rel=“stylesheet” href=“style.css?v=1” />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2f4f8;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e88e5, #64b5f6);
+      color: #fff;
+      padding: 70px 20px;
+      text-align: center;
+      border-bottom-left-radius: 28px;
+      border-bottom-right-radius: 28px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      max-width: 700px;
+      margin: 0 auto 12px;
+    }
+
+    header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    .hero-buttons {
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 6px;
+    }
+
+    .btn.primary {
+      background: #ffb300;
+      color: #000;
+    }
+
+    .btn.secondary {
+      background: #fff;
+      color: #1e88e5;
+    }
+
+    main {
+      padding: 30px 20px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .btn {
+        display: block;
+        max-width: 280px;
+        margin: 10px auto;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <header class=“hero”>
+  <header>
     <h1>Намери почасова работа или си намери помощник наблизо</h1>
     <p>J4Teen – място за обяви и общност за младежи</p>
 
-    <div class=“hero-buttons”>
-      <a href=“#” class=“btn primary”>Искам да работя</a>
-      <a href=“#” class=“btn secondary”>Търся човек за работа</a>
+    <div class="hero-buttons">
+      <a href="#" class="btn primary">Искам да работя</a>
+      <a href="#" class="btn secondary">Търся човек за работа</a>
     </div>
   </header>
 
   <main>
-    <h2 class=“section-title”>Популярни категории</h2>
+    <h2>Популярни категории</h2>
 
-    <div class=“cards”>
-      <div class=“card”>
-        <div class=“icon”>🐕</div>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🐕</div>
         <h3>Разходка на куче</h3>
         <p>Почасова помощ</p>
       </div>
-      <div class=“card”>
-        <div class=“icon”>💻</div>
+
+      <div class="card">
+        <div class="icon">💻</div>
         <h3>IT & Помощ</h3>
         <p>Онлайн задачи</p>
       </div>
 
-      <div class=“card”>
-        <div class=“icon”>🏠</div>
+      <div class="card">
+        <div class="icon">🏠</div>
         <h3>Помощ в дома</h3>
         <p>Почистване, грижа</p>
       </div>
