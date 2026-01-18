@@ -65,13 +65,20 @@
   <p>Всички налични обяви</p>
 </header>
 
-<main>
-  <div class="job">Разходка на куче · 10 лв · София</div>
-  <div class="job">Почистване · 30 лв · Варна</div>
-  <div class="job">Онлайн помощ · 15 лв · Онлайн</div>
+<main id="jobs"></main>
 
-  <a href="index.html" class="back">← Обратно към началото</a>
-</main>
+<script>
+const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+const container = document.getElementById("jobs");
+
+jobs.forEach(j=>{
+  const div = document.createElement("div");
+  div.className="job";
+  div.innerText=j;
+  container.appendChild(div);
+});
+</script>
+
 
 </body>
 </html>
