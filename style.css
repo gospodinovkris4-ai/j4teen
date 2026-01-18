@@ -177,4 +177,35 @@ header .main-buttons .btn-find {
   margin-bottom: 12px;
 }
 
+/* ===== MOBILE CATEGORY CARDS ===== */
+@media (max-width: 768px) {
 
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    text-align: center;
+  }
+
+  .card .icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    margin: 8px 0 4px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #666;
+  }
+}
