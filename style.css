@@ -54,21 +54,7 @@ header p {
   color: #fff;
 }
 
-.main-buttons a {
-  background: none;
-  text-decoration: none !important;
-  cursor: pointer;
-}
 
-.main-buttons a.btn-work {
-  background-color: #f9a825 !important;
-  color: #ffffff !important;
-}
-
-.main-buttons a.btn-find {
-  background-color: #1e88e5 !important;
-  color: #ffffff !important;
-}
 
 section {
   padding: 40px 20px;
@@ -94,4 +80,19 @@ section {
   margin-top: 0;
 }
  
+}
+.main-buttons a {
+  background: none;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+.main-buttons a.btn-work {
+  background-color: #f9a825 !important;
+  color: #ffffff !important;
+}
+
+.main-buttons a.btn-find {
+  background-color: #1e88e5 !important;
+  color: #ffffff !important;
 }
