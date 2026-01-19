@@ -86,6 +86,28 @@
   <option value="Почасова помощ">Почасова помощ</option>
 </select>
  <input type="hidden" id="category">
+<script>
+const titleInput = document.querySelector('input[placeholder="Заглавие на обявата"]');
+const categoryInput = document.getElementById('category');
+
+titleInput.addEventListener('input', () => {
+  const text = titleInput.value.toLowerCase();
+
+  if (text.includes('достав')) {
+    categoryInput.value = 'delivery';
+  } else if (text.includes('барман')) {
+    categoryInput.value = 'barman';
+  } else if (text.includes('сервитьор')) {
+    categoryInput.value = 'waiter';
+  } else if (text.includes('готвач')) {
+    categoryInput.value = 'cook';
+  } else if (text.includes('почас')) {
+    categoryInput.value = 'hourly';
+  } else {
+    categoryInput.value = 'other';
+  }
+});
+</script>
 
   <textarea rows="4" placeholder="Описание"></textarea>
   <input placeholder="Цена">
