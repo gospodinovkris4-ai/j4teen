@@ -154,82 +154,51 @@
 <main id="jobs"></main>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(“DOMContentLoaded”, () => {
 
-  let jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+  let jobs = JSON.parse(localStorage.getItem(“jobs”) || “[]”);
 
   if (jobs.length === 0) {
     jobs = [
-      "Разходка на куче · 10 лв · София",
-      "Почистване · 30 лв · Варна",
-      "Онлайн помощ · 15 лв · Онлайн"
+      “Работа · Разходка на куче · 10 лв · София”,
+      “Почасова помощ · Почистване · 30 лв · Варна”,
+      “Почасова помощ · Онлайн помощ · 15 лв · Онлайн”
     ];
   }
 
-  const container = document.getElementById("jobs");
-  const filter = document.getElementById("cityFilter");
+  const container = document.getElementById(“jobs”);
+  container.innerHTML = “”;
 
-  const cities = [...new Set(jobs.map(j => j.split("·")[2].trim()))];
-  cities.forEach(city => {
-    const opt = document.createElement("option");
-    opt.value = city;
-    opt.textContent = city;
-    filter.appendChild(opt);
-  });
-
-  function render(list){
-    container.innerHTML = "";
-    list.forEach((j, index) => {
+  jobs.forEach((j, index) => {
+    const parts = j.split(“·”).map(x => x.trim());
     const type = parts[0];
 
+    const div = document.createElement(“div”);
+    div.className = “job”;
+You sent
 div.innerHTML = `
-  <div class="left">
-    <span class="badge ${type === "Почасова помощ" ? "hourly" : "work"}">
-      ${type}
-    </span>
-    <div class="title">${parts[1]}</div>
-    <div class="meta">${parts[3]}</div>
-  </div>
-  <div class="price">${parts[2]}</div>
-  <button class="delete">✕</button>
-`;
+      <div class=“left”>
+        <span class=“badge ${type === “Почасова помощ” ? “hourly” : “work”}”>
+          ${type}
+        </span>
+        <div class=“title”>${parts[1]}</div>
+        <div class=“meta”>${parts[3]}</div>
+      </div>
+      <div class=“price”>${parts[2]}</div>
+      <button class=“delete”>✕</button>
+    `;
 
-      const div = document.createElement("div");
-      div.className = "job";
+    div.querySelector(“.delete”).onclick = () => {
+      jobs.splice(index,1);
+      localStorage.setItem(“jobs”, JSON.stringify(jobs));
+      location.reload();
+    };
 
-      div.innerHTML = `
-      <div class="left">
-  <div class="type">${parts[0]}</div>
-  <div class="title">${parts[1]}</div>
-  <div class="meta">${parts[3]}</div>
-</div>
-<div class="price">${parts[2]}</div>
-
-        <button class="delete">✕</button>
-      `;
-
-      div.querySelector(".delete").onclick = () => {
-        jobs.splice(index,1);
-        localStorage.setItem("jobs", JSON.stringify(jobs));
-        location.reload();
-      };
-
-      container.appendChild(div);
-    });
-  }
-
-  render(jobs);
-
-  filter.onchange = () => {
-    const value = filter.value;
-    if (!value) render(jobs);
-    else render(jobs.filter(j => j.includes(value)));
-  };
+    container.appendChild(div);
+  });
 
 });
 </script>
-
-
 
 
   
