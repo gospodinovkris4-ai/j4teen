@@ -95,7 +95,15 @@
 <main id="jobs"></main>
 
 <script>
-const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+let jobs = JSON.parse(localStorage.getItem(“jobs”) || “[]”);
+
+if (jobs.length === 0) {
+  jobs = [
+    “Разходка на куче · 10 лв · София”,
+    “Почистване · 30 лв · Варна”,
+    “Онлайн помощ · 15 лв · Онлайн”
+  ];
+}
 const container = document.getElementById("jobs");
 
 jobs.forEach(j=>{
