@@ -152,18 +152,21 @@
 </div>
 
 <main id="jobs"></main>
-
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 
   let jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
   const jobsContainer = document.getElementById("jobs");
   const citySelect = document.getElementById("cityFilter");
 
-  // Попълване на градовете
-  const cities = [...new Set(jobs.map(j => j.split("·")[3].trim()))];
-  citySelect.innerHTML = '<option value="">Всички градове</option>';
+  // Пълним градовете
+  const cities = [...new Set(
+    jobs.map(j => j.split("·")[3].trim())
+  )];
+
+  citySelect.innerHTML = "<option value=''>Всички градове</option>";
+
   cities.forEach(city => {
     const opt = document.createElement("option");
     opt.value = city;
@@ -171,27 +174,27 @@ document.addEventListener("DOMContentLoaded", function () {
     citySelect.appendChild(opt);
   });
 
-  function render(list){
+  function render(list) {
     jobsContainer.innerHTML = "";
+
     list.forEach((j, index) => {
-      const parts = j.split("·").map(x => x.trim());
-      const type = parts[0];
+      const p = j.split("·").map(x => x.trim());
+      const type = p[0];
 
       const div = document.createElement("div");
       div.className = "job";
 
-      div.innerHTML = `
-        <div class="left">
-          <span class="badge ${type === "Почасова помощ" ? "hourly" : "work"}">${type}</span>
-          <div class="title">${parts[1]}</div>
-          <div class="meta">${parts[3]}</div>
-        </div>
-        <div class="price">${parts[2]}</div>
-        <button class="delete">✕</button>
-      `;
+      div.innerHTML =
+        "<div class='left'>" +
+          "<span class='badge " + (type === "Почасова помощ" ? "hourly" : "work") + "'>" + type + "</span>" +
+          "<div class='title'>" + p[1] + "</div>" +
+          "<div class='meta'>" + p[3] + "</div>" +
+        "</div>" +
+        "<div class='price'>" + p[2] + "</div>" +
+        "<button class='delete'>✕</button>";
 
-      div.querySelector(".delete").onclick = () => {
-        jobs.splice(index,1);
+      div.querySelector(".delete").onclick = function() {
+        jobs.splice(index, 1);
         localStorage.setItem("jobs", JSON.stringify(jobs));
         location.reload();
       };
@@ -202,17 +205,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   render(jobs);
 
-  citySelect.onchange = () => {
-    const value = citySelect.value;
-    if(!value){
+  citySelect.onchange = function() {
+    const v = citySelect.value;
+    if (!v) {
       render(jobs);
     } else {
-      render(jobs.filter(j => j.includes("· " + value)));
+      render(jobs.filter(j => j.includes("· " + v)));
     }
   };
 
 });
 </script>
+
 
   
 
