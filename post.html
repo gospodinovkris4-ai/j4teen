@@ -82,24 +82,32 @@
 
   <a href="index.html" class="back">← Обратно към началото</a>
 </main>
+
 <script>
 function saveJob(){
   const title = document.querySelector('input[placeholder="Заглавие на обявата"]').value;
+  const desc  = document.querySelector('textarea').value;
   const price = document.querySelector('input[placeholder="Цена"]').value;
   const city  = document.querySelector('input[placeholder="Град"]').value;
+  const type  = document.getElementById("type").value;
 
-  if(!title || !price || !city){
+  if(!title || !desc || !price || !city){
     alert("Моля попълни всички полета");
     return;
   }
 
   const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
-  jobs.push(`${title} · ${price} лв · ${city}`);
-  localStorage.setItem("jobs", JSON.stringify(jobs));
 
+  jobs.push(`${type} · ${title} · ${price} лв · ${city}`);
+
+  localStorage.setItem("jobs", JSON.stringify(jobs));
   window.location.href = "jobs.html";
 }
 </script>
 
+
+
+
+  
 </body>
 </html>
