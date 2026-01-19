@@ -100,6 +100,23 @@
   color: #888;
   margin-bottom: 4px;
 }
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.badge.work {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.badge.hourly {
+  background: #fff3e0;
+  color: #ef6c00;
+}
 
 
   </style>
@@ -163,7 +180,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function render(list){
     container.innerHTML = "";
     list.forEach((j, index) => {
-      const parts = j.split("·").map(x => x.trim());
+    const type = parts[0];
+
+div.innerHTML = `
+  <div class="left">
+    <span class="badge ${type === "Почасова помощ" ? "hourly" : "work"}">
+      ${type}
+    </span>
+    <div class="title">${parts[1]}</div>
+    <div class="meta">${parts[3]}</div>
+  </div>
+  <div class="price">${parts[2]}</div>
+  <button class="delete">✕</button>
+`;
 
       const div = document.createElement("div");
       div.className = "job";
