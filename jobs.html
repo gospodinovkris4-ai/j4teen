@@ -95,34 +95,40 @@
 <main id="jobs"></main>
 
 <script>
-let jobs = JSON.parse(localStorage.getItem(“jobs”) || “[]”);
+document.addEventListener("DOMContentLoaded", () => {
 
-if (jobs.length === 0) {
-  jobs = [
-    “Разходка на куче · 10 лв · София”,
-    “Почистване · 30 лв · Варна”,
-    “Онлайн помощ · 15 лв · Онлайн”
-  ];
-}
-const container = document.getElementById("jobs");
+  let jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-jobs.forEach(j=>{
-  const parts = j.split("·").map(x => x.trim());
+  if (jobs.length === 0) {
+    jobs = [
+      "Разходка на куче · 10 лв · София",
+      "Почистване · 30 лв · Варна",
+      "Онлайн помощ · 15 лв · Онлайн"
+    ];
+  }
 
-  const div = document.createElement("div");
-  div.className = "job";
+  const container = document.getElementById("jobs");
 
-  div.innerHTML = `
-    <div class="left">
-      <div class="title">${parts[0]}</div>
-      <div class="meta">${parts[2]}</div>
-    </div>
-    <div class="price">${parts[1]}</div>
-  `;
+  jobs.forEach(j => {
+    const parts = j.split("·").map(x => x.trim());
 
-  container.appendChild(div);
+    const div = document.createElement("div");
+    div.className = "job";
+
+    div.innerHTML = `
+      <div class="left">
+        <div class="title">${parts[0]}</div>
+        <div class="meta">${parts[2]}</div>
+      </div>
+      <div class="price">${parts[1]}</div>
+    `;
+
+    container.appendChild(div);
+  });
+
 });
 </script>
+
 
   
 
