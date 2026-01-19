@@ -169,11 +169,13 @@ document.addEventListener("DOMContentLoaded", () => {
       div.className = "job";
 
       div.innerHTML = `
-        <div class="left">
-          <div class="title">${parts[0]}</div>
-          <div class="meta">${parts[2]}</div>
-        </div>
-        <div class="price">${parts[1]}</div>
+      <div class="left">
+  <div class="type">${parts[0]}</div>
+  <div class="title">${parts[1]}</div>
+  <div class="meta">${parts[3]}</div>
+</div>
+<div class="price">${parts[2]}</div>
+
         <button class="delete">✕</button>
       `;
 
