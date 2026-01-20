@@ -412,3 +412,66 @@ body {
   color: white;
 }
 
+/* ===== CLEAN HAMBURGER MENU ===== */
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.logo a {
+  font-size: 26px;
+  font-weight: 900;
+  text-decoration: none;
+  color: #2563eb;
+}
+
+.menu-btn {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  padding: 12px;
+  min-width: 200px;
+}
+
+.menu a {
+  padding: 14px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+}
+
+.menu a:hover {
+  background: #f3f4f6;
+}
+
+.menu.show {
+  display: flex;
+}
+
+/* да не влиза съдържанието под менюто */
+body {
+  padding-top: 80px;
+}
