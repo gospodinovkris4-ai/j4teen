@@ -407,4 +407,8 @@ body {
   padding-top: 80px;
 }
 
+.hero {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+}
 
