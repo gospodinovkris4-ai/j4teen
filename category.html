@@ -34,72 +34,12 @@
 
   <main id="content"></main>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const cat = params.get("cat");
-
-    const data = {
-      dog: {
-        title: "Разходка на куче",
-        jobs: [
-          "Разходка на куче – център · 10 лв · София",
-          "Грижа за домашен любимец · 18 лв · Пловдив"
-        ]
-      },
-      it: {
-        title: "IT & Онлайн помощ",
-        jobs: [
-          "Помощ с WordPress · 20 лв · Онлайн",
-          "Настройка на компютър · 15 лв · София"
-        ]
-      },
-      home: {
-        title: "Помощ в дома",
-        jobs: [
-          "Помощ в апартамент · 12 лв · Варна"
-        ]
-      }
-    };
-
-    const category = data[cat];
-
-    if (category) {
-      document.getElementById("title").innerText = category.title;
-      const container = document.getElementById("content");
-
-      category.jobs.forEach(job => {
-        const div = document.createElement("div");
-        div.className = "job";
-        div.innerText = job;
-        container.appendChild(div);
-      });
-    }
-  </script>
-
-  <main>
-    <a href="index.html" class="back">← Обратно към началото</a>
-  </main>
-
-
-<script>
-function toggleMenu() {
-  const menu = document.getElementById("menu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-}
-</script>
-
- <script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("show");
-}
-</script>
- 
 
 
   <script>
 function toggleMenu() {
   const menu = document.getElementById("menu");
-  if (menu) {
+  if (!menu) return;
     menu.classList.toggle("show");
   }
 }
