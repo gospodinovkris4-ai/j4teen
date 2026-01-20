@@ -38,12 +38,6 @@
 
 
 
-<script>
-document.getElementById("burger").onclick = function () {
-  const menu = document.getElementById("menu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-};
-</script>
 
 
 
@@ -139,22 +133,16 @@ document.getElementById("burger").onclick = function () {
 
 
 
-<script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("show");
-}
-</script>
 
 
-<script>
+  <script>
 function toggleMenu() {
   const menu = document.getElementById("menu");
-  if (menu) {
+  if (!menu) return;
     menu.classList.toggle("show");
   }
 }
 </script>
-
   
 </body>
 </html>
