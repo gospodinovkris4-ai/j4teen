@@ -117,6 +117,97 @@
 </head>
 
 <body>
+
+<!-- ===== TOP BAR ===== -->
+<div id="topbar">
+  <div id="logo">J4Teen</div>
+  <div id="burger">☰</div>
+</div>
+
+<div id="menu">
+  <a href="index.html">Начало</a>
+  <a href="jobs.html">Обяви</a>
+  <a href="post.html">Публикувай</a>
+  <a href="chat.html">Чат</a>
+</div>
+
+<style>
+/* TOP BAR */
+#topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 9999;
+}
+
+/* LOGO */
+#logo {
+  font-size: 28px;
+  font-weight: 900;
+  color: #2563eb;
+}
+
+/* BURGER */
+#burger {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* MENU CARD */
+#menu {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  padding: 12px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 9999;
+}
+
+/* MENU ITEMS */
+#menu a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#menu a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  background: #ffffff;
+}
+
+/* BODY OFFSET */
+body {
+  margin-top: 80px;
+}
+</style>
+
+<script>
+document.getElementById("burger").onclick = function () {
+  const menu = document.getElementById("menu");
+  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+};
+</script>
+
+
+  
 <nav class="topbar">
   <div class="logo">
     <a href="index.html">J4Teen</a>
