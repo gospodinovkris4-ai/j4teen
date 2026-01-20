@@ -114,6 +114,54 @@
   box-shadow: 0 14px 30px rgba(0,0,0,0.18);
 }
   </style>
+  .topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: 900;
+  color: #2563eb;
+}
+
+.burger {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.menu {
+  display: none;
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  flex-direction: column;
+  gap: 14px;
+}
+
+.menu.show {
+  display: flex;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+}
+
 </head>
 
 <body>
@@ -305,13 +353,12 @@ document.getElementById("burger").onclick = function () {
 
   </main>
 
+
 <script>
 function toggleMenu() {
-  const menu = document.getElementById("menu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+  document.getElementById("menu").classList.toggle("show");
 }
 </script>
-
 
 
 
