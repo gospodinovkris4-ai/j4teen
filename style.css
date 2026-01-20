@@ -475,3 +475,57 @@ body {
 body {
   padding-top: 80px;
 }
+
+/* HERO SECTION */
+.hero {
+  background: linear-gradient(135deg, #1e88e5, #42a5f5);
+  color: white;
+  padding: 80px 20px 70px;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 28px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn.primary {
+  background: #f5a623;
+  color: #111;
+}
+
+.btn.secondary {
+  background: white;
+  color: #1e88e5;
+}
+
+
+
+
+
