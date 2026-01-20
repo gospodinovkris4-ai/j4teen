@@ -249,4 +249,70 @@ body::after {
   display: flex;
 }
 
+/* ===== TOPBAR ===== */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 1000;
+}
+
+/* LOGO */
+.logo a {
+  font-size: 26px;
+  font-weight: 800;
+  color: #2563eb;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+/* SANDWICH BUTTON */
+.menu-btn {
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* DROPDOWN MENU */
+.menu {
+  position: absolute;
+  top: 72px;
+  right: 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  display: none;
+  flex-direction: column;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+/* MENU LINKS = КАРТИ */
+.menu a {
+  padding: 14px 18px;
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.menu a:hover {
+  background: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+/* SHOW MENU */
+.menu.show {
+  display: flex;
+}
+
+
 
