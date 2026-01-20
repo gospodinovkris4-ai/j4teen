@@ -123,140 +123,14 @@ body::after {
   display: none !important;
 }
 
-/* TOP BAR */
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  background: #ffffff;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
 
-.logo a {
-  font-size: 26px;
-  font-weight: 900;
-  text-decoration: none;
-  color: #2563eb;
-}
-
-.logo a:hover {
-  color: #f59e0b;
-}
-
-/* MENU */
-.menu {
-  display: none;
-  flex-direction: column;
-  gap: 14px;
-  position: absolute;
-  top: 64px;
-  right: 20px;
-  background: white;
-  padding: 16px;
-  border-radius: 14px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.menu { 
-  display: none;
-}
-
-.menu.show { 
-  display: flex;
-}
-
-.menu a {
-  text-decoration: none;
-  color: #111;
-  font-weight: 600;
-}
-
-.menu a:hover {
-  color: #2563eb;
-}
 
 .menu-btn {
   font-size: 26px;
   cursor: pointer;
 }
 
-/* DESKTOP */
-@media (min-width: 768px) {
-  .menu {
-    display: flex !important;
-    flex-direction: row;
-    position: static;
-    box-shadow: none;
-    background: transparent;
-    padding: 0;
-  }
 
-  .menu-btn {
-    display: none;
-  }
-}
-
-/* ===== TOP BAR ===== */
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 28px;
-  background: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* LOGO */
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  color: #2563eb;
-  text-decoration: none;
-}
-
-.logo:hover {
-  color: #f59e0b;
-}
-
-/* MENU BUTTON */
-.menu-btn {
-  font-size: 28px;
-  cursor: pointer;
-  user-select: none;
-}
-
-/* DROPDOWN MENU */
-.menu {
-  position: absolute;
-  top: 72px;
-  right: 28px;
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-  display: none;
-  flex-direction: column;
-  min-width: 180px;
-  padding: 10px;
-}
-
-.menu a {
-  padding: 14px 16px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #111;
-  text-decoration: none;
-  border-radius: 10px;
-}
-
-.menu a:hover {
-  background: #f1f5f9;
-}
 
 .menu.show {
   display: flex;
@@ -322,26 +196,6 @@ body::after {
   transform: translateY(-2px);
 }
 
-/* SHOW MENU */
-.menu.show {
-  display: flex;
-}
-
-/* TOP BAR */
-.topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  z-index: 1000;
-}
 
 .logo a {
   font-size: 24px;
@@ -392,17 +246,7 @@ body::after {
   display: flex;
 }
 
-/* ===== HAMBURGER MENU ===== */
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  background: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+
 
 .logo a {
   font-size: 22px;
