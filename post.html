@@ -45,28 +45,7 @@
   <option value="Почасова помощ">Почасова помощ</option>
 </select>
  <input type="hidden" id="category">
-<script>
-const titleInput = document.querySelector('input[placeholder="Заглавие на обявата"]');
-const categoryInput = document.getElementById('category');
 
-titleInput.addEventListener('input', () => {
-  const text = titleInput.value.toLowerCase();
-
-  if (text.includes('достав')) {
-    categoryInput.value = 'delivery';
-  } else if (text.includes('барман')) {
-    categoryInput.value = 'barman';
-  } else if (text.includes('сервитьор')) {
-    categoryInput.value = 'waiter';
-  } else if (text.includes('готвач')) {
-    categoryInput.value = 'cook';
-  } else if (text.includes('почас')) {
-    categoryInput.value = 'hourly';
-  } else {
-    categoryInput.value = 'other';
-  }
-});
-</script>
 
   <textarea rows="4" placeholder="Описание"></textarea>
   <input placeholder="Цена">
@@ -77,45 +56,12 @@ titleInput.addEventListener('input', () => {
   <a href="index.html" class="back">← Обратно към началото</a>
 </main>
 
-<script>
-function saveJob(){
-  const title = document.querySelector('input[placeholder="Заглавие на обявата"]').value;
-  const desc  = document.querySelector('textarea').value;
-  const price = document.querySelector('input[placeholder="Цена"]').value;
-  const city  = document.querySelector('input[placeholder="Град"]').value;
-  const type  = document.getElementById("type").value;
 
-  if(!title || !desc || !price || !city){
-    alert("Моля попълни всички полета");
-    return;
-  }
 
-  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
-
-  jobs.push(`${type} · ${title} · ${price} лв · ${city}`);
-
-  localStorage.setItem("jobs", JSON.stringify(jobs));
-  window.location.href = "jobs.html";
-}
-</script>
-
-<script>
+  <script>
 function toggleMenu() {
   const menu = document.getElementById("menu");
-  menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-}
-</script>
-
-<script>
-function toggleMenu() {
-  document.getElementById("menu").classList.toggle("show");
-}
-</script>
-
-<script>
-function toggleMenu() {
-  const menu = document.getElementById("menu");
-  if (menu) {
+  if (!menu) return;
     menu.classList.toggle("show");
   }
 }
