@@ -244,5 +244,29 @@ button:hover {
   background: #1e4ed8;
 }
 
+.hero {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  padding: 70px 20px;
+  border-radius: 0 0 32px 32px;
+}
+
+.hero.small {
+  padding: 40px 20px;
+}
+
+.hero-content {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  opacity: 0.9;
+}
 
 
