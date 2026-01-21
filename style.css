@@ -543,6 +543,52 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
+/* ===== JOB LIST ===== */
+.job {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.job .left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.job .badge {
+  font-size: 12px;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.job .title {
+  font-weight: 700;
+}
+
+.job .meta {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.job .price {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.delete {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
 
 
 
