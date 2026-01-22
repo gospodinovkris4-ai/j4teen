@@ -14,15 +14,36 @@ body {
   color: #111;
 }
 
+/* Заглавия */
 h1, h2, h3 {
   font-weight: 800;
 }
 
-
-a {
-  text-decoration: none;
-  color: inherit;
+/* Меню */
+.menu a {
+  font-weight: 600;
 }
+
+/* Карти и обяви */
+.card h3,
+.card p,
+.job,
+.job .title,
+.job .meta,
+.job .price {
+  font-weight: 600;
+}
+
+/* Формуляри */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+  font-weight: 600;
+}
+
+
 
 /* ===== TOP BAR ===== */
 .topbar {
