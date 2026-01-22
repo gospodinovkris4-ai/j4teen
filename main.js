@@ -13,3 +13,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+
+// ===== SHOW JOBS =====
+var jobsContainer = document.getElementById("jobs-list");
+
+if (jobsContainer) {
+  var jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+
+  jobs.forEach(function (job) {
+    var div = document.createElement("div");
+    div.className = "job";
+
+    div.innerHTML = `
+      <div>
+        <div class="title">${job.title}</div>
+        <div class="meta">${job.description}</div>
+      </div>
+      <div class="price">${job.price}</div>
+    `;
+
+    jobsContainer.appendChild(div);
+  });
+}
+
