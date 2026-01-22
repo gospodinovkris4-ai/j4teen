@@ -1,10 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const burger = document.getElementById("burger");
-  const menu = document.getElementById("menu");
+document.addEventListener("DOMContentLoaded", function () {
+  var burgers = document.querySelectorAll(".burger");
 
-  if (!burger || !menu) return;
+  burgers.forEach(function (burger) {
+    burger.addEventListener("click", function () {
+      var nav = burger.closest(".topbar");
+      if (!nav) return;
 
-  burger.addEventListener("click", () => {
-    menu.classList.toggle("show");
+      var menu = nav.querySelector(".menu");
+      if (!menu) return;
+
+      menu.classList.toggle("show");
+    });
   });
 });
