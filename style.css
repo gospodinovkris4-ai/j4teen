@@ -1,4 +1,4 @@
-/* RESET */
+/* ===== RESET ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +6,12 @@
   font-family: Arial, sans-serif;
 }
 
-/* TOP BAR */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== TOP BAR ===== */
 .topbar {
   position: fixed;
   top: 0;
@@ -28,13 +33,13 @@
   color: #2563eb;
 }
 
-/* HAMBURGER */
+/* ===== HAMBURGER ===== */
 .burger {
   font-size: 28px;
   cursor: pointer;
 }
 
-/* MENU */
+/* ===== MENU ===== */
 .menu {
   position: absolute;
   top: 72px;
@@ -42,16 +47,18 @@
   background: white;
   border-radius: 14px;
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-  display: none;
+  display: flex;
   flex-direction: column;
   min-width: 180px;
   padding: 10px;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: 0.25s ease;
 }
 
 .menu a {
   padding: 12px 14px;
-  text-decoration: none;
-  color: #111;
   border-radius: 10px;
   font-weight: 600;
 }
@@ -61,20 +68,32 @@
 }
 
 .menu.show {
-  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-/* HERO */
+/* ===== HERO (MASTER) ===== */
 .hero {
   margin-top: 64px;
   background: linear-gradient(135deg, #2563eb, #1e40af);
   color: white;
-  padding: 80px 20px;
+  padding: 70px 20px;
+  border-radius: 0 0 32px 32px;
+}
+
+.hero.small {
+  padding: 40px 20px;
+}
+
+.hero-content {
+  max-width: 1100px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 36px;
+  font-size: 32px;
   margin-bottom: 10px;
 }
 
@@ -83,12 +102,11 @@
   margin-bottom: 24px;
 }
 
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 .hero-buttons a {
   display: inline-block;
   padding: 12px 20px;
   border-radius: 999px;
-  text-decoration: none;
   font-weight: 700;
   margin: 0 6px;
 }
@@ -103,12 +121,33 @@
   color: #2563eb;
 }
 
-/* CATEGORIES */
+/* ===== MAIN LAYOUT ===== */
+main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+main h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+main h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+main p {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* ===== CARDS ===== */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  padding: 40px 20px;
 }
 
 .card {
@@ -117,14 +156,24 @@
   padding: 24px;
   text-align: center;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  animation: fadeUp 0.35s ease both;
 }
 
-
+.card:hover {
+  background: #f2f7ff;
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
 
 .card .icon {
   font-size: 36px;
   margin-bottom: 12px;
+  transition: transform 0.25s ease;
+}
+
+.card:hover .icon {
+  transform: scale(1.08);
 }
 
 .card h3 {
@@ -137,56 +186,17 @@
 .card p {
   font-size: 15px;
   color: #555;
-  margin: 0;
 }
 
-.card,
-.card h3,
-.card p {
-  text-decoration: none;
-}
-
-.card:hover {
-  background: #f2f7ff;          /* много лек син фон */
-  transform: translateY(-6px);  /* вече го имаш, остава */
-  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-}
-
-.card .icon {
-  font-size: 36px;
-  transition: transform 0.25s ease;
-}
-
-.card:hover .icon {
-  transform: scale(1.08);
-}
-
-
-
-
-/* ===== PAGE LAYOUT FIX ===== */
-
-main {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-/* Заглавия на страници (jobs, post, category) */
-main h1 {
-  font-size: 32px;
-  margin-bottom: 8px;
-}
-
-main p {
-  color: #666;
-  margin-bottom: 24px;
+/* Highlight card */
+.card.highlight {
+  border: 2px solid #2563eb;
+  background: #eef4ff;
 }
 
 /* ===== JOB CARDS ===== */
-
 .job {
-  background: #ffffff;
+  background: white;
   border-radius: 14px;
   padding: 16px 20px;
   margin-bottom: 14px;
@@ -216,8 +226,7 @@ main p {
   color: #2563eb;
 }
 
-/* ===== FORMS (post.html) ===== */
-
+/* ===== FORMS ===== */
 input, textarea, select {
   width: 100%;
   padding: 12px;
@@ -241,29 +250,14 @@ button:hover {
   background: #1e4ed8;
 }
 
-.hero {
-  background: linear-gradient(135deg, #2563eb, #1e40af);
-  color: white;
-  padding: 70px 20px;
-  border-radius: 0 0 32px 32px;
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-.hero.small {
-  padding: 40px 20px;
-}
-
-.hero-content {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.hero h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  opacity: 0.9;
-}
-
-
