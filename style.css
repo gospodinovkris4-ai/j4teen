@@ -346,6 +346,65 @@ button:hover {
   transform: translateY(0);
 }
 
+/* ===== FINAL HEADER & MENU OVERRIDE ===== */
+
+.topbar {
+  height: 64px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #2563eb;
+}
+
+.burger {
+  font-size: 26px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.burger:hover {
+  background: #f1f5f9;
+}
+
+.menu {
+  position: absolute;
+  top: 72px;
+  right: 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.menu.show {
+  display: flex;
+}
+
+.menu a {
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #111;
+}
+
+.menu a:hover {
+  background: #f2f7ff;
+  color: #2563eb;
+}
 
 
 
