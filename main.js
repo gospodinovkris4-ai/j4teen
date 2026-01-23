@@ -85,7 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
       catDelivery: "Доставки",
       catDeliverySub: "Храна, пратки",
 
-      /* POST */
       postPageTitle: "Търся човек за работа – J4Teen",
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява",
@@ -96,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
       jobDescPh: "Описание",
       jobPricePh: "Цена (напр. 15 лв)",
 
-      /* CHAT */
       chatPageTitle: "Чат – J4Teen",
       chatTitle: "Чат",
       chatSubtitle: "Свържи се директно",
@@ -127,7 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
       catDelivery: "Delivery",
       catDeliverySub: "Food, packages",
 
-      /* POST */
       postPageTitle: "Post a job – J4Teen",
       postTitle: "I'm hiring",
       postSubtitle: "Post a job",
@@ -138,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function () {
       jobDescPh: "Description",
       jobPricePh: "Price (e.g. 15 lv)",
 
-      /* CHAT */
       chatPageTitle: "Chat – J4Teen",
       chatTitle: "Chat",
       chatSubtitle: "Connect directly",
@@ -153,38 +149,32 @@ document.addEventListener("DOMContentLoaded", function () {
   function applyLang() {
     var t = translations[currentLang];
 
-    /* textContent */
     document.querySelectorAll("[data-key]").forEach(function (el) {
       var key = el.getAttribute("data-key");
-      if (t[key]) {
-        el.textContent = t[key];
-      }
+      if (t[key]) el.textContent = t[key];
     });
 
-    /* placeholders */
     document.querySelectorAll("[data-key-placeholder]").forEach(function (el) {
       var key = el.getAttribute("data-key-placeholder");
-      if (t[key]) {
-        el.placeholder = t[key];
-      }
+      if (t[key]) el.placeholder = t[key];
     });
 
-    /* page title */
-    if (t.postPageTitle && document.title.includes("J4Teen")) {
-      document.title = t.postPageTitle;
-    }
-
-    /* button label */
     var btn = document.getElementById("lang-toggle");
-    if (btn) {
-      btn.textContent = currentLang === "bg" ? "EN" : "BG";
-    }
+    if (btn) btn.textContent = currentLang === "bg" ? "EN" : "BG";
   }
 
   applyLang();
 
   var langBtn = document.getElementById("lang-toggle");
   if (langBtn) {
-    langBtn.addEventListener("click", function () {
+    langBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
       currentLang = currentLang === "bg" ? "en" : "bg";
-      localStorage.setIt
+      localStorage.setItem("lang", currentLang);
+      applyLang();
+    });
+  }
+
+});
