@@ -364,3 +364,43 @@ button {
     transform: scale(0.97);
   }
 }
+
+
+
+/* =========================
+   DESKTOP CONTENT FIX
+   ========================= */
+
+/* Центрираме Companies и News секциите */
+#tab-companies,
+#tab-news {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Малко въздух между секциите */
+#tab-companies {
+  margin-top: 60px;
+}
+
+#tab-news {
+  margin-top: 60px;
+}
+
+/* Подчертаваме CTA линка */
+#tab-companies a.btn,
+#tab-news a.btn {
+  margin-top: 20px;
+  display: inline-block;
+}
+
+/* Махаме sticky CTA на desktop */
+@media (min-width: 768px) {
+  .mobile-cta {
+    display: none;
+  }
+}
+
+
+
