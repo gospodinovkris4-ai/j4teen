@@ -246,16 +246,50 @@ button {
 }
 
 /* =================================================
-   📱 MOBILE FIRST LAYER – J4Teen
+   📑 TABS (MOBILE + DESKTOP)
+   ================================================= */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px;
+  border-radius: 999px;
+  border: 2px solid #e5e7eb;
+  background: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.tab-content {
+  display: none;
+  margin-top: 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* =================================================
+   📱 MOBILE FIRST LAYER
    ================================================= */
 
-/* TAP FEEDBACK (замества hover) */
+/* TAP FEEDBACK */
 .card:active {
   transform: scale(0.97);
   box-shadow: 0 6px 14px rgba(0,0,0,0.18);
 }
 
-/* MOBILE LAYOUT */
 @media (max-width: 768px) {
 
   .hero {
