@@ -3,100 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Искам да работя – J4Teen</title>
+  <title data-key="jobsPageTitle">Искам да работя – J4Teen</title>
   <link rel="stylesheet" href="style.css">
-
-
- 
 </head>
 
 <body>
+
 <nav class="topbar">
   <div class="logo">J4Teen</div>
 
-<div class="burger" id="burger">☰</div>
+  <!-- LANGUAGE TOGGLE -->
+  <button id="lang-toggle" style="margin-left:10px;">EN</button>
 
+  <div class="burger">☰</div>
 
-  <div class="menu" id="menu">
-    <a href="index.html">Начало</a>
-    <a href="jobs.html">Обяви</a>
-    <a href="post.html">Публикувай</a>
-    <a href="chat.html">Чат</a>
+  <div class="menu">
+    <a href="index.html" data-key="home">Начало</a>
+    <a href="jobs.html" data-key="jobs">Обяви</a>
+    <a href="post.html" data-key="post">Публикувай</a>
+    <a href="chat.html" data-key="chat">Чат</a>
   </div>
 </nav>
 
-  <header class="hero small">
+<header class="hero small">
   <div class="hero-content">
-    <h1>Искам да работя</h1>
-    <p>Всички налични обяви</p>
+    <h1 data-key="jobsTitle">Искам да работя</h1>
+    <p data-key="jobsSubtitle">Всички налични обяви</p>
   </div>
 </header>
 
-
-
-<header>
- 
-</header>
 <div style="max-width:900px;margin:20px auto;">
+
   <select id="cityFilter" style="
     padding:10px;
     border-radius:10px;
     border:1px solid #ccc;
     width:100%;
     max-width:300px;">
-    <option value="">Всички градове</option>
-    
+    <option value="" data-key="allCities">Всички градове</option>
   </select>
 
-<button onclick="clearJobs()" style="
-  margin:20px 0;
-  padding:10px 16px;
-  border:none;
-  border-radius:8px;
-  background:#ef4444;
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-">
-  Изчисти всички обяви
-</button>
+  <button onclick="clearJobs()" style="
+    margin:20px 0;
+    padding:10px 16px;
+    border:none;
+    border-radius:8px;
+    background:#ef4444;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+  " data-key="clearJobs">
+    Изчисти всички обяви
+  </button>
 
-  
-  
-<div id="jobs-list"></div>
+  <div id="jobs-list"></div>
 
-  
+  <!-- примерни статични обяви -->
   <div class="job">
-  <div>
-    <div class="title">Разходка на куче</div>
-    <div class="meta">София · Почасово</div>
+    <div>
+      <div class="title" data-key="sampleDog">Разходка на куче</div>
+      <div class="meta" data-key="sampleDogMeta">София · Почасово</div>
+    </div>
+    <div class="price">15 лв</div>
   </div>
-  <div class="price">15 лв</div>
-</div>
 
-<div class="job">
-  <div>
-    <div class="title">Помощ в дома</div>
-    <div class="meta">Пловдив · 2 часа</div>
+  <div class="job">
+    <div>
+      <div class="title" data-key="sampleHome">Помощ в дома</div>
+      <div class="meta" data-key="sampleHomeMeta">Пловдив · 2 часа</div>
+    </div>
+    <div class="price">20 лв</div>
   </div>
-  <div class="price">20 лв</div>
-</div>
 
-  
 </div>
-
-<main id="jobs"></main>
 
 <script src="main.js"></script>
-
-
 </body>
 </html>
-
-
-
-
-
-
-
-
