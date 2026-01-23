@@ -23,8 +23,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-      jobs.push({ title: title, desc: desc, price: price });
+      var category = document.getElementById("job-category").value;
 
+jobs.push({
+  title: title,
+  desc: desc,
+  price: price,
+  category: category
+});
+
+     
       localStorage.setItem("jobs", JSON.stringify(jobs));
 
       alert("Обявата е запазена");
