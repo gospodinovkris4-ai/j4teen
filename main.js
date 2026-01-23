@@ -56,59 +56,71 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var translations = {
     bg: {
+      /* MENU */
       home: "Начало",
       jobs: "Обяви",
       post: "Публикувай",
       chat: "Чат",
 
+      /* HERO */
       heroTitle: "Намери почасова работа или помощ наблизо",
       heroSubtitle: "J4Teen – общност и обяви за младежи",
       heroWork: "Искам да работя",
       heroHire: "Търся човек за работа",
 
-      popularCats: "Популярни категории",
-
-      /* JOBS PAGE (ТОВА ЛИПСВАШЕ) */
-      jobsTitle: "Искам да работя",
-      jobsSubtitle: "Всички налични обяви",
-      allCities: "Всички градове",
-      clearJobs: "Изчисти всички обяви",
+      /* TABS */
+      tabWork: "Работа",
+      tabCompanies: "Компании",
+      tabNews: "Новини",
 
       /* CATEGORIES */
+      popularCats: "Популярни категории",
+      allCategories: "Виж всички категории",
+
       catDog: "Разходка на куче",
       catDogSub: "Почасова помощ",
-      catIT: "IT & Помощ",
-      catITSub: "Онлайн задачи",
       catHome: "Помощ в дома",
       catHomeSub: "Почистване, грижа",
       catDelivery: "Доставки",
       catDeliverySub: "Храна, пратки",
-      catKids: "Гледане на деца",
-      catKidsSub: "Почасово",
-      catElderly: "Помощ за възрастни",
-      catElderlySub: "Грижа, придружаване",
-      catCleaning: "Почистване",
-      catCleaningSub: "Домове, офиси",
-      catPhysical: "Физическа работа",
-      catPhysicalSub: "Преместване, носене",
-      catWaiter: "Сервитьор",
-      catWaiterSub: "Заведения, събития",
-      catCook: "Готвач",
-      catCookSub: "Кухня, подготовка",
-      catBarman: "Барман",
-      catBarmanSub: "Бар, напитки",
-      catHourly: "Търся човек за няколко часа",
-      catHourlySub: "Почасова помощ",
 
+      /* COMPANIES */
+      companiesTitle: "За компании",
+      companiesPost: "Публикувай обяви",
+      companiesPostSub: "Намери млади хора бързо.",
+      companiesReach: "Достигни младежи",
+      companiesReachSub: "Точната аудитория.",
+      companiesPlans: "Гъвкави планове",
+      companiesPlansSub: "Абонаменти според нуждите.",
+      seePlans: "Виж планове",
+
+      /* NEWS */
+      newsTitle: "Актуално 2026",
+      news1: "Как да си намериш почасова работа",
+      news1Sub: "Практични съвети",
+      news2: "Търсени умения при младежи",
+      news2Sub: "Какво търсят компаниите",
+      allNews: "Всички новини",
+
+      /* PRICING */
+      pricingBasic: "Basic",
+      pricingBasicSub: "1 обява на месец",
+      pricingPro: "Pro",
+      pricingProSub: "До 5 обяви",
+      pricingPremium: "Premium",
+      pricingPremiumSub: "Неограничени обяви",
+      pricingPopular: "Най-купуван",
+
+      /* FORMS */
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява",
       selectCategory: "Избери категория",
       postBtn: "Публикувай",
-
       jobTitlePh: "Заглавие на обявата",
       jobDescPh: "Описание",
       jobPricePh: "Цена (напр. 15 лв)",
 
+      /* CHAT */
       chatTitle: "Чат",
       chatSubtitle: "Свържи се директно",
       chatNamePh: "Име",
@@ -117,58 +129,71 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     en: {
+      /* MENU */
       home: "Home",
       jobs: "Jobs",
       post: "Post",
       chat: "Chat",
 
+      /* HERO */
       heroTitle: "Find part-time work or help nearby",
       heroSubtitle: "J4Teen – jobs and community for youth",
       heroWork: "I want to work",
       heroHire: "I'm hiring",
 
-      popularCats: "Popular categories",
+      /* TABS */
+      tabWork: "Work",
+      tabCompanies: "Companies",
+      tabNews: "News",
 
-      /* JOBS PAGE */
-      jobsTitle: "I want to work",
-      jobsSubtitle: "All available jobs",
-      allCities: "All cities",
-      clearJobs: "Clear all jobs",
+      /* CATEGORIES */
+      popularCats: "Popular categories",
+      allCategories: "View all categories",
 
       catDog: "Dog walking",
       catDogSub: "Hourly help",
-      catIT: "IT & Help",
-      catITSub: "Online tasks",
       catHome: "Home help",
       catHomeSub: "Cleaning, care",
       catDelivery: "Delivery",
       catDeliverySub: "Food, packages",
-      catKids: "Child care",
-      catKidsSub: "Hourly",
-      catElderly: "Elderly care",
-      catElderlySub: "Care, assistance",
-      catCleaning: "Cleaning",
-      catCleaningSub: "Homes, offices",
-      catPhysical: "Physical work",
-      catPhysicalSub: "Moving, carrying",
-      catWaiter: "Waiter",
-      catWaiterSub: "Restaurants, events",
-      catCook: "Cook",
-      catCookSub: "Kitchen, preparation",
-      catBarman: "Bartender",
-      catBarmanSub: "Bar, drinks",
-      catHourly: "Looking for hourly help",
-      catHourlySub: "Hourly assistance",
 
+      /* COMPANIES */
+      companiesTitle: "For companies",
+      companiesPost: "Post job ads",
+      companiesPostSub: "Find young people fast.",
+      companiesReach: "Reach youth",
+      companiesReachSub: "The right audience.",
+      companiesPlans: "Flexible plans",
+      companiesPlansSub: "Subscriptions that fit you.",
+      seePlans: "See plans",
+
+      /* NEWS */
+      newsTitle: "Updates 2026",
+      news1: "How to find part-time work",
+      news1Sub: "Practical tips",
+      news2: "In-demand youth skills",
+      news2Sub: "What companies look for",
+      allNews: "All news",
+
+      /* PRICING */
+      pricingBasic: "Basic",
+      pricingBasicSub: "1 job per month",
+      pricingPro: "Pro",
+      pricingProSub: "Up to 5 jobs",
+      pricingPremium: "Premium",
+      pricingPremiumSub: "Unlimited jobs",
+      pricingPopular: "Most popular",
+
+      /* FORMS */
       postTitle: "I'm hiring",
       postSubtitle: "Post a job",
       selectCategory: "Select category",
       postBtn: "Post job",
-
       jobTitlePh: "Job title",
       jobDescPh: "Description",
-      jobPricePh: "Price (e.g. 15 lv)",
+      jobPricePh: "Price (e.g. 1.50 €)",
 
+      /* CHAT */
       chatTitle: "Chat",
       chatSubtitle: "Connect directly",
       chatNamePh: "Name",
