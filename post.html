@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Търся човек за работа – J4Teen</title>
+  <title data-key="postPageTitle">Търся човек за работа – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,46 +11,48 @@
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
+
+  <!-- LANGUAGE TOGGLE -->
+  <button id="lang-toggle" style="margin-left:10px;">EN</button>
+
   <div class="burger">☰</div>
 
   <div class="menu">
-    <a href="index.html">Начало</a>
-    <a href="jobs.html">Обяви</a>
-    <a href="post.html">Публикувай</a>
-    <a href="chat.html">Чат</a>
+    <a href="index.html" data-key="home">Начало</a>
+    <a href="jobs.html" data-key="jobs">Обяви</a>
+    <a href="post.html" data-key="post">Публикувай</a>
+    <a href="chat.html" data-key="chat">Чат</a>
   </div>
 </nav>
 
 <header class="hero small">
   <div class="hero-content">
-    <h1>Търся човек за работа</h1>
-    <p>Публикувай обява</p>
+    <h1 data-key="postTitle">Търся човек за работа</h1>
+    <p data-key="postSubtitle">Публикувай обява</p>
   </div>
 </header>
 
-
-
-
-  
 <form id="post-form" style="max-width:600px; margin:40px auto;">
+
   <input
     type="text"
     id="job-title"
     placeholder="Заглавие на обявата"
+    data-key-placeholder="jobTitlePh"
     required
   >
 
-<select id="job-category" required>
-  <option value="">Избери категория</option>
-  <option value="dog">Разходка на куче</option>
-  <option value="home">Помощ в дома</option>
-  <option value="delivery">Доставка</option>
-</select>
+  <select id="job-category" required>
+    <option value="" data-key="selectCategory">Избери категория</option>
+    <option value="dog" data-key="catDog">Разходка на куче</option>
+    <option value="home" data-key="catHome">Помощ в дома</option>
+    <option value="delivery" data-key="catDelivery">Доставка</option>
+  </select>
 
-  
   <textarea
     id="job-desc"
     placeholder="Описание"
+    data-key-placeholder="jobDescPh"
     required
   ></textarea>
 
@@ -58,12 +60,12 @@
     type="text"
     id="job-price"
     placeholder="Цена (напр. 15 лв)"
+    data-key-placeholder="jobPricePh"
   >
 
-  <button type="submit">Публикувай</button>
+  <button type="submit" data-key="postBtn">Публикувай</button>
 </form>
 
 <script src="main.js"></script>
-
 </body>
-</html
+</html>
