@@ -85,6 +85,30 @@ document.addEventListener("DOMContentLoaded", function () {
       catDelivery: "Доставки",
       catDeliverySub: "Храна, пратки",
 
+      catKids: "Гледане на деца",
+      catKidsSub: "Почасово",
+
+      catElderly: "Помощ за възрастни",
+      catElderlySub: "Грижа, придружаване",
+
+      catCleaning: "Почистване",
+      catCleaningSub: "Домове, офиси",
+
+      catPhysical: "Физическа работа",
+      catPhysicalSub: "Преместване, носене",
+
+      catWaiter: "Сервитьор",
+      catWaiterSub: "Заведения, събития",
+
+      catCook: "Готвач",
+      catCookSub: "Кухня, подготовка",
+
+      catBarman: "Барман",
+      catBarmanSub: "Бар, напитки",
+
+      catHourly: "Търся човек за няколко часа",
+      catHourlySub: "Почасова помощ",
+
       postPageTitle: "Търся човек за работа – J4Teen",
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява",
@@ -124,6 +148,30 @@ document.addEventListener("DOMContentLoaded", function () {
       catHomeSub: "Cleaning, care",
       catDelivery: "Delivery",
       catDeliverySub: "Food, packages",
+
+      catKids: "Child care",
+      catKidsSub: "Hourly",
+
+      catElderly: "Elderly care",
+      catElderlySub: "Care, assistance",
+
+      catCleaning: "Cleaning",
+      catCleaningSub: "Homes, offices",
+
+      catPhysical: "Physical work",
+      catPhysicalSub: "Moving, carrying",
+
+      catWaiter: "Waiter",
+      catWaiterSub: "Restaurants, events",
+
+      catCook: "Cook",
+      catCookSub: "Kitchen, preparation",
+
+      catBarman: "Bartender",
+      catBarmanSub: "Bar, drinks",
+
+      catHourly: "Looking for hourly help",
+      catHourlySub: "Hourly assistance",
 
       postPageTitle: "Post a job – J4Teen",
       postTitle: "I'm hiring",
