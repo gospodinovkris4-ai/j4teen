@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>J4Teen</title>
-<link rel="stylesheet" href="style.css?v=2">
-
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
@@ -13,110 +12,111 @@
 <nav class="topbar">
   <div class="logo">J4Teen</div>
 
-  <div class="burger" id="burger">☰</div>
+  <!-- LANGUAGE TOGGLE -->
+  <button id="lang-toggle" style="margin-left:10px;">EN</button>
 
-  <div class="menu" id="menu">
-    <a href="index.html">Начало</a>
-    <a href="jobs.html">Обяви</a>
-    <a href="post.html">Публикувай</a>
-    <a href="chat.html">Чат</a>
+  <div class="burger">☰</div>
+
+  <div class="menu">
+    <a href="index.html" data-key="home">Начало</a>
+    <a href="jobs.html" data-key="jobs">Обяви</a>
+    <a href="post.html" data-key="post">Публикувай</a>
+    <a href="chat.html" data-key="chat">Чат</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="hero-content">
-    <h1>Намери почасова работа или помощ наблизо</h1>
-    <p>J4Teen – общност и обяви за младежи</p>
+    <h1 data-key="heroTitle">Намери почасова работа или помощ наблизо</h1>
+    <p data-key="heroSubtitle">J4Teen – общност и обяви за младежи</p>
 
     <div class="hero-buttons">
-      <a href="jobs.html" class="btn primary">Искам да работя</a>
-      <a href="post.html" class="btn secondary">Търся човек за работа</a>
+      <a href="jobs.html" class="btn primary" data-key="heroWork">Искам да работя</a>
+      <a href="post.html" class="btn secondary" data-key="heroHire">Търся човек за работа</a>
     </div>
   </div>
 </header>
 
 <main class="container">
-  <h2>Популярни категории</h2>
+  <h2 data-key="popularCats">Популярни категории</h2>
 
   <div class="cards">
 
     <a href="category.html?cat=dog" class="card">
       <div class="icon">🐕</div>
-      <h3>Разходка на куче</h3>
-      <p>Почасова помощ</p>
+      <h3 data-key="catDog">Разходка на куче</h3>
+      <p data-key="catDogSub">Почасова помощ</p>
     </a>
 
     <a href="category.html?cat=it" class="card">
       <div class="icon">💻</div>
-      <h3>IT & Помощ</h3>
-      <p>Онлайн задачи</p>
+      <h3 data-key="catIT">IT & Помощ</h3>
+      <p data-key="catITSub">Онлайн задачи</p>
     </a>
 
     <a href="category.html?cat=home" class="card">
       <div class="icon">🏠</div>
-      <h3>Помощ в дома</h3>
-      <p>Почистване, грижа</p>
+      <h3 data-key="catHome">Помощ в дома</h3>
+      <p data-key="catHomeSub">Почистване, грижа</p>
     </a>
 
     <a href="category.html?cat=delivery" class="card">
       <div class="icon">🍔</div>
-      <h3>Доставки</h3>
-      <p>Храна, пратки</p>
+      <h3 data-key="catDelivery">Доставки</h3>
+      <p data-key="catDeliverySub">Храна, пратки</p>
     </a>
 
     <a href="category.html?cat=kids" class="card">
       <div class="icon">👶</div>
-      <h3>Гледане на деца</h3>
-      <p>Почасово</p>
+      <h3 data-key="catKids">Гледане на деца</h3>
+      <p data-key="catKidsSub">Почасово</p>
     </a>
 
     <a href="category.html?cat=elderly" class="card">
       <div class="icon">👴</div>
-      <h3>Помощ за възрастни</h3>
-      <p>Грижа, придружаване</p>
+      <h3 data-key="catElderly">Помощ за възрастни</h3>
+      <p data-key="catElderlySub">Грижа, придружаване</p>
     </a>
 
     <a href="category.html?cat=cleaning" class="card">
       <div class="icon">🧹</div>
-      <h3>Почистване</h3>
-      <p>Домове, офиси</p>
+      <h3 data-key="catCleaning">Почистване</h3>
+      <p data-key="catCleaningSub">Домове, офиси</p>
     </a>
 
     <a href="category.html?cat=physical" class="card">
       <div class="icon">📦</div>
-      <h3>Физическа работа</h3>
-      <p>Преместване, носене</p>
+      <h3 data-key="catPhysical">Физическа работа</h3>
+      <p data-key="catPhysicalSub">Преместване, носене</p>
     </a>
 
     <a href="category.html?cat=waiter" class="card">
       <div class="icon">🍽️</div>
-      <h3>Сервитьор</h3>
-      <p>Заведения, събития</p>
+      <h3 data-key="catWaiter">Сервитьор</h3>
+      <p data-key="catWaiterSub">Заведения, събития</p>
     </a>
 
     <a href="category.html?cat=cook" class="card">
       <div class="icon">👨‍🍳</div>
-      <h3>Готвач</h3>
-      <p>Кухня, подготовка</p>
+      <h3 data-key="catCook">Готвач</h3>
+      <p data-key="catCookSub">Кухня, подготовка</p>
     </a>
 
     <a href="category.html?cat=barman" class="card">
       <div class="icon">🍹</div>
-      <h3>Барман</h3>
-      <p>Бар, напитки</p>
+      <h3 data-key="catBarman">Барман</h3>
+      <p data-key="catBarmanSub">Бар, напитки</p>
     </a>
 
     <a href="category.html?cat=hourly" class="card highlight">
       <div class="icon">⏱️</div>
-      <h3>Търся човек за няколко часа</h3>
-      <p>Почасова помощ</p>
+      <h3 data-key="catHourly">Търся човек за няколко часа</h3>
+      <p data-key="catHourlySub">Почасова помощ</p>
     </a>
 
   </div>
 </main>
 
 <script src="main.js"></script>
-
-
 </body>
 </html>
