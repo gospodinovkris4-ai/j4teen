@@ -30,5 +30,25 @@ if (form) {
   });
 }
 
+var list = document.getElementById("jobs-list");
+
+if (list) {
+  var jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+
+  list.innerHTML = "";
+
+  jobs.forEach(function (job) {
+    var div = document.createElement("div");
+    div.style.padding = "12px";
+    div.style.borderBottom = "1px solid #ddd";
+
+    div.innerHTML =
+      "<strong>" + job.title + "</strong><br>" +
+      job.desc + "<br>" +
+      "<em>" + job.price + "</em>";
+
+    list.appendChild(div);
+  });
+}
 
 
