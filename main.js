@@ -16,26 +16,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // ===== SHOW JOBS =====
-var jobsContainer = document.getElementById("jobs-list");
+// SHOW JOBS AS CARDS
+const jobsContainer = document.getElementById("jobs-list");
 
 if (jobsContainer) {
-  var jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+  jobsContainer.innerHTML = "";
 
-  jobs.forEach(function (job) {
-    var div = document.createElement("div");
-    div.className = "job";
+  jobs.forEach(job => {
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = "#";
 
-    div.innerHTML = `
-      <div>
-        <div class="title">${job.title}</div>
-        <div class="meta">${job.description}</div>
-      </div>
-      <div class="price">${job.price}</div>
+    card.innerHTML = `
+      <div class="icon">💼</div>
+      <h3>${job.title}</h3>
+      <p>${job.desc}</p>
+      <p style="font-weight:700; margin-top:8px;">${job.price}</p>
     `;
 
-    jobsContainer.appendChild(div);
+    jobsContainer.appendChild(card);
   });
 }
+
 
 function clearJobs() {
   localStorage.removeItem("jobs");
