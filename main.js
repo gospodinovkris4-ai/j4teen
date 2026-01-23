@@ -25,13 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-      jobs.push({
-        title: title,
-        desc: desc,
-        price: price,
-        category: category
-      });
-
+      jobs.push({ title, desc, price, category });
       localStorage.setItem("jobs", JSON.stringify(jobs));
 
       alert(currentLang === "bg" ? "Обявата е запазена" : "Job posted");
@@ -50,12 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
       var div = document.createElement("div");
       div.style.padding = "12px";
       div.style.borderBottom = "1px solid #ddd";
-
       div.innerHTML =
         "<strong>" + job.title + "</strong><br>" +
         job.desc + "<br>" +
         "<em>" + job.price + "</em>";
-
       list.appendChild(div);
     });
   }
@@ -76,6 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
       popularCats: "Популярни категории",
 
+      /* JOBS PAGE (ТОВА ЛИПСВАШЕ) */
+      jobsTitle: "Искам да работя",
+      jobsSubtitle: "Всички налични обяви",
+      allCities: "Всички градове",
+      clearJobs: "Изчисти всички обяви",
+
+      /* CATEGORIES */
       catDog: "Разходка на куче",
       catDogSub: "Почасова помощ",
       catIT: "IT & Помощ",
@@ -84,32 +83,23 @@ document.addEventListener("DOMContentLoaded", function () {
       catHomeSub: "Почистване, грижа",
       catDelivery: "Доставки",
       catDeliverySub: "Храна, пратки",
-
       catKids: "Гледане на деца",
       catKidsSub: "Почасово",
-
       catElderly: "Помощ за възрастни",
       catElderlySub: "Грижа, придружаване",
-
       catCleaning: "Почистване",
       catCleaningSub: "Домове, офиси",
-
       catPhysical: "Физическа работа",
       catPhysicalSub: "Преместване, носене",
-
       catWaiter: "Сервитьор",
       catWaiterSub: "Заведения, събития",
-
       catCook: "Готвач",
       catCookSub: "Кухня, подготовка",
-
       catBarman: "Барман",
       catBarmanSub: "Бар, напитки",
-
       catHourly: "Търся човек за няколко часа",
       catHourlySub: "Почасова помощ",
 
-      postPageTitle: "Търся човек за работа – J4Teen",
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява",
       selectCategory: "Избери категория",
@@ -119,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
       jobDescPh: "Описание",
       jobPricePh: "Цена (напр. 15 лв)",
 
-      chatPageTitle: "Чат – J4Teen",
       chatTitle: "Чат",
       chatSubtitle: "Свържи се директно",
       chatNamePh: "Име",
@@ -140,6 +129,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       popularCats: "Popular categories",
 
+      /* JOBS PAGE */
+      jobsTitle: "I want to work",
+      jobsSubtitle: "All available jobs",
+      allCities: "All cities",
+      clearJobs: "Clear all jobs",
+
       catDog: "Dog walking",
       catDogSub: "Hourly help",
       catIT: "IT & Help",
@@ -148,32 +143,23 @@ document.addEventListener("DOMContentLoaded", function () {
       catHomeSub: "Cleaning, care",
       catDelivery: "Delivery",
       catDeliverySub: "Food, packages",
-
       catKids: "Child care",
       catKidsSub: "Hourly",
-
       catElderly: "Elderly care",
       catElderlySub: "Care, assistance",
-
       catCleaning: "Cleaning",
       catCleaningSub: "Homes, offices",
-
       catPhysical: "Physical work",
       catPhysicalSub: "Moving, carrying",
-
       catWaiter: "Waiter",
       catWaiterSub: "Restaurants, events",
-
       catCook: "Cook",
       catCookSub: "Kitchen, preparation",
-
       catBarman: "Bartender",
       catBarmanSub: "Bar, drinks",
-
       catHourly: "Looking for hourly help",
       catHourlySub: "Hourly assistance",
 
-      postPageTitle: "Post a job – J4Teen",
       postTitle: "I'm hiring",
       postSubtitle: "Post a job",
       selectCategory: "Select category",
@@ -183,7 +169,6 @@ document.addEventListener("DOMContentLoaded", function () {
       jobDescPh: "Description",
       jobPricePh: "Price (e.g. 15 lv)",
 
-      chatPageTitle: "Chat – J4Teen",
       chatTitle: "Chat",
       chatSubtitle: "Connect directly",
       chatNamePh: "Name",
@@ -217,8 +202,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (langBtn) {
     langBtn.addEventListener("click", function (e) {
       e.preventDefault();
-      e.stopPropagation();
-
       currentLang = currentLang === "bg" ? "en" : "bg";
       localStorage.setItem("lang", currentLang);
       applyLang();
