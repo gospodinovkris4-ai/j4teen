@@ -12,7 +12,6 @@
 <nav class="topbar">
   <div class="logo">J4Teen</div>
 
-  <!-- LANGUAGE TOGGLE (FIXED) -->
   <button
     id="lang-toggle"
     type="button"
@@ -32,7 +31,6 @@
   </div>
 </nav>
 
-
 <header class="hero">
   <div class="hero-content">
     <h1 data-key="heroTitle">Намери почасова работа или помощ наблизо</h1>
@@ -46,89 +44,120 @@
 </header>
 
 <main class="container">
-  <h2 data-key="popularCats">Популярни категории</h2>
 
-  <div class="cards">
-
-    <a href="category.html?cat=dog" class="card">
-      <div class="icon">🐕</div>
-      <h3 data-key="catDog">Разходка на куче</h3>
-      <p data-key="catDogSub">Почасова помощ</p>
-    </a>
-
-    <a href="category.html?cat=it" class="card">
-      <div class="icon">💻</div>
-      <h3 data-key="catIT">IT & Помощ</h3>
-      <p data-key="catITSub">Онлайн задачи</p>
-    </a>
-
-    <a href="category.html?cat=home" class="card">
-      <div class="icon">🏠</div>
-      <h3 data-key="catHome">Помощ в дома</h3>
-      <p data-key="catHomeSub">Почистване, грижа</p>
-    </a>
-
-    <a href="category.html?cat=delivery" class="card">
-      <div class="icon">🍔</div>
-      <h3 data-key="catDelivery">Доставки</h3>
-      <p data-key="catDeliverySub">Храна, пратки</p>
-    </a>
-
-    <a href="category.html?cat=kids" class="card">
-      <div class="icon">👶</div>
-      <h3 data-key="catKids">Гледане на деца</h3>
-      <p data-key="catKidsSub">Почасово</p>
-    </a>
-
-    <a href="category.html?cat=elderly" class="card">
-      <div class="icon">👴</div>
-      <h3 data-key="catElderly">Помощ за възрастни</h3>
-      <p data-key="catElderlySub">Грижа, придружаване</p>
-    </a>
-
-    <a href="category.html?cat=cleaning" class="card">
-      <div class="icon">🧹</div>
-      <h3 data-key="catCleaning">Почистване</h3>
-      <p data-key="catCleaningSub">Домове, офиси</p>
-    </a>
-
-    <a href="category.html?cat=physical" class="card">
-      <div class="icon">📦</div>
-      <h3 data-key="catPhysical">Физическа работа</h3>
-      <p data-key="catPhysicalSub">Преместване, носене</p>
-    </a>
-
-    <a href="category.html?cat=waiter" class="card">
-      <div class="icon">🍽️</div>
-      <h3 data-key="catWaiter">Сервитьор</h3>
-      <p data-key="catWaiterSub">Заведения, събития</p>
-    </a>
-
-    <a href="category.html?cat=cook" class="card">
-      <div class="icon">👨‍🍳</div>
-      <h3 data-key="catCook">Готвач</h3>
-      <p data-key="catCookSub">Кухня, подготовка</p>
-    </a>
-
-    <a href="category.html?cat=barman" class="card">
-      <div class="icon">🍹</div>
-      <h3 data-key="catBarman">Барман</h3>
-      <p data-key="catBarmanSub">Бар, напитки</p>
-    </a>
-
-    <a href="category.html?cat=hourly" class="card highlight">
-      <div class="icon">⏱️</div>
-      <h3 data-key="catHourly">Търся човек за няколко часа</h3>
-      <p data-key="catHourlySub">Почасова помощ</p>
-    </a>
-
+  <!-- MOBILE TABS -->
+  <div class="tabs">
+    <button class="tab active" data-tab="work">Работа</button>
+    <button class="tab" data-tab="companies">Компании</button>
+    <button class="tab" data-tab="news">Новини</button>
   </div>
-</main>
 
-<script src="main.js"></script>
+  <!-- TAB: WORK -->
+  <div class="tab-content active" id="tab-work">
+    <h2 data-key="popularCats">Популярни категории</h2>
+
+    <div class="cards">
+
+      <a href="category.html?cat=dog" class="card">
+        <div class="icon">🐕</div>
+        <h3 data-key="catDog">Разходка на куче</h3>
+        <p data-key="catDogSub">Почасова помощ</p>
+      </a>
+
+      <a href="category.html?cat=it" class="card">
+        <div class="icon">💻</div>
+        <h3 data-key="catIT">IT & Помощ</h3>
+        <p data-key="catITSub">Онлайн задачи</p>
+      </a>
+
+      <a href="category.html?cat=home" class="card">
+        <div class="icon">🏠</div>
+        <h3 data-key="catHome">Помощ в дома</h3>
+        <p data-key="catHomeSub">Почистване, грижа</p>
+      </a>
+
+      <a href="category.html?cat=delivery" class="card">
+        <div class="icon">🍔</div>
+        <h3 data-key="catDelivery">Доставки</h3>
+        <p data-key="catDeliverySub">Храна, пратки</p>
+      </a>
+
+      <a href="category.html?cat=kids" class="card">
+        <div class="icon">👶</div>
+        <h3 data-key="catKids">Гледане на деца</h3>
+        <p data-key="catKidsSub">Почасово</p>
+      </a>
+
+      <a href="category.html?cat=elderly" class="card">
+        <div class="icon">👴</div>
+        <h3 data-key="catElderly">Помощ за възрастни</h3>
+        <p data-key="catElderlySub">Грижа, придружаване</p>
+      </a>
+
+      <a href="category.html?cat=cleaning" class="card">
+        <div class="icon">🧹</div>
+        <h3 data-key="catCleaning">Почистване</h3>
+        <p data-key="catCleaningSub">Домове, офиси</p>
+      </a>
+
+      <a href="category.html?cat=physical" class="card">
+        <div class="icon">📦</div>
+        <h3 data-key="catPhysical">Физическа работа</h3>
+        <p data-key="catPhysicalSub">Преместване, носене</p>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- TAB: COMPANIES -->
+  <div class="tab-content" id="tab-companies">
+    <h3>За компании</h3>
+    <p>Намери млади хора бързо и лесно.</p>
+
+    <ul class="companies-list">
+      <li>✔️ Публикувай обяви</li>
+      <li>✔️ Достигни младежи</li>
+      <li>✔️ Гъвкави планове</li>
+    </ul>
+
+    <a href="pricing.html" class="btn primary">Виж планове</a>
+  </div>
+
+  <!-- TAB: NEWS -->
+  <div class="tab-content" id="tab-news">
+    <h3>Актуално</h3>
+
+    <div class="news-item">
+      <strong>Как да си намериш почасова работа</strong>
+      <span>· 2026</span>
+    </div>
+
+    <div class="news-item">
+      <strong>Търсени умения при младежи</strong>
+      <span>· 2026</span>
+    </div>
+
+    <a href="news.html" class="btn secondary">Всички новини</a>
+  </div>
+
+</main>
 
 <a href="post.html" class="mobile-cta">+ Публикувай обява</a>
 
-  
+<script src="main.js"></script>
+
+<script>
+  // MOBILE TABS LOGIC
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+      tab.classList.add("active");
+      document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+    });
+  });
+</script>
+
 </body>
 </html>
