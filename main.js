@@ -37,3 +37,9 @@ if (jobsContainer) {
   });
 }
 
+function clearJobs() {
+  localStorage.removeItem("jobs");
+  location.reload();
+}
+
+
