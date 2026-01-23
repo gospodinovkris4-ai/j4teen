@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       localStorage.setItem("jobs", JSON.stringify(jobs));
 
-      alert("Обявата е запазена");
+      alert(currentLang === "bg" ? "Обявата е запазена" : "Job posted");
       form.reset();
     });
   }
@@ -78,15 +78,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
       catDog: "Разходка на куче",
       catDogSub: "Почасова помощ",
-
       catIT: "IT & Помощ",
       catITSub: "Онлайн задачи",
-
       catHome: "Помощ в дома",
       catHomeSub: "Почистване, грижа",
-
       catDelivery: "Доставки",
-      catDeliverySub: "Храна, пратки"
+      catDeliverySub: "Храна, пратки",
+
+      /* POST */
+      postPageTitle: "Търся човек за работа – J4Teen",
+      postTitle: "Търся човек за работа",
+      postSubtitle: "Публикувай обява",
+      selectCategory: "Избери категория",
+      postBtn: "Публикувай",
+
+      jobTitlePh: "Заглавие на обявата",
+      jobDescPh: "Описание",
+      jobPricePh: "Цена (напр. 15 лв)",
+
+      /* CHAT */
+      chatPageTitle: "Чат – J4Teen",
+      chatTitle: "Чат",
+      chatSubtitle: "Свържи се директно",
+      chatNamePh: "Име",
+      chatMsgPh: "Съобщение",
+      chatSend: "Изпрати"
     },
 
     en: {
@@ -104,15 +120,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
       catDog: "Dog walking",
       catDogSub: "Hourly help",
-
       catIT: "IT & Help",
       catITSub: "Online tasks",
-
       catHome: "Home help",
       catHomeSub: "Cleaning, care",
-
       catDelivery: "Delivery",
-      catDeliverySub: "Food, packages"
+      catDeliverySub: "Food, packages",
+
+      /* POST */
+      postPageTitle: "Post a job – J4Teen",
+      postTitle: "I'm hiring",
+      postSubtitle: "Post a job",
+      selectCategory: "Select category",
+      postBtn: "Post job",
+
+      jobTitlePh: "Job title",
+      jobDescPh: "Description",
+      jobPricePh: "Price (e.g. 15 lv)",
+
+      /* CHAT */
+      chatPageTitle: "Chat – J4Teen",
+      chatTitle: "Chat",
+      chatSubtitle: "Connect directly",
+      chatNamePh: "Name",
+      chatMsgPh: "Message",
+      chatSend: "Send"
     }
   };
 
@@ -121,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function applyLang() {
     var t = translations[currentLang];
 
+    /* textContent */
     document.querySelectorAll("[data-key]").forEach(function (el) {
       var key = el.getAttribute("data-key");
       if (t[key]) {
@@ -128,6 +161,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
+    /* placeholders */
+    document.querySelectorAll("[data-key-placeholder]").forEach(function (el) {
+      var key = el.getAttribute("data-key-placeholder");
+      if (t[key]) {
+        el.placeholder = t[key];
+      }
+    });
+
+    /* page title */
+    if (t.postPageTitle && document.title.includes("J4Teen")) {
+      document.title = t.postPageTitle;
+    }
+
+    /* button label */
     var btn = document.getElementById("lang-toggle");
     if (btn) {
       btn.textContent = currentLang === "bg" ? "EN" : "BG";
@@ -140,9 +187,4 @@ document.addEventListener("DOMContentLoaded", function () {
   if (langBtn) {
     langBtn.addEventListener("click", function () {
       currentLang = currentLang === "bg" ? "en" : "bg";
-      localStorage.setItem("lang", currentLang);
-      applyLang();
-    });
-  }
-
-});
+      localStorage.setIt
