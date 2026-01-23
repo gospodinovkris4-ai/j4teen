@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Чат – J4Teen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="logo">J4Teen</div>
+  <div class="burger">☰</div>
+  <div class="menu">
+    <a href="index.html">Начало</a>
+    <a href="jobs.html">Обяви</a>
+    <a href="post.html">Публикувай</a>
+    <a href="chat.html">Чат</a>
+  </div>
+</nav>
+
+<header class="hero small">
+  <div class="hero-content">
+    <h1>Чат</h1>
+    <p>Свържи се директно</p>
+  </div>
+</header>
+
+<div id="chat-box" style="max-width:700px;margin:30px auto;"></div>
+
+<form id="chat-form" style="max-width:700px;margin:10px auto;display:flex;gap:10px;">
+  <input id="chat-name" placeholder="Име" required style="flex:1">
+  <input id="chat-message" placeholder="Съобщение" required style="flex:3">
+  <button type="submit">Изпрати</button>
+</form>
+
+<script src="main.js"></script>
+
+<script>
+  const chatBox = document.getElementById("chat-box");
+  const chatForm = document.getElementById("chat-form");
+
+  function renderChat() {
+    const messages = JSON.parse(localStorage.getItem("chat") || "[]");
+    chatBox.innerHTML = "";
+
+    messages.forEach(msg => {
+      const div = document.createElement("div");
+      div.style.padding = "10px";
+      div.style.marginBottom = "8px";
+      div.style.borderRadius = "10px";
+      div.style.background = "#f1f5f9";
+
+      div.innerHTML = `<strong>${msg.name}</strong>: ${msg.text}`;
+      chatBox.appendChild(div);
+    });
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  renderChat();
+
+  chatForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("chat-name").value;
+    const text = document.getElementById("chat-message").value;
+
+    const messages = JSON.parse(localStorage.getItem("chat") || "[]");
+    messages.push({ name, text });
+
+    localStorage.setItem("chat", JSON.stringify(messages));
+
+    chatForm.reset();
+    renderChat();
+  });
+</script>
+
+</body>
+</html>
