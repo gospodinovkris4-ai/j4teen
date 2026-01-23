@@ -1,90 +1,206 @@
-<!DOCTYPE html>
-<html lang="bg">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-key="jobsPageTitle">Искам да работя – J4Teen</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+document.addEventListener("DOMContentLoaded", function () {
 
-<body>
+  /* ================= MENU ================= */
+  var burger = document.querySelector(".burger");
+  var menu = document.querySelector(".menu");
 
-<nav class="topbar">
-  <div class="logo">J4Teen</div>
+  if (burger && menu) {
+    burger.addEventListener("click", function () {
+      menu.classList.toggle("show");
+    });
+  }
 
-  <!-- LANGUAGE TOGGLE (FIXED) -->
-  <button
-    id="lang-toggle"
-    type="button"
-    aria-label="Change language"
-    style="margin-left:10px; cursor:pointer;"
-  >
-    EN
-  </button>
+  /* ================= POST JOB ================= */
+  var form = document.getElementById("post-form");
 
-  <div class="burger">☰</div>
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-  <div class="menu">
-    <a href="index.html" data-key="home">Начало</a>
-    <a href="jobs.html" data-key="jobs">Обяви</a>
-    <a href="post.html" data-key="post">Публикувай</a>
-    <a href="chat.html" data-key="chat">Чат</a>
-  </div>
-</nav>
+      var title = document.getElementById("job-title").value;
+      var desc = document.getElementById("job-desc").value;
+      var price = document.getElementById("job-price").value;
+      var categoryEl = document.getElementById("job-category");
+      var category = categoryEl ? categoryEl.value : "";
 
+      var jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-<header class="hero small">
-  <div class="hero-content">
-    <h1 data-key="jobsTitle">Искам да работя</h1>
-    <p data-key="jobsSubtitle">Всички налични обяви</p>
-  </div>
-</header>
+      jobs.push({
+        title: title,
+        desc: desc,
+        price: price,
+        category: category
+      });
 
-<div style="max-width:900px;margin:20px auto;">
+      localStorage.setItem("jobs", JSON.stringify(jobs));
 
-  <select id="cityFilter" style="
-    padding:10px;
-    border-radius:10px;
-    border:1px solid #ccc;
-    width:100%;
-    max-width:300px;">
-    <option value="" data-key="allCities">Всички градове</option>
-  </select>
+      alert(currentLang === "bg" ? "Обявата е запазена" : "Job posted");
+      form.reset();
+    });
+  }
 
-  <button onclick="clearJobs()" style="
-    margin:20px 0;
-    padding:10px 16px;
-    border:none;
-    border-radius:8px;
-    background:#ef4444;
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-  " data-key="clearJobs">
-    Изчисти всички обяви
-  </button>
+  /* ================= SHOW JOBS ================= */
+  var list = document.getElementById("jobs-list");
 
-  <div id="jobs-list"></div>
+  if (list) {
+    var jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+    list.innerHTML = "";
 
-  <!-- примерни статични обяви -->
-  <div class="job">
-    <div>
-      <div class="title" data-key="sampleDog">Разходка на куче</div>
-      <div class="meta" data-key="sampleDogMeta">София · Почасово</div>
-    </div>
-    <div class="price">15 лв</div>
-  </div>
+    jobs.forEach(function (job) {
+      var div = document.createElement("div");
+      div.style.padding = "12px";
+      div.style.borderBottom = "1px solid #ddd";
 
-  <div class="job">
-    <div>
-      <div class="title" data-key="sampleHome">Помощ в дома</div>
-      <div class="meta" data-key="sampleHomeMeta">Пловдив · 2 часа</div>
-    </div>
-    <div class="price">20 лв</div>
-  </div>
+      div.innerHTML =
+        "<strong>" + job.title + "</strong><br>" +
+        job.desc + "<br>" +
+        "<em>" + job.price + "</em>";
 
-</div>
+      list.appendChild(div);
+    });
+  }
 
-<script src="main.js"></script>
-</body>
-</html>
+  /* ================= LANGUAGES BG / EN ================= */
+
+  var translations = {
+    bg: {
+      home: "Начало",
+      jobs: "Обяви",
+      post: "Публикувай",
+      chat: "Чат",
+
+      heroTitle: "Намери почасова работа или помощ наблизо",
+      heroSubtitle: "J4Teen – общност и обяви за младежи",
+      heroWork: "Искам да работя",
+      heroHire: "Търся човек за работа",
+
+      popularCats: "Популярни категории",
+
+      /* JOBS PAGE */
+      jobsTitle: "Искам да работя",
+      jobsSubtitle: "Всички налични обяви",
+      allCities: "Всички градове",
+      clearJobs: "Изчисти всички обяви",
+
+      sampleDog: "Разходка на куче",
+      sampleDogMeta: "София · Почасово",
+
+      sampleHome: "Помощ в дома",
+      sampleHomeMeta: "Пловдив · 2 часа",
+
+      /* CATEGORIES */
+      catDog: "Разходка на куче",
+      catDogSub: "Почасова помощ",
+      catIT: "IT & Помощ",
+      catITSub: "Онлайн задачи",
+      catHome: "Помощ в дома",
+      catHomeSub: "Почистване, грижа",
+      catDelivery: "Доставки",
+      catDeliverySub: "Храна, пратки",
+
+      postPageTitle: "Търся човек за работа – J4Teen",
+      postTitle: "Търся човек за работа",
+      postSubtitle: "Публикувай обява",
+      selectCategory: "Избери категория",
+      postBtn: "Публикувай",
+
+      jobTitlePh: "Заглавие на обявата",
+      jobDescPh: "Описание",
+      jobPricePh: "Цена (напр. 15 лв)",
+
+      chatPageTitle: "Чат – J4Teen",
+      chatTitle: "Чат",
+      chatSubtitle: "Свържи се директно",
+      chatNamePh: "Име",
+      chatMsgPh: "Съобщение",
+      chatSend: "Изпрати"
+    },
+
+    en: {
+      home: "Home",
+      jobs: "Jobs",
+      post: "Post",
+      chat: "Chat",
+
+      heroTitle: "Find part-time work or help nearby",
+      heroSubtitle: "J4Teen – jobs and community for youth",
+      heroWork: "I want to work",
+      heroHire: "I'm hiring",
+
+      popularCats: "Popular categories",
+
+      /* JOBS PAGE */
+      jobsTitle: "I want to work",
+      jobsSubtitle: "All available jobs",
+      allCities: "All cities",
+      clearJobs: "Clear all jobs",
+
+      sampleDog: "Dog walking",
+      sampleDogMeta: "Sofia · Hourly",
+
+      sampleHome: "Home help",
+      sampleHomeMeta: "Plovdiv · 2 hours",
+
+      /* CATEGORIES */
+      catDog: "Dog walking",
+      catDogSub: "Hourly help",
+      catIT: "IT & Help",
+      catITSub: "Online tasks",
+      catHome: "Home help",
+      catHomeSub: "Cleaning, care",
+      catDelivery: "Delivery",
+      catDeliverySub: "Food, packages",
+
+      postPageTitle: "Post a job – J4Teen",
+      postTitle: "I'm hiring",
+      postSubtitle: "Post a job",
+      selectCategory: "Select category",
+      postBtn: "Post job",
+
+      jobTitlePh: "Job title",
+      jobDescPh: "Description",
+      jobPricePh: "Price (e.g. 15 lv)",
+
+      chatPageTitle: "Chat – J4Teen",
+      chatTitle: "Chat",
+      chatSubtitle: "Connect directly",
+      chatNamePh: "Name",
+      chatMsgPh: "Message",
+      chatSend: "Send"
+    }
+  };
+
+  var currentLang = localStorage.getItem("lang") || "bg";
+
+  function applyLang() {
+    var t = translations[currentLang];
+
+    document.querySelectorAll("[data-key]").forEach(function (el) {
+      var key = el.getAttribute("data-key");
+      if (t[key]) el.textContent = t[key];
+    });
+
+    document.querySelectorAll("[data-key-placeholder]").forEach(function (el) {
+      var key = el.getAttribute("data-key-placeholder");
+      if (t[key]) el.placeholder = t[key];
+    });
+
+    var btn = document.getElementById("lang-toggle");
+    if (btn) btn.textContent = currentLang === "bg" ? "EN" : "BG";
+  }
+
+  applyLang();
+
+  var langBtn = document.getElementById("lang-toggle");
+  if (langBtn) {
+    langBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      currentLang = currentLang === "bg" ? "en" : "bg";
+      localStorage.setItem("lang", currentLang);
+      applyLang();
+    });
+  }
+
+});
