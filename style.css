@@ -75,7 +75,6 @@ a:active {
   box-shadow: 0 20px 40px rgba(0,0,0,0.18);
   display: flex;
   flex-direction: column;
-
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
@@ -169,6 +168,7 @@ main {
   padding: 0 20px;
 }
 
+/* === BLUE CARD STYLE === */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -176,22 +176,25 @@ main {
 }
 
 .card {
-  background: white;
+  background: linear-gradient(135deg, #f4f8ff, #ffffff);
   border-radius: 16px;
   padding: 24px;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border: 1px solid #e5edff;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.12);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+  background: linear-gradient(135deg, #e8f0ff, #ffffff);
+  box-shadow: 0 16px 34px rgba(37,99,235,0.25);
 }
 
 .card .icon {
   font-size: 36px;
   margin-bottom: 12px;
+  color: #2563eb;
 }
 
 .card h3 {
@@ -205,8 +208,14 @@ main {
 }
 
 .card.highlight {
-  border: 2px solid #2563eb;
-  background: #eef4ff;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+}
+
+.card.highlight h3,
+.card.highlight p,
+.card.highlight .icon {
+  color: white;
 }
 
 /* =========================
@@ -245,9 +254,9 @@ button {
   cursor: pointer;
 }
 
-/* =================================================
-   📑 TABS (MOBILE + DESKTOP)
-   ================================================= */
+/* =========================
+   TABS
+   ========================= */
 .tabs {
   display: flex;
   gap: 8px;
@@ -280,11 +289,30 @@ button {
   display: block;
 }
 
-/* =================================================
-   📱 MOBILE FIRST LAYER
-   ================================================= */
+/* =========================
+   DESKTOP: SHOW ALL CONTENT
+   ========================= */
+@media (min-width: 768px) {
 
-/* TAP FEEDBACK */
+  .tabs {
+    display: none;
+  }
+
+  .tab-content {
+    display: block;
+    margin-top: 60px;
+  }
+
+  #tab-companies,
+  #tab-news {
+    padding-top: 40px;
+    border-top: 1px solid #e5edff;
+  }
+}
+
+/* =========================
+   MOBILE FIRST
+   ========================= */
 .card:active {
   transform: scale(0.97);
   box-shadow: 0 6px 14px rgba(0,0,0,0.18);
@@ -317,7 +345,6 @@ button {
     font-size: 40px;
   }
 
-  /* STICKY CTA */
   .mobile-cta {
     position: fixed;
     bottom: 16px;
