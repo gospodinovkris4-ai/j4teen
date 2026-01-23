@@ -1,7 +1,6 @@
-
-}
-
-/* ===== RESET ===== */
+/* =========================
+   RESET & BASE
+   ========================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,38 +13,21 @@ body {
   color: #111;
 }
 
-/* Заглавия */
 h1, h2, h3 {
   font-weight: 800;
 }
 
-/* Меню */
-.menu a {
-  font-weight: 600;
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Карти и обяви */
-.card h3,
-.card p,
-.job,
-.job .title,
-.job .meta,
-.job .price {
-  font-weight: 600;
-}
-
-/* Формуляри */
-input,
-textarea,
-select,
-button {
-  font-family: inherit;
-  font-weight: 600;
-}
-
-
-
-/* ===== TOP BAR ===== */
+/* =========================
+   TOP BAR
+   ========================= */
 .topbar {
   position: fixed;
   top: 0;
@@ -57,48 +39,47 @@ button {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   z-index: 1000;
 }
 
 .logo {
-  font-size: 26px;
-  font-weight: 900;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
   color: #2563eb;
 }
 
-/* ===== HAMBURGER ===== */
 .burger {
-  font-size: 28px;
+  font-size: 26px;
   cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 12px;
 }
 
-/* ===== MENU ===== */
+.burger:hover {
+  background: #f1f5f9;
+}
+
+/* =========================
+   MENU
+   ========================= */
 .menu {
   position: absolute;
   top: 72px;
   right: 20px;
   background: white;
-  border-radius: 14px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  border-radius: 16px;
+  min-width: 200px;
+  padding: 10px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
   display: flex;
   flex-direction: column;
-  min-width: 180px;
-  padding: 10px;
+
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
   transition: 0.25s ease;
-}
-
-.menu a {
-  padding: 12px 14px;
-  border-radius: 10px;
-  font-weight: 600;
-}
-
-.menu a:hover {
-  background: #f1f5f9;
 }
 
 .menu.show {
@@ -107,7 +88,20 @@ button {
   pointer-events: auto;
 }
 
-/* ===== HERO (MASTER) ===== */
+.menu a {
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.menu a:hover {
+  background: #f2f7ff;
+  color: #2563eb;
+}
+
+/* =========================
+   HERO
+   ========================= */
 .hero {
   margin-top: 64px;
   background: linear-gradient(135deg, #2563eb, #1e40af);
@@ -136,13 +130,19 @@ button {
   margin-bottom: 24px;
 }
 
-/* ===== BUTTONS ===== */
+/* =========================
+   BUTTONS
+   ========================= */
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
 .hero-buttons a {
-  display: inline-block;
   padding: 12px 20px;
   border-radius: 999px;
   font-weight: 700;
-  margin: 0 6px;
 }
 
 .btn.primary {
@@ -151,33 +151,24 @@ button {
 }
 
 .btn.secondary {
-  background: white;
-  color: #2563eb;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.6);
 }
 
-/* ===== MAIN LAYOUT ===== */
+.btn.secondary:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* =========================
+   MAIN / CARDS
+   ========================= */
 main {
   max-width: 1100px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-main h1 {
-  font-size: 32px;
-  margin-bottom: 8px;
-}
-
-main h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-main p {
-  color: #666;
-  margin-bottom: 24px;
-}
-
-/* ===== CARDS ===== */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -190,12 +181,10 @@ main p {
   padding: 24px;
   text-align: center;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  animation: fadeUp 0.35s ease both;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
-  background: #f2f7ff;
   transform: translateY(-6px);
   box-shadow: 0 14px 30px rgba(0,0,0,0.18);
 }
@@ -203,18 +192,11 @@ main p {
 .card .icon {
   font-size: 36px;
   margin-bottom: 12px;
-  transition: transform 0.25s ease;
-}
-
-.card:hover .icon {
-  transform: scale(1.08);
 }
 
 .card h3 {
   font-size: 20px;
-  font-weight: 700;
   margin: 10px 0 6px;
-  color: #1e3a8a;
 }
 
 .card p {
@@ -222,13 +204,14 @@ main p {
   color: #555;
 }
 
-/* Highlight card */
 .card.highlight {
   border: 2px solid #2563eb;
   background: #eef4ff;
 }
 
-/* ===== JOB CARDS ===== */
+/* =========================
+   JOB CARDS
+   ========================= */
 .job {
   background: white;
   border-radius: 14px;
@@ -238,29 +221,11 @@ main p {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.job:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-}
-
-.job .title {
-  font-weight: 600;
-}
-
-.job .meta {
-  font-size: 14px;
-  color: #777;
-}
-
-.job .price {
-  font-weight: 700;
-  color: #2563eb;
-}
-
-/* ===== FORMS ===== */
+/* =========================
+   FORMS
+   ========================= */
 input, textarea, select {
   width: 100%;
   padding: 12px;
@@ -280,245 +245,61 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background: #1e4ed8;
+/* =================================================
+   📱 MOBILE FIRST LAYER – J4Teen
+   ================================================= */
+
+/* TAP FEEDBACK (замества hover) */
+.card:active {
+  transform: scale(0.97);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
 }
 
-/* ===== ANIMATION ===== */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
+/* MOBILE LAYOUT */
+@media (max-width: 768px) {
+
+  .hero {
+    padding: 40px 20px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .card {
+    padding: 28px 24px;
+  }
+
+  .card .icon {
+    font-size: 40px;
+  }
+
+  /* STICKY CTA */
+  .mobile-cta {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: #2563eb;
+    color: white;
+    padding: 16px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 700;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    z-index: 999;
+  }
+
+  .mobile-cta:active {
+    transform: scale(0.97);
   }
 }
-
-
-/* ===== HEADER VISUAL UPGRADE ===== */
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  height: 64px;
-  background: white;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-}
-
-/* Logo – по-солидно */
-.logo {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: #2563eb;
-}
-
-/* Burger – по-елегантен */
-.burger {
-  font-size: 26px;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 10px;
-  transition: background 0.2s ease;
-}
-
-.burger:hover {
-  background: #f1f5f9;
-}
-
-/* Menu – по-професионално */
-.menu {
-  position: absolute;
-  top: 72px;
-  right: 20px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-  padding: 10px;
-  display: none;
-  flex-direction: column;
-  min-width: 200px;
-}
-
-.menu.show {
-  display: flex;
-}
-
-/* Menu items */
-.menu a {
-  padding: 14px 16px;
-  border-radius: 12px;
-  font-weight: 600;
-  color: #111;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.menu a:hover {
-  background: #f2f7ff;
-  color: #2563eb;
-}
-
-.menu {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: 0.25s ease;
-}
-
-.menu.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== FINAL HEADER & MENU OVERRIDE ===== */
-
-.topbar {
-  height: 64px;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-}
-
-.logo {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: #2563eb;
-}
-
-.burger {
-  font-size: 26px;
-  cursor: pointer;
-  padding: 8px 12px;
-  border-radius: 12px;
-  transition: background 0.2s ease;
-}
-
-.burger:hover {
-  background: #f1f5f9;
-}
-
-.menu {
-  position: absolute;
-  top: 72px;
-  right: 20px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-  padding: 10px;
-  display: none;
-  flex-direction: column;
-  min-width: 200px;
-}
-
-.menu.show {
-  display: flex;
-}
-
-.menu a {
-  padding: 14px 16px;
-  border-radius: 12px;
-  font-weight: 600;
-  color: #111;
-}
-
-.menu a:hover {
-  background: #f2f7ff;
-  color: #2563eb;
-}
-
-/* ===============================
-   FINAL GLOBAL FIX (DO NOT TOUCH)
-   =============================== */
-
-/* 1. ЕДИН ШРИФТ НАВСЯКЪДЕ */
-* {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif !important;
-}
-
-/* 2. ДЕБЕЛ ТЕКСТ */
-body {
-  font-weight: 600 !important;
-  color: #111 !important;
-}
-
-h1, h2, h3 {
-  font-weight: 800 !important;
-}
-
-/* 3. МАХАМЕ ВСИЧКИ ПОДЧЕРТАВАНИЯ */
-a,
-a:visited,
-a:hover,
-a:active {
-  text-decoration: none !important;
-  color: inherit !important;
-}
-
-/* 4. МЕНЮ – ПЛАВНО + КРАСИВО */
-.menu {
-  display: flex !important;
-  flex-direction: column;
-  position: absolute;
-  top: 72px;
-  right: 20px;
-  background: #fff;
-  border-radius: 16px;
-  min-width: 200px;
-  padding: 10px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-
-  opacity: 0;
-  transform: translateY(-10px);
-  pointer-events: none;
-
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.menu.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-/* 5. МЕНЮ ТЕКСТ */
-.menu a {
-  padding: 14px 16px;
-  border-radius: 12px;
-  font-weight: 600;
-}
-
-.menu a:hover {
-  background: #f2f7ff;
-  color: #2563eb;
-}
-
-/* 6. КАРТИ И ОБЯВИ – БЕЗ ПОДЧЕРТАВАНЕ */
-.card,
-.card *,
-.job,
-.job * {
-  text-decoration: none !important;
-}
-
-/* FIX hero secondary button */
-.btn.secondary {
-  background: rgba(255,255,255,0.15);
-  color: #fff;
-  border: 2px solid rgba(255,255,255,0.6);
-}
-
-.btn.secondary:hover {
-  background: rgba(255,255,255,0.25);
-  color: #fff;
-}
-
-
-
-
-
