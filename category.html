@@ -38,6 +38,43 @@
 
 <script src="main.js"></script>
 
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const category = params.get("cat");
+
+  const content = document.getElementById("content");
+  const title = document.getElementById("title");
+
+  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+
+  if (category) {
+    if (category === "dog") title.textContent = "Разходка на куче";
+    if (category === "home") title.textContent = "Помощ в дома";
+    if (category === "delivery") title.textContent = "Доставка";
+  }
+
+  const filtered = jobs.filter(job => job.category === category);
+
+  if (filtered.length === 0) {
+    content.innerHTML = "<p>Няма обяви в тази категория.</p>";
+  }
+
+  filtered.forEach(job => {
+    const div = document.createElement("div");
+    div.className = "job";
+
+    div.innerHTML = `
+      <div class="title">${job.title}</div>
+      <div class="meta">${job.desc}</div>
+      <div class="price">${job.price}</div>
+    `;
+
+    content.appendChild(div);
+  });
+</script>
+
+
+  
 
 
 </body>
