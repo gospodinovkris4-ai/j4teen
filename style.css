@@ -506,6 +506,19 @@ a:active {
   text-decoration: none !important;
 }
 
+/* FIX hero secondary button */
+.btn.secondary {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.btn.secondary:hover {
+  background: #fff;
+  color: #2563eb;
+}
+
+
 
 
 
