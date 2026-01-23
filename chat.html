@@ -2,35 +2,51 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
-  <title>Чат – J4Teen</title>
+  <title data-key="chatPageTitle">Чат – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
+
+  <!-- LANGUAGE TOGGLE -->
+  <button id="lang-toggle" style="margin-left:10px;">EN</button>
+
   <div class="burger">☰</div>
   <div class="menu">
-    <a href="index.html">Начало</a>
-    <a href="jobs.html">Обяви</a>
-    <a href="post.html">Публикувай</a>
-    <a href="chat.html">Чат</a>
+    <a href="index.html" data-key="home">Начало</a>
+    <a href="jobs.html" data-key="jobs">Обяви</a>
+    <a href="post.html" data-key="post">Публикувай</a>
+    <a href="chat.html" data-key="chat">Чат</a>
   </div>
 </nav>
 
 <header class="hero small">
   <div class="hero-content">
-    <h1>Чат</h1>
-    <p>Свържи се директно</p>
+    <h1 data-key="chatTitle">Чат</h1>
+    <p data-key="chatSubtitle">Свържи се директно</p>
   </div>
 </header>
 
 <div id="chat-box" style="max-width:700px;margin:30px auto;"></div>
 
 <form id="chat-form" style="max-width:700px;margin:10px auto;display:flex;gap:10px;">
-  <input id="chat-name" placeholder="Име" required style="flex:1">
-  <input id="chat-message" placeholder="Съобщение" required style="flex:3">
-  <button type="submit">Изпрати</button>
+  <input
+    id="chat-name"
+    placeholder="Име"
+    data-key-placeholder="chatNamePh"
+    required
+    style="flex:1"
+  >
+  <input
+    id="chat-message"
+    placeholder="Съобщение"
+    data-key-placeholder="chatMsgPh"
+    required
+    style="flex:3"
+  >
+  <button type="submit" data-key="chatSend">Изпрати</button>
 </form>
 
 <script src="main.js"></script>
