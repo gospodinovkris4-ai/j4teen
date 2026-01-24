@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* MENU */
+  /* ================= MENU ================= */
   var burger = document.querySelector(".burger");
   var menu = document.querySelector(".menu");
 
@@ -14,11 +14,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var translations = {
     bg: {
+      /* MENU */
       home: "Начало",
       jobs: "Обяви",
+      categories: "Категории",
+      newsMenu: "Новини",
+      plans: "Планове",
       post: "Публикувай",
       chat: "Чат",
 
+      /* HERO */
       heroTitle: "Намери почасова работа или помощ наблизо",
       heroSubtitle: "J4Teen – общност и обяви за младежи",
       heroWork: "Искам да работя",
@@ -60,20 +65,27 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     en: {
+      /* MENU */
       home: "Home",
       jobs: "Jobs",
+      categories: "Categories",
+      newsMenu: "News",
+      plans: "Plans",
       post: "Post",
       chat: "Chat",
 
+      /* HERO */
       heroTitle: "Find part-time work or help nearby",
       heroSubtitle: "J4Teen – jobs and community for youth",
       heroWork: "I want to work",
       heroHire: "I'm hiring",
 
+      /* TABS */
       tabWork: "Work",
       tabCompanies: "Companies",
       tabNews: "News",
 
+      /* CATEGORIES */
       popularCats: "Popular categories",
       allCategories: "View all categories",
 
@@ -84,6 +96,7 @@ document.addEventListener("DOMContentLoaded", function () {
       catDelivery: "Delivery",
       catDeliverySub: "Food, packages",
 
+      /* COMPANIES */
       companiesTitle: "For companies",
       companiesPost: "Post job ads",
       companiesPostSub: "Find young people fast.",
@@ -93,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
       companiesPlansSub: "Subscriptions that fit you.",
       seePlans: "See plans",
 
+      /* NEWS */
       newsTitle: "Updates 2026",
       news1: "How to find part-time work",
       news1Sub: "Practical tips",
@@ -106,13 +120,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function applyLang() {
     var t = translations[currentLang];
-    document.querySelectorAll("[data-key]").forEach(el => {
+
+    document.querySelectorAll("[data-key]").forEach(function (el) {
       var key = el.getAttribute("data-key");
-      if (t[key]) el.textContent = t[key];
+      if (t[key]) {
+        el.textContent = t[key];
+      }
     });
 
     var btn = document.getElementById("lang-toggle");
-    if (btn) btn.textContent = currentLang === "bg" ? "EN" : "BG";
+    if (btn) {
+      btn.textContent = currentLang === "bg" ? "EN" : "BG";
+    }
   }
 
   applyLang();
