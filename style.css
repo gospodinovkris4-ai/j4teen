@@ -280,3 +280,28 @@ main {
   }
 }
 
+/* =========================
+   GLOBAL CARD CENTERING
+   ========================= */
+
+/* Центрираме всички grid секции */
+.cards {
+  justify-items: center;
+}
+
+/* Ограничаваме ширината на картите */
+.card {
+  width: 100%;
+  max-width: 260px;
+}
+
+/* Job cards център */
+.job {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
