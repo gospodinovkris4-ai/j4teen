@@ -3,24 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Категория – J4Teen</title>
-  <link rel="stylesheet" href="style.css">
-
-
- 
+  <title data-key="categoryPageTitle">Категория – J4Teen</title>
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 
 <body>
+
 <nav class="topbar">
   <div class="logo">J4Teen</div>
 
-  <!-- LANGUAGE TOGGLE (FIXED) -->
-  <button
-    id="lang-toggle"
-    type="button"
-    aria-label="Change language"
-    style="margin-left:10px; cursor:pointer;"
-  >
+  <button id="lang-toggle" type="button" style="margin-left:10px; cursor:pointer;">
     EN
   </button>
 
@@ -34,17 +26,16 @@
   </div>
 </nav>
 
+<header class="hero small">
+  <div class="hero-content">
+    <h1 id="category-title">Категория</h1>
+    <p data-key="categorySubtitle">Налични обяви</p>
+  </div>
+</header>
 
-
-
-
-  <header>
-    <h1 id="title">Категория</h1>
-    <p>Налични обяви</p>
-  </header>
-
-  <main id="content"></main>
-
+<main class="container">
+  <div id="content"></div>
+</main>
 
 <script src="main.js"></script>
 
@@ -52,40 +43,57 @@
   const params = new URLSearchParams(window.location.search);
   const category = params.get("cat");
 
+  const titleEl = document.getElementById("category-title");
   const content = document.getElementById("content");
-  const title = document.getElementById("title");
 
   const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-  if (category) {
-    if (category === "dog") title.textContent = "Разходка на куче";
-    if (category === "home") title.textContent = "Помощ в дома";
-    if (category === "delivery") title.textContent = "Доставка";
+  // CATEGORY LABELS (BG / EN)
+  const categoryLabels = {
+    dog: { bg: "Разходка на куче", en: "Dog walking" },
+    home: { bg: "Помощ в дома", en: "Home help" },
+    delivery: { bg: "Доставки", en: "Delivery" },
+    kids: { bg: "Гледане на деца", en: "Child care" },
+    elderly: { bg: "Помощ за възрастни", en: "Elderly care" },
+    cleaning: { bg: "Почистване", en: "Cleaning" },
+    physical: { bg: "Физическа работа", en: "Physical work" },
+    waiter: { bg: "Сервитьор", en: "Waiter" },
+    cook: { bg: "Готвач", en: "Cook" },
+    barman: { bg: "Барман", en: "Bartender" },
+    hourly: { bg: "Почасова помощ", en: "Hourly help" }
+  };
+
+  const lang = localStorage.getItem("lang") || "bg";
+
+  if (category && categoryLabels[category]) {
+    titleEl.textContent = categoryLabels[category][lang];
   }
 
   const filtered = jobs.filter(job => job.category === category);
 
   if (filtered.length === 0) {
-    content.innerHTML = "<p>Няма обяви в тази категория.</p>";
-  }
-
-  filtered.forEach(job => {
-    const div = document.createElement("div");
-    div.className = "job";
-
-    div.innerHTML = `
-      <div class="title">${job.title}</div>
-      <div class="meta">${job.desc}</div>
-      <div class="price">${job.price}</div>
+    content.innerHTML = `
+      <p style="text-align:center; margin-top:40px;" data-key="noJobs">
+        Няма обяви в тази категория.
+      </p>
     `;
+  } else {
+    filtered.forEach(job => {
+      const div = document.createElement("div");
+      div.className = "job";
 
-    content.appendChild(div);
-  });
+      div.innerHTML = `
+        <div>
+          <div class="title">${job.title}</div>
+          <div class="meta">${job.desc}</div>
+        </div>
+        <div class="price">${job.price}</div>
+      `;
+
+      content.appendChild(div);
+    });
+  }
 </script>
-
-
-  
-
 
 </body>
 </html>
