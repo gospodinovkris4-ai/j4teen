@@ -234,3 +234,49 @@ main {
     z-index: 999;
   }
 }
+
+/* =========================
+   FIX: LANGUAGE BUTTON
+   ========================= */
+#lang-toggle {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================
+   FIX: TABS STYLE
+   ========================= */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px auto;
+}
+
+.tab {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 2px solid #2563eb;
+  background: #fff;
+  color: #2563eb;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Desktop – скриваме табовете */
+@media (min-width: 768px) {
+  .tabs {
+    display: none;
+  }
+}
+
