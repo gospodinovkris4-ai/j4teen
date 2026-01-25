@@ -34,87 +34,112 @@
 
 <main class="container">
 
-  <!-- POST CARD -->
-  <div style="
+  <!-- BLUE FORM -->
+  <form id="post-form" style="
     max-width:520px;
     margin:24px auto;
     background:#ffffff;
-    border-radius:20px;
-    padding:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    border-radius:24px;
+    padding:24px;
+    box-shadow:0 12px 32px rgba(37,99,235,0.15);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
   ">
 
-    <h2 style="font-size:18px; margin-bottom:16px;">
-      📝 Каква обява публикуваш?
-    </h2>
-
-    <form id="post-form" style="display:flex; flex-direction:column; gap:12px;">
-
-      <input
-        type="text"
-        id="job-title"
-        data-key-placeholder="jobTitlePh"
-        placeholder="Заглавие на обявата"
-        required
-      >
-
-      <select id="job-category" required>
-        <option value="" data-key="selectCategory">Избери категория</option>
-        <option value="dog" data-key="catDog">Разходка на куче</option>
-        <option value="home" data-key="catHome">Помощ в дома</option>
-        <option value="delivery" data-key="catDelivery">Доставка</option>
-      </select>
-
-      <textarea
-        id="job-desc"
-        rows="4"
-        data-key-placeholder="jobDescPh"
-        placeholder="Опиши каква помощ търсиш, кога и къде"
-        required
-      ></textarea>
-
-      <input
-        type="text"
-        id="job-price"
-        data-key-placeholder="jobPricePh"
-        placeholder="Цена (напр. 15 лв)"
-      >
-
-      <button type="submit" data-key="postBtn" style="
-        margin-top:6px;
-        padding:14px;
+    <input
+      type="text"
+      id="job-title"
+      data-key-placeholder="jobTitlePh"
+      placeholder="Заглавие на обявата"
+      required
+      style="
+        padding:14px 16px;
+        border-radius:14px;
+        border:2px solid #e5edff;
         font-size:15px;
-      ">
-        Публикувай обява
-      </button>
+        outline:none;
+      "
+      onfocus="this.style.borderColor='#2563eb'"
+      onblur="this.style.borderColor='#e5edff'"
+    >
 
-    </form>
-  </div>
+    <select
+      id="job-category"
+      required
+      style="
+        padding:14px 16px;
+        border-radius:14px;
+        border:2px solid #e5edff;
+        font-size:15px;
+        outline:none;
+        background:white;
+      "
+      onfocus="this.style.borderColor='#2563eb'"
+      onblur="this.style.borderColor='#e5edff'"
+    >
+      <option value="" data-key="selectCategory">Избери категория</option>
+      <option value="dog" data-key="catDog">Разходка на куче</option>
+      <option value="home" data-key="catHome">Помощ в дома</option>
+      <option value="delivery" data-key="catDelivery">Доставка</option>
+    </select>
 
-  <!-- SUCCESS -->
-  <div id="post-success-card" style="
-    display:none;
-    max-width:420px;
-    margin:40px auto;
-    text-align:center;
-  ">
-    <div class="card">
-      <div class="icon">🎉</div>
-      <h3 data-key="postSuccess">Обявата е публикувана!</h3>
-      <p data-key="postNext">
-        Хората вече могат да я виждат и да се свържат с теб.
-      </p>
+    <textarea
+      id="job-desc"
+      rows="4"
+      data-key-placeholder="jobDescPh"
+      placeholder="Опиши каква помощ търсиш, кога и къде"
+      required
+      style="
+        padding:14px 16px;
+        border-radius:14px;
+        border:2px solid #e5edff;
+        font-size:15px;
+        outline:none;
+        resize:none;
+      "
+      onfocus="this.style.borderColor='#2563eb'"
+      onblur="this.style.borderColor='#e5edff'"
+    ></textarea>
 
-      <div style="display:flex; gap:10px; justify-content:center; margin-top:16px;">
-        <a href="jobs.html" class="btn secondary">
-          Виж обявите
-        </a>
-        <button id="post-again" class="btn primary">
-          Публикувай още една
-        </button>
-      </div>
-    </div>
-  </div>
+    <input
+      type="text"
+      id="job-price"
+      data-key-placeholder="jobPricePh"
+      placeholder="Цена (напр. 15 лв)"
+      style="
+        padding:14px 16px;
+        border-radius:14px;
+        border:2px solid #e5edff;
+        font-size:15px;
+        outline:none;
+      "
+      onfocus="this.style.borderColor='#2563eb'"
+      onblur="this.style.borderColor='#e5edff'"
+    >
+
+    <button
+      type="submit"
+      data-key="postBtn"
+      style="
+        margin-top:6px;
+        padding:16px;
+        border-radius:999px;
+        background:#2563eb;
+        color:white;
+        font-weight:800;
+        font-size:15px;
+        border:none;
+        cursor:pointer;
+        box-shadow:0 8px 20px rgba(37,99,235,0.4);
+      "
+      onmouseover="this.style.background='#1e40af'"
+      onmouseout="this.style.background='#2563eb'"
+    >
+      Публикувай обява
+    </button>
+
+  </form>
 
 </main>
 
@@ -122,29 +147,20 @@
 
 <script>
   const form = document.getElementById("post-form");
-  const successCard = document.getElementById("post-success-card");
-  const postAgainBtn = document.getElementById("post-again");
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const title = document.getElementById("job-title").value;
-    const desc = document.getElementById("job-desc").value;
-    const price = document.getElementById("job-price").value;
-    const category = document.getElementById("job-category").value;
+    const title = job-title.value;
+    const desc = job-desc.value;
+    const price = job-price.value;
+    const category = job-category.value;
 
     const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
     jobs.push({ title, desc, price, category });
     localStorage.setItem("jobs", JSON.stringify(jobs));
 
-    form.reset();
-    form.parentElement.style.display = "none";
-    successCard.style.display = "block";
-  });
-
-  postAgainBtn.addEventListener("click", function() {
-    successCard.style.display = "none";
-    document.querySelector("form").parentElement.style.display = "block";
+    window.location.href = "jobs.html";
   });
 </script>
 
