@@ -25,40 +25,33 @@
   </div>
 </nav>
 
-<header class="hero small">
-  <div class="hero-content">
-    <h1 data-key="jobsTitle">Искам да работя</h1>
-    <p data-key="jobsSubtitle">Всички налични обяви на едно място</p>
-  </div>
+<!-- MINIMAL HEADER -->
+<header style="margin-top:64px; padding:20px 0; text-align:center;">
+  <h1 data-key="jobsTitle" style="font-size:22px; margin-bottom:4px;">
+    Искам да работя
+  </h1>
+  <p data-key="jobsSubtitle" style="font-size:14px; color:#666;">
+    Всички налични обяви
+  </p>
 </header>
 
-<main class="container">
-
-  <!-- STATS -->
-  <div class="cards" style="margin-bottom:32px;">
-    <div class="card">
-      <div class="icon">📍</div>
-      <h3 data-key="jobsStat1">Локални обяви</h3>
-      <p data-key="jobsStat1Sub">Близо до теб</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">⏱️</div>
-      <h3 data-key="jobsStat2">Почасова работа</h3>
-      <p data-key="jobsStat2Sub">Гъвкаво време</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">💰</div>
-      <h3 data-key="jobsStat3">Заплащане</h3>
-      <p data-key="jobsStat3Sub">Директно договаряне</p>
-    </div>
-  </div>
+<main class="container" style="padding-top:10px;">
 
   <!-- FILTER -->
-  <div style="display:flex; justify-content:center; margin:16px 0;">
+  <div style="
+    display:flex;
+    justify-content:center;
+    margin:12px 0 16px;
+  ">
     <select id="cityFilter"
-      style="padding:10px;border-radius:8px;border:1px solid #ccc;width:100%;max-width:280px;font-size:14px;">
+      style="
+        padding:8px 10px;
+        border-radius:8px;
+        border:1px solid #ccc;
+        width:100%;
+        max-width:260px;
+        font-size:13px;
+      ">
       <option value="" data-key="allCities">Всички градове</option>
     </select>
   </div>
@@ -69,16 +62,17 @@
     margin:0 auto;
     display:flex;
     flex-direction:column;
-    gap:8px;
+    gap:6px;
   "></div>
 
   <!-- EMPTY STATE -->
   <div id="jobs-empty" style="display:none;">
-    <div class="card" style="max-width:420px; margin:32px auto;">
+    <div class="card" style="max-width:420px; margin:24px auto;">
       <div class="icon">📭</div>
       <h3 data-key="jobsEmpty">Няма публикувани обяви в момента.</h3>
-      <p>Бъди първият, който ще публикува.</p>
-      <a href="post.html" class="btn primary" style="margin-top:12px;">Публикувай обява</a>
+      <a href="post.html" class="btn primary" style="margin-top:12px;">
+        Публикувай обява
+      </a>
     </div>
   </div>
 
@@ -97,7 +91,7 @@
     jobs.forEach(job => {
       const row = document.createElement("div");
       row.className = "job";
-      row.style.padding = "8px 12px";
+      row.style.padding = "6px 10px";
       row.style.display = "flex";
       row.style.alignItems = "center";
       row.style.justifyContent = "space-between";
@@ -105,7 +99,11 @@
 
       row.innerHTML = `
         <div style="flex:1; min-width:0;">
-          <div class="title" style="font-size:14px; font-weight:700; line-height:1.2;">
+          <div class="title" style="
+            font-size:14px;
+            font-weight:700;
+            line-height:1.2;
+          ">
             ${job.title}
           </div>
           <div class="meta" style="
