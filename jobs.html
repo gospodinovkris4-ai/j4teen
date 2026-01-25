@@ -27,7 +27,6 @@
   </div>
 </nav>
 
-
 <header class="hero small">
   <div class="hero-content">
     <h1 data-key="jobsTitle">Искам да работя</h1>
@@ -35,18 +34,30 @@
   </div>
 </header>
 
-<div style="max-width:900px;margin:20px auto;">
-  <select id="cityFilter" style="padding:10px;border-radius:10px;border:1px solid #ccc;width:100%;max-width:300px;">
-    <option value="" data-key="allCities">Всички градове</option>
-  </select>
+<main class="container">
 
-  <button onclick="clearJobs()" data-key="clearJobs"
-    style="margin:20px 0;padding:10px 16px;border:none;border-radius:8px;background:#ef4444;color:white;font-weight:600;cursor:pointer;">
-    Изчисти всички обяви
-  </button>
+  <!-- FILTER -->
+  <div style="
+    display:flex;
+    justify-content:center;
+    margin:30px 0;
+  ">
+    <select id="cityFilter"
+      style="
+        padding:12px;
+        border-radius:10px;
+        border:1px solid #ccc;
+        width:100%;
+        max-width:320px;
+      ">
+      <option value="" data-key="allCities">Всички градове</option>
+    </select>
+  </div>
 
+  <!-- JOBS LIST -->
   <div id="jobs-list"></div>
-</div>
+
+</main>
 
 <script src="main.js"></script>
 </body>
