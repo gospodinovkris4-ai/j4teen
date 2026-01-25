@@ -1,18 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ================= MENU ================= */
-  var burger = document.querySelector(".burger");
-  var menu = document.querySelector(".menu");
+  const burger = document.querySelector(".burger");
+  const menu = document.querySelector(".menu");
 
   if (burger && menu) {
-    burger.addEventListener("click", function () {
+    burger.addEventListener("click", () => {
       menu.classList.toggle("show");
     });
   }
 
-  /* ================= LANGUAGES ================= */
+  /* ================= TRANSLATIONS ================= */
 
-  var translations = {
+  const translations = {
     bg: {
       /* MENU */
       home: "Начало",
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tabCompanies: "Компании",
       tabNews: "Новини",
 
-      /* CATEGORIES */
+      /* HOME – CATEGORIES */
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
 
@@ -44,6 +44,22 @@ document.addEventListener("DOMContentLoaded", function () {
       catHomeSub: "Почистване, грижа",
       catDelivery: "Доставки",
       catDeliverySub: "Храна, пратки",
+      catKids: "Гледане на деца",
+      catKidsSub: "Почасово",
+      catElderly: "Помощ за възрастни",
+      catElderlySub: "Грижа, придружаване",
+      catCleaning: "Почистване",
+      catCleaningSub: "Домове, офиси",
+      catPhysical: "Физическа работа",
+      catPhysicalSub: "Преместване, носене",
+      catWaiter: "Сервитьор",
+      catWaiterSub: "Заведения, събития",
+      catCook: "Готвач",
+      catCookSub: "Кухня, подготовка",
+      catBarman: "Барман",
+      catBarmanSub: "Бар, напитки",
+      catHourly: "Почасова помощ",
+      catHourlySub: "Кратки задачи",
 
       /* COMPANIES */
       companiesTitle: "За компании",
@@ -57,11 +73,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
       /* NEWS */
       newsTitle: "Актуално 2026",
+      newsSubtitle: "Новини и съвети за младежи",
       news1: "Как да си намериш почасова работа",
       news1Sub: "Практични съвети",
       news2: "Търсени умения при младежи",
       news2Sub: "Какво търсят компаниите",
-      allNews: "Всички новини"
+      news3: "Как да комбинираш училище и работа",
+      news3Sub: "Баланс без прегаряне",
+      news4: "Подходящи първи работи",
+      news4Sub: "Идеи за ученици",
+      allNews: "Всички новини",
+
+      /* CATEGORY PAGE */
+      categorySubtitle: "Налични обяви",
+      noJobs: "Няма обяви в тази категория.",
+
+      /* PRICING */
+      pricingTitle: "Абонаментни планове",
+      pricingHero: "Планове за компании",
+      pricingHeroSub: "Избери план, който ти пасва",
+      pricingBasic: "Basic",
+      pricingBasicSub: "За малки нужди",
+      pricingPro: "Pro",
+      pricingProSub: "По-добра видимост",
+      pricingPremium: "Premium",
+      pricingPremiumSub: "Най-добрият избор",
+      pricingPopular: "Най-купуван",
+      pricingChoose: "Избери"
     },
 
     en: {
@@ -85,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
       tabCompanies: "Companies",
       tabNews: "News",
 
-      /* CATEGORIES */
+      /* HOME – CATEGORIES */
       popularCats: "Popular categories",
       allCategories: "View all categories",
 
@@ -95,6 +133,22 @@ document.addEventListener("DOMContentLoaded", function () {
       catHomeSub: "Cleaning, care",
       catDelivery: "Delivery",
       catDeliverySub: "Food, packages",
+      catKids: "Child care",
+      catKidsSub: "Hourly",
+      catElderly: "Elderly care",
+      catElderlySub: "Care, assistance",
+      catCleaning: "Cleaning",
+      catCleaningSub: "Homes, offices",
+      catPhysical: "Physical work",
+      catPhysicalSub: "Moving, carrying",
+      catWaiter: "Waiter",
+      catWaiterSub: "Restaurants, events",
+      catCook: "Cook",
+      catCookSub: "Kitchen, preparation",
+      catBarman: "Bartender",
+      catBarmanSub: "Bar, drinks",
+      catHourly: "Hourly help",
+      catHourlySub: "Short tasks",
 
       /* COMPANIES */
       companiesTitle: "For companies",
@@ -108,41 +162,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
       /* NEWS */
       newsTitle: "Updates 2026",
+      newsSubtitle: "News and tips for youth",
       news1: "How to find part-time work",
       news1Sub: "Practical tips",
       news2: "In-demand youth skills",
       news2Sub: "What companies look for",
-      allNews: "All news"
+      news3: "Balancing school and work",
+      news3Sub: "No burnout",
+      news4: "Best first jobs",
+      news4Sub: "Ideas for students",
+      allNews: "All news",
+
+      /* CATEGORY PAGE */
+      categorySubtitle: "Available jobs",
+      noJobs: "No jobs in this category.",
+
+      /* PRICING */
+      pricingTitle: "Pricing plans",
+      pricingHero: "Plans for companies",
+      pricingHeroSub: "Choose what fits you",
+      pricingBasic: "Basic",
+      pricingBasicSub: "For small needs",
+      pricingPro: "Pro",
+      pricingProSub: "Better visibility",
+      pricingPremium: "Premium",
+      pricingPremiumSub: "Best choice",
+      pricingPopular: "Most popular",
+      pricingChoose: "Choose"
     }
   };
 
-  var currentLang = localStorage.getItem("lang") || "bg";
+  let currentLang = localStorage.getItem("lang") || "bg";
 
   function applyLang() {
-    var t = translations[currentLang];
-
-    document.querySelectorAll("[data-key]").forEach(function (el) {
-      var key = el.getAttribute("data-key");
-      if (t[key]) {
-        el.textContent = t[key];
-      }
+    const t = translations[currentLang];
+    document.querySelectorAll("[data-key]").forEach(el => {
+      const key = el.getAttribute("data-key");
+      if (t[key]) el.textContent = t[key];
     });
 
-    var btn = document.getElementById("lang-toggle");
-    if (btn) {
-      btn.textContent = currentLang === "bg" ? "EN" : "BG";
-    }
+    const btn = document.getElementById("lang-toggle");
+    if (btn) btn.textContent = currentLang === "bg" ? "EN" : "BG";
   }
 
   applyLang();
 
-  var langBtn = document.getElementById("lang-toggle");
+  const langBtn = document.getElementById("lang-toggle");
   if (langBtn) {
-    langBtn.addEventListener("click", function () {
+    langBtn.addEventListener("click", () => {
       currentLang = currentLang === "bg" ? "en" : "bg";
       localStorage.setItem("lang", currentLang);
       applyLang();
     });
   }
-
 });
