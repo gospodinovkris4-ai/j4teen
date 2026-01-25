@@ -34,7 +34,7 @@
 
 <main class="container">
 
-  <!-- STATS / INFO -->
+  <!-- STATS -->
   <div class="cards" style="margin-bottom:40px;">
     <div class="card">
       <div class="icon">📍</div>
@@ -63,25 +63,45 @@
     </select>
   </div>
 
-  <!-- JOBS -->
-  <div id="jobs-list"></div>
+  <!-- JOBS LIST -->
+  <div id="jobs-list" style="display:flex; flex-direction:column; gap:16px;"></div>
 
   <!-- EMPTY STATE -->
-  <p id="jobs-empty"
-     data-key="jobsEmpty"
-     style="text-align:center; margin-top:40px; display:none;">
-     Няма публикувани обяви в момента.
-  </p>
+  <div id="jobs-empty" style="display:none;">
+    <div class="card" style="max-width:420px; margin:40px auto;">
+      <div class="icon">📭</div>
+      <h3 data-key="jobsEmpty">Няма публикувани обяви в момента.</h3>
+      <p>Бъди първият, който ще публикува.</p>
+      <a href="post.html" class="btn primary" style="margin-top:12px;">Публикувай обява</a>
+    </div>
+  </div>
 
 </main>
 
 <script src="main.js"></script>
 
 <script>
-  // simple empty state check
   const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+  const list = document.getElementById("jobs-list");
+  const empty = document.getElementById("jobs-empty");
+
   if (jobs.length === 0) {
-    document.getElementById("jobs-empty").style.display = "block";
+    empty.style.display = "block";
+  } else {
+    jobs.forEach(job => {
+      const div = document.createElement("div");
+      div.className = "job";
+
+      div.innerHTML = `
+        <div>
+          <div class="title">${job.title}</div>
+          <div class="meta">${job.desc}</div>
+        </div>
+        <div class="price">${job.price || ""}</div>
+      `;
+
+      list.appendChild(div);
+    });
   }
 </script>
 
