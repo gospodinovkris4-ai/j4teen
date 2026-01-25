@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-key="postPageTitle">Търся човек за работа – J4Teen</title>
+  <title data-key="postPageTitle">Публикувай обява – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,9 +11,7 @@
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
-
   <button id="lang-toggle" type="button">EN</button>
-
   <div class="burger">☰</div>
 
   <div class="menu">
@@ -27,49 +25,99 @@
   </div>
 </nav>
 
-
-
 <header class="hero small">
   <div class="hero-content">
     <h1 data-key="postTitle">Търся човек за работа</h1>
-    <p data-key="postSubtitle">Публикувай обява</p>
+    <p data-key="postSubtitle">Публикувай обява за минута</p>
   </div>
 </header>
 
-<form id="post-form" style="max-width:600px; margin:40px auto;">
+<main class="container">
 
-  <input
-    type="text"
-    id="job-title"
-    placeholder="Заглавие на обявата"
-    data-key-placeholder="jobTitlePh"
-    required
-  >
+  <form id="post-form" style="
+    max-width:520px;
+    margin:20px auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  ">
 
-  <select id="job-category" required>
-    <option value="" data-key="selectCategory">Избери категория</option>
-    <option value="dog" data-key="catDog">Разходка на куче</option>
-    <option value="home" data-key="catHome">Помощ в дома</option>
-    <option value="delivery" data-key="catDelivery">Доставка</option>
-  </select>
+    <!-- TITLE -->
+    <input
+      type="text"
+      id="job-title"
+      data-key-placeholder="jobTitlePh"
+      placeholder="Заглавие на обявата"
+      required
+    >
 
-  <textarea
-    id="job-desc"
-    placeholder="Описание"
-    data-key-placeholder="jobDescPh"
-    required
-  ></textarea>
+    <!-- CATEGORY -->
+    <select id="job-category" required>
+      <option value="" data-key="selectCategory">Избери категория</option>
+      <option value="dog" data-key="catDog">Разходка на куче</option>
+      <option value="home" data-key="catHome">Помощ в дома</option>
+      <option value="delivery" data-key="catDelivery">Доставка</option>
+    </select>
 
-  <input
-    type="text"
-    id="job-price"
-    placeholder="Цена (напр. 15 лв)"
-    data-key-placeholder="jobPricePh"
-  >
+    <!-- DESCRIPTION -->
+    <textarea
+      id="job-desc"
+      rows="3"
+      data-key-placeholder="jobDescPh"
+      placeholder="Описание"
+      required
+    ></textarea>
 
-  <button type="submit" data-key="postBtn">Публикувай</button>
-</form>
+    <!-- PRICE -->
+    <input
+      type="text"
+      id="job-price"
+      data-key-placeholder="jobPricePh"
+      placeholder="Цена (напр. 15 лв)"
+    >
+
+    <!-- SUBMIT -->
+    <button type="submit" data-key="postBtn">
+      Публикувай обява
+    </button>
+
+    <!-- SUCCESS MESSAGE -->
+    <p id="post-success"
+       data-key="postSuccess"
+       style="display:none; text-align:center; color:#16a34a; font-weight:700;">
+       Обявата е публикувана успешно!
+    </p>
+
+  </form>
+
+</main>
 
 <script src="main.js"></script>
+
+<script>
+  const form = document.getElementById("post-form");
+  const success = document.getElementById("post-success");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const title = document.getElementById("job-title").value;
+    const desc = document.getElementById("job-desc").value;
+    const price = document.getElementById("job-price").value;
+    const category = document.getElementById("job-category").value;
+
+    const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+    jobs.push({ title, desc, price, category });
+    localStorage.setItem("jobs", JSON.stringify(jobs));
+
+    form.reset();
+    success.style.display = "block";
+
+    setTimeout(() => {
+      success.style.display = "none";
+    }, 3000);
+  });
+</script>
+
 </body>
 </html>
