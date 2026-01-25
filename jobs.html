@@ -35,7 +35,7 @@
 <main class="container">
 
   <!-- STATS -->
-  <div class="cards" style="margin-bottom:40px;">
+  <div class="cards" style="margin-bottom:32px;">
     <div class="card">
       <div class="icon">📍</div>
       <h3 data-key="jobsStat1">Локални обяви</h3>
@@ -56,19 +56,25 @@
   </div>
 
   <!-- FILTER -->
-  <div style="display:flex; justify-content:center; margin:20px 0;">
+  <div style="display:flex; justify-content:center; margin:16px 0;">
     <select id="cityFilter"
-      style="padding:12px;border-radius:10px;border:1px solid #ccc;width:100%;max-width:320px;">
+      style="padding:10px;border-radius:8px;border:1px solid #ccc;width:100%;max-width:280px;font-size:14px;">
       <option value="" data-key="allCities">Всички градове</option>
     </select>
   </div>
 
   <!-- JOBS LIST -->
-  <div id="jobs-list" style="display:flex; flex-direction:column; gap:16px;"></div>
+  <div id="jobs-list" style="
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  "></div>
 
   <!-- EMPTY STATE -->
   <div id="jobs-empty" style="display:none;">
-    <div class="card" style="max-width:420px; margin:40px auto;">
+    <div class="card" style="max-width:420px; margin:32px auto;">
       <div class="icon">📭</div>
       <h3 data-key="jobsEmpty">Няма публикувани обяви в момента.</h3>
       <p>Бъди първият, който ще публикува.</p>
@@ -89,18 +95,40 @@
     empty.style.display = "block";
   } else {
     jobs.forEach(job => {
-      const div = document.createElement("div");
-      div.className = "job";
+      const row = document.createElement("div");
+      row.className = "job";
+      row.style.padding = "8px 12px";
+      row.style.display = "flex";
+      row.style.alignItems = "center";
+      row.style.justifyContent = "space-between";
+      row.style.gap = "10px";
 
-      div.innerHTML = `
-        <div>
-          <div class="title">${job.title}</div>
-          <div class="meta">${job.desc}</div>
+      row.innerHTML = `
+        <div style="flex:1; min-width:0;">
+          <div class="title" style="font-size:14px; font-weight:700; line-height:1.2;">
+            ${job.title}
+          </div>
+          <div class="meta" style="
+            font-size:12px;
+            color:#666;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+          ">
+            ${job.desc}
+          </div>
         </div>
-        <div class="price">${job.price || ""}</div>
+        <div class="price" style="
+          font-size:13px;
+          font-weight:700;
+          color:#2563eb;
+          white-space:nowrap;
+        ">
+          ${job.price || ""}
+        </div>
       `;
 
-      list.appendChild(div);
+      list.appendChild(row);
     });
   }
 </script>
