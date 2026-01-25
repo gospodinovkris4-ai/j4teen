@@ -34,52 +34,64 @@
 
 <main class="container">
 
-  <!-- FORM -->
-  <form id="post-form" style="
+  <!-- POST CARD -->
+  <div style="
     max-width:520px;
-    margin:20px auto;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
+    margin:24px auto;
+    background:#ffffff;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
   ">
 
-    <input
-      type="text"
-      id="job-title"
-      data-key-placeholder="jobTitlePh"
-      placeholder="Заглавие на обявата"
-      required
-    >
+    <h2 style="font-size:18px; margin-bottom:16px;">
+      📝 Каква обява публикуваш?
+    </h2>
 
-    <select id="job-category" required>
-      <option value="" data-key="selectCategory">Избери категория</option>
-      <option value="dog" data-key="catDog">Разходка на куче</option>
-      <option value="home" data-key="catHome">Помощ в дома</option>
-      <option value="delivery" data-key="catDelivery">Доставка</option>
-    </select>
+    <form id="post-form" style="display:flex; flex-direction:column; gap:12px;">
 
-    <textarea
-      id="job-desc"
-      rows="3"
-      data-key-placeholder="jobDescPh"
-      placeholder="Описание"
-      required
-    ></textarea>
+      <input
+        type="text"
+        id="job-title"
+        data-key-placeholder="jobTitlePh"
+        placeholder="Заглавие на обявата"
+        required
+      >
 
-    <input
-      type="text"
-      id="job-price"
-      data-key-placeholder="jobPricePh"
-      placeholder="Цена (напр. 15 лв)"
-    >
+      <select id="job-category" required>
+        <option value="" data-key="selectCategory">Избери категория</option>
+        <option value="dog" data-key="catDog">Разходка на куче</option>
+        <option value="home" data-key="catHome">Помощ в дома</option>
+        <option value="delivery" data-key="catDelivery">Доставка</option>
+      </select>
 
-    <button type="submit" data-key="postBtn">
-      Публикувай обява
-    </button>
+      <textarea
+        id="job-desc"
+        rows="4"
+        data-key-placeholder="jobDescPh"
+        placeholder="Опиши каква помощ търсиш, кога и къде"
+        required
+      ></textarea>
 
-  </form>
+      <input
+        type="text"
+        id="job-price"
+        data-key-placeholder="jobPricePh"
+        placeholder="Цена (напр. 15 лв)"
+      >
 
-  <!-- SUCCESS CARD -->
+      <button type="submit" data-key="postBtn" style="
+        margin-top:6px;
+        padding:14px;
+        font-size:15px;
+      ">
+        Публикувай обява
+      </button>
+
+    </form>
+  </div>
+
+  <!-- SUCCESS -->
   <div id="post-success-card" style="
     display:none;
     max-width:420px;
@@ -87,15 +99,17 @@
     text-align:center;
   ">
     <div class="card">
-      <div class="icon">✅</div>
+      <div class="icon">🎉</div>
       <h3 data-key="postSuccess">Обявата е публикувана!</h3>
-      <p data-key="postNext">Хората вече могат да я виждат и да се свържат с теб.</p>
+      <p data-key="postNext">
+        Хората вече могат да я виждат и да се свържат с теб.
+      </p>
 
       <div style="display:flex; gap:10px; justify-content:center; margin-top:16px;">
-        <a href="jobs.html" class="btn secondary" data-key="postViewJobs">
+        <a href="jobs.html" class="btn secondary">
           Виж обявите
         </a>
-        <button id="post-again" class="btn primary" data-key="postAgain">
+        <button id="post-again" class="btn primary">
           Публикувай още една
         </button>
       </div>
@@ -124,13 +138,13 @@
     localStorage.setItem("jobs", JSON.stringify(jobs));
 
     form.reset();
-    form.style.display = "none";
+    form.parentElement.style.display = "none";
     successCard.style.display = "block";
   });
 
   postAgainBtn.addEventListener("click", function() {
     successCard.style.display = "none";
-    form.style.display = "flex";
+    document.querySelector("form").parentElement.style.display = "block";
   });
 </script>
 
