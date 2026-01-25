@@ -2,6 +2,7 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-key="chatPageTitle">Чат – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -25,8 +26,6 @@
   </div>
 </nav>
 
-
-
 <header class="hero small">
   <div class="hero-content">
     <h1 data-key="chatTitle">Чат</h1>
@@ -34,25 +33,48 @@
   </div>
 </header>
 
-<div id="chat-box" style="max-width:700px;margin:30px auto;"></div>
+<main class="container">
 
-<form id="chat-form" style="max-width:700px;margin:10px auto;display:flex;gap:10px;">
-  <input
-    id="chat-name"
-    placeholder="Име"
-    data-key-placeholder="chatNamePh"
-    required
-    style="flex:1"
-  >
-  <input
-    id="chat-message"
-    placeholder="Съобщение"
-    data-key-placeholder="chatMsgPh"
-    required
-    style="flex:3"
-  >
-  <button type="submit" data-key="chatSend">Изпрати</button>
-</form>
+  <!-- CHAT BOX -->
+  <div id="chat-box" style="
+    max-width:700px;
+    margin:20px auto;
+    padding:16px;
+    background:#ffffff;
+    border-radius:16px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+  "></div>
+
+  <!-- CHAT FORM -->
+  <form id="chat-form" style="
+    max-width:700px;
+    margin:16px auto;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  ">
+    <input
+      id="chat-name"
+      data-key-placeholder="chatNamePh"
+      placeholder="Име"
+      required
+      style="flex:1; min-width:140px;"
+    >
+
+    <input
+      id="chat-message"
+      data-key-placeholder="chatMsgPh"
+      placeholder="Съобщение"
+      required
+      style="flex:3; min-width:200px;"
+    >
+
+    <button type="submit" data-key="chatSend" style="min-width:120px;">
+      Изпрати
+    </button>
+  </form>
+
+</main>
 
 <script src="main.js"></script>
 
@@ -66,12 +88,12 @@
 
     messages.forEach(msg => {
       const div = document.createElement("div");
-      div.style.padding = "10px";
+      div.style.padding = "10px 14px";
       div.style.marginBottom = "8px";
-      div.style.borderRadius = "10px";
+      div.style.borderRadius = "12px";
       div.style.background = "#f1f5f9";
 
-      div.innerHTML = `<strong>${msg.name}</strong>: ${msg.text}`;
+      div.innerHTML = `<strong>${msg.name}</strong><br>${msg.text}`;
       chatBox.appendChild(div);
     });
 
