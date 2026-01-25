@@ -34,6 +34,7 @@
 
 <main class="container">
 
+  <!-- FORM -->
   <form id="post-form" style="
     max-width:520px;
     margin:20px auto;
@@ -42,7 +43,6 @@
     gap:12px;
   ">
 
-    <!-- TITLE -->
     <input
       type="text"
       id="job-title"
@@ -51,7 +51,6 @@
       required
     >
 
-    <!-- CATEGORY -->
     <select id="job-category" required>
       <option value="" data-key="selectCategory">Избери категория</option>
       <option value="dog" data-key="catDog">Разходка на куче</option>
@@ -59,7 +58,6 @@
       <option value="delivery" data-key="catDelivery">Доставка</option>
     </select>
 
-    <!-- DESCRIPTION -->
     <textarea
       id="job-desc"
       rows="3"
@@ -68,7 +66,6 @@
       required
     ></textarea>
 
-    <!-- PRICE -->
     <input
       type="text"
       id="job-price"
@@ -76,19 +73,34 @@
       placeholder="Цена (напр. 15 лв)"
     >
 
-    <!-- SUBMIT -->
     <button type="submit" data-key="postBtn">
       Публикувай обява
     </button>
 
-    <!-- SUCCESS MESSAGE -->
-    <p id="post-success"
-       data-key="postSuccess"
-       style="display:none; text-align:center; color:#16a34a; font-weight:700;">
-       Обявата е публикувана успешно!
-    </p>
-
   </form>
+
+  <!-- SUCCESS CARD -->
+  <div id="post-success-card" style="
+    display:none;
+    max-width:420px;
+    margin:40px auto;
+    text-align:center;
+  ">
+    <div class="card">
+      <div class="icon">✅</div>
+      <h3 data-key="postSuccess">Обявата е публикувана!</h3>
+      <p data-key="postNext">Хората вече могат да я виждат и да се свържат с теб.</p>
+
+      <div style="display:flex; gap:10px; justify-content:center; margin-top:16px;">
+        <a href="jobs.html" class="btn secondary" data-key="postViewJobs">
+          Виж обявите
+        </a>
+        <button id="post-again" class="btn primary" data-key="postAgain">
+          Публикувай още една
+        </button>
+      </div>
+    </div>
+  </div>
 
 </main>
 
@@ -96,7 +108,8 @@
 
 <script>
   const form = document.getElementById("post-form");
-  const success = document.getElementById("post-success");
+  const successCard = document.getElementById("post-success-card");
+  const postAgainBtn = document.getElementById("post-again");
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -111,11 +124,13 @@
     localStorage.setItem("jobs", JSON.stringify(jobs));
 
     form.reset();
-    success.style.display = "block";
+    form.style.display = "none";
+    successCard.style.display = "block";
+  });
 
-    setTimeout(() => {
-      success.style.display = "none";
-    }, 3000);
+  postAgainBtn.addEventListener("click", function() {
+    successCard.style.display = "none";
+    form.style.display = "flex";
   });
 </script>
 
