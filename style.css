@@ -128,7 +128,7 @@ a {
 }
 
 /* =========================
-   BUTTONS (FIXED)
+   BUTTONS
    ========================= */
 .hero-buttons {
   display: flex;
@@ -150,9 +150,8 @@ a {
 }
 
 .btn.secondary {
-  background: #2563eb;        /* FIX: вече не е бял */
-  color: #fff;                /* FIX: четим текст */
-  border: none;
+  background: #2563eb;
+  color: #fff;
 }
 
 .btn.secondary:hover {
@@ -160,7 +159,7 @@ a {
 }
 
 /* =========================
-   CARDS
+   MAIN LAYOUT
    ========================= */
 main {
   max-width: 1100px;
@@ -168,10 +167,15 @@ main {
   padding: 0 20px;
 }
 
+/* =========================
+   CARDS – FINAL CENTERED GRID
+   ========================= */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .card {
@@ -200,56 +204,24 @@ main {
   color: #fff;
 }
 
-/* =========================
-   MOBILE FIXES
-   ========================= */
-@media (max-width: 768px) {
-  .hero {
-    padding: 40px 20px;
-  }
-
-  .hero h1 {
-    font-size: 26px;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .mobile-cta {
-    position: fixed;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    background: #2563eb;
-    color: #fff;
-    padding: 16px;
-    border-radius: 16px;
-    text-align: center;
-    font-weight: 700;
-    z-index: 999;
-  }
-}
-
-/* =========================
-   FIX: LANGUAGE BUTTON
-   ========================= */
-#lang-toggle {
-  background: #2563eb;
+.card.highlight .icon {
   color: #fff;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-weight: 700;
-  cursor: pointer;
 }
 
 /* =========================
-   FIX: TABS STYLE
+   JOB CARDS
+   ========================= */
+.job {
+  max-width: 900px;
+  margin: 16px auto;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   TABS
    ========================= */
 .tabs {
   display: flex;
@@ -273,7 +245,6 @@ main {
   color: #fff;
 }
 
-/* Desktop – скриваме табовете */
 @media (min-width: 768px) {
   .tabs {
     display: none;
@@ -281,27 +252,45 @@ main {
 }
 
 /* =========================
-   GLOBAL CARD CENTERING
+   MOBILE
    ========================= */
+@media (max-width: 768px) {
+  .hero {
+    padding: 40px 20px;
+  }
 
-/* Центрираме всички grid секции */
-.cards {
-  justify-items: center;
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .mobile-cta {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: #2563eb;
+    color: #fff;
+    padding: 16px;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: 700;
+    z-index: 999;
+  }
 }
 
-/* Ограничаваме ширината на картите */
-.card {
-  width: 100%;
-  max-width: 260px;
+/* =========================
+   LANGUAGE BUTTON
+   ========================= */
+#lang-toggle {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
 }
-
-/* Job cards център */
-.job {
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-
-
