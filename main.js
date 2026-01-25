@@ -33,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
 
-      /* JOBS PAGE */
       jobsPageTitle: "Обяви – J4Teen",
       jobsTitle: "Искам да работя",
       jobsSubtitle: "Всички налични обяви на едно място",
@@ -46,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
       jobsEmpty: "Няма публикувани обяви в момента.",
       allCities: "Всички градове",
 
-      /* CATEGORIES */
       catDog: "Разходка на куче",
       catDogSub: "Почасова помощ",
       catHome: "Помощ в дома",
@@ -104,7 +102,14 @@ document.addEventListener("DOMContentLoaded", function () {
       pricingPremium: "Premium",
       pricingPremiumSub: "Най-добрият избор",
       pricingPopular: "Най-купуван",
-      pricingChoose: "Избери"
+      pricingChoose: "Избери",
+
+      chatPageTitle: "Чат – J4Teen",
+      chatTitle: "Чат",
+      chatSubtitle: "Свържи се директно",
+      chatNamePh: "Име",
+      chatMsgPh: "Съобщение",
+      chatSend: "Изпрати"
     },
 
     en: {
@@ -197,7 +202,14 @@ document.addEventListener("DOMContentLoaded", function () {
       pricingPremium: "Premium",
       pricingPremiumSub: "Best choice",
       pricingPopular: "Most popular",
-      pricingChoose: "Choose"
+      pricingChoose: "Choose",
+
+      chatPageTitle: "Chat – J4Teen",
+      chatTitle: "Chat",
+      chatSubtitle: "Connect directly",
+      chatNamePh: "Name",
+      chatMsgPh: "Message",
+      chatSend: "Send"
     }
   };
 
@@ -205,9 +217,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function applyLang() {
     const t = translations[currentLang];
+
     document.querySelectorAll("[data-key]").forEach(el => {
       const key = el.getAttribute("data-key");
       if (t[key]) el.textContent = t[key];
+    });
+
+    document.querySelectorAll("[data-key-placeholder]").forEach(el => {
+      const key = el.getAttribute("data-key-placeholder");
+      if (t[key]) el.placeholder = t[key];
     });
 
     const btn = document.getElementById("lang-toggle");
