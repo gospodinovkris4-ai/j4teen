@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ================= MENU ================= */
+  /* MENU */
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".menu");
 
@@ -10,11 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* ================= TRANSLATIONS ================= */
-
+  /* TRANSLATIONS */
   const translations = {
     bg: {
-      /* MENU */
       home: "Начало",
       jobs: "Обяви",
       categories: "Категории",
@@ -23,21 +21,32 @@ document.addEventListener("DOMContentLoaded", function () {
       post: "Публикувай",
       chat: "Чат",
 
-      /* HERO */
       heroTitle: "Намери почасова работа или помощ наблизо",
       heroSubtitle: "J4Teen – общност и обяви за младежи",
       heroWork: "Искам да работя",
       heroHire: "Търся човек за работа",
 
-      /* TABS */
       tabWork: "Работа",
       tabCompanies: "Компании",
       tabNews: "Новини",
 
-      /* HOME – CATEGORIES */
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
 
+      /* JOBS PAGE */
+      jobsPageTitle: "Обяви – J4Teen",
+      jobsTitle: "Искам да работя",
+      jobsSubtitle: "Всички налични обяви на едно място",
+      jobsStat1: "Локални обяви",
+      jobsStat1Sub: "Близо до теб",
+      jobsStat2: "Почасова работа",
+      jobsStat2Sub: "Гъвкаво време",
+      jobsStat3: "Заплащане",
+      jobsStat3Sub: "Директно договаряне",
+      jobsEmpty: "Няма публикувани обяви в момента.",
+      allCities: "Всички градове",
+
+      /* CATEGORIES */
       catDog: "Разходка на куче",
       catDogSub: "Почасова помощ",
       catHome: "Помощ в дома",
@@ -61,7 +70,6 @@ document.addEventListener("DOMContentLoaded", function () {
       catHourly: "Почасова помощ",
       catHourlySub: "Кратки задачи",
 
-      /* COMPANIES */
       companiesTitle: "За компании",
       companiesPost: "Публикувай обяви",
       companiesPostSub: "Намери млади хора бързо.",
@@ -71,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
       companiesPlansSub: "Абонаменти според нуждите.",
       seePlans: "Виж планове",
 
-      /* NEWS */
       newsTitle: "Актуално 2026",
       newsSubtitle: "Новини и съвети за младежи",
       news1: "Как да си намериш почасова работа",
@@ -84,11 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
       news4Sub: "Идеи за ученици",
       allNews: "Всички новини",
 
-      /* CATEGORY PAGE */
       categorySubtitle: "Налични обяви",
       noJobs: "Няма обяви в тази категория.",
 
-      /* PRICING */
       pricingTitle: "Абонаментни планове",
       pricingHero: "Планове за компании",
       pricingHeroSub: "Избери план, който ти пасва",
@@ -103,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     en: {
-      /* MENU */
       home: "Home",
       jobs: "Jobs",
       categories: "Categories",
@@ -112,20 +116,29 @@ document.addEventListener("DOMContentLoaded", function () {
       post: "Post",
       chat: "Chat",
 
-      /* HERO */
       heroTitle: "Find part-time work or help nearby",
       heroSubtitle: "J4Teen – jobs and community for youth",
       heroWork: "I want to work",
       heroHire: "I'm hiring",
 
-      /* TABS */
       tabWork: "Work",
       tabCompanies: "Companies",
       tabNews: "News",
 
-      /* HOME – CATEGORIES */
       popularCats: "Popular categories",
       allCategories: "View all categories",
+
+      jobsPageTitle: "Jobs – J4Teen",
+      jobsTitle: "I want to work",
+      jobsSubtitle: "All available jobs in one place",
+      jobsStat1: "Local jobs",
+      jobsStat1Sub: "Near you",
+      jobsStat2: "Hourly work",
+      jobsStat2Sub: "Flexible time",
+      jobsStat3: "Payment",
+      jobsStat3Sub: "Direct agreement",
+      jobsEmpty: "No jobs have been posted yet.",
+      allCities: "All cities",
 
       catDog: "Dog walking",
       catDogSub: "Hourly help",
@@ -150,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
       catHourly: "Hourly help",
       catHourlySub: "Short tasks",
 
-      /* COMPANIES */
       companiesTitle: "For companies",
       companiesPost: "Post job ads",
       companiesPostSub: "Find young people fast.",
@@ -160,7 +172,6 @@ document.addEventListener("DOMContentLoaded", function () {
       companiesPlansSub: "Subscriptions that fit you.",
       seePlans: "See plans",
 
-      /* NEWS */
       newsTitle: "Updates 2026",
       newsSubtitle: "News and tips for youth",
       news1: "How to find part-time work",
@@ -173,11 +184,9 @@ document.addEventListener("DOMContentLoaded", function () {
       news4Sub: "Ideas for students",
       allNews: "All news",
 
-      /* CATEGORY PAGE */
       categorySubtitle: "Available jobs",
       noJobs: "No jobs in this category.",
 
-      /* PRICING */
       pricingTitle: "Pricing plans",
       pricingHero: "Plans for companies",
       pricingHeroSub: "Choose what fits you",
