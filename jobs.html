@@ -25,14 +25,12 @@
   </div>
 </nav>
 
-<!-- MINIMAL HEADER -->
-<header style="margin-top:64px; padding:20px 0; text-align:center;">
-  <h1 data-key="jobsTitle" style="font-size:22px; margin-bottom:4px;">
-    Искам да работя
-  </h1>
-  <p data-key="jobsSubtitle" style="font-size:14px; color:#666;">
-    Всички налични обяви
-  </p>
+<!-- SLIM BLUE HERO (ОСТАВА!) -->
+<header class="hero small">
+  <div class="hero-content">
+    <h1 data-key="jobsTitle">Искам да работя</h1>
+    <p data-key="jobsSubtitle">Всички налични обяви</p>
+  </div>
 </header>
 
 <main class="container" style="padding-top:10px;">
@@ -41,7 +39,7 @@
   <div style="
     display:flex;
     justify-content:center;
-    margin:12px 0 16px;
+    margin:8px 0 12px;
   ">
     <select id="cityFilter"
       style="
@@ -99,11 +97,7 @@
 
       row.innerHTML = `
         <div style="flex:1; min-width:0;">
-          <div class="title" style="
-            font-size:14px;
-            font-weight:700;
-            line-height:1.2;
-          ">
+          <div class="title" style="font-size:14px; font-weight:700;">
             ${job.title}
           </div>
           <div class="meta" style="
