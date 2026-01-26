@@ -4,15 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-key="categoryPageTitle">Категория – J4Teen</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
 <nav class="topbar">
   <div class="logo">J4Teen</div>
-
   <button id="lang-toggle" type="button">EN</button>
-
   <div class="burger">☰</div>
 
   <div class="menu">
@@ -26,16 +25,30 @@
   </div>
 </nav>
 
-
 <header class="hero small">
   <div class="hero-content">
-    <h1 id="category-title">Категория</h1>
+    <h1 id="category-title"></h1>
     <p data-key="categorySubtitle">Налични обяви</p>
   </div>
 </header>
 
 <main class="container">
-  <div id="content"></div>
+
+  <div id="category-jobs" style="
+    max-width:900px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  "></div>
+
+  <div id="category-empty" style="display:none;">
+    <div class="card" style="max-width:420px; margin:32px auto;">
+      <div class="icon">📭</div>
+      <h3 data-key="noJobs">Няма обяви в тази категория.</h3>
+    </div>
+  </div>
+
 </main>
 
 <script src="main.js"></script>
@@ -43,55 +56,71 @@
 <script>
   const params = new URLSearchParams(window.location.search);
   const category = params.get("cat");
+  const lang = localStorage.getItem("lang") || "bg";
 
   const titleEl = document.getElementById("category-title");
-  const content = document.getElementById("content");
+  const list = document.getElementById("category-jobs");
+  const empty = document.getElementById("category-empty");
 
-  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
-
-  // CATEGORY LABELS (BG / EN)
-  const categoryLabels = {
-    dog: { bg: "Разходка на куче", en: "Dog walking" },
-    home: { bg: "Помощ в дома", en: "Home help" },
-    delivery: { bg: "Доставки", en: "Delivery" },
-    kids: { bg: "Гледане на деца", en: "Child care" },
-    elderly: { bg: "Помощ за възрастни", en: "Elderly care" },
-    cleaning: { bg: "Почистване", en: "Cleaning" },
+  // CENTRAL CATEGORY LABELS (DEMO, после backend)
+  const categoryMap = {
+    animals: { bg: "Грижа за животни", en: "Animal care" },
+    home: { bg: "Домашна помощ", en: "Home help" },
+    agriculture: { bg: "Земеделие", en: "Agriculture" },
     physical: { bg: "Физическа работа", en: "Physical work" },
-    waiter: { bg: "Сервитьор", en: "Waiter" },
-    cook: { bg: "Готвач", en: "Cook" },
-    barman: { bg: "Барман", en: "Bartender" },
+    food: { bg: "Заведения", en: "Food & hospitality" },
+    care: { bg: "Грижа за хора", en: "People care" },
+    delivery: { bg: "Доставки", en: "Delivery" },
     hourly: { bg: "Почасова помощ", en: "Hourly help" }
   };
 
-  const lang = localStorage.getItem("lang") || "bg";
-
-  if (category && categoryLabels[category]) {
-    titleEl.textContent = categoryLabels[category][lang];
+  if (!category || !categoryMap[category]) {
+    titleEl.textContent = "Категория";
+  } else {
+    titleEl.textContent = categoryMap[category][lang];
   }
 
+  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
   const filtered = jobs.filter(job => job.category === category);
 
   if (filtered.length === 0) {
-    content.innerHTML = `
-      <p style="text-align:center; margin-top:40px;" data-key="noJobs">
-        Няма обяви в тази категория.
-      </p>
-    `;
+    empty.style.display = "block";
   } else {
     filtered.forEach(job => {
-      const div = document.createElement("div");
-      div.className = "job";
+      const row = document.createElement("div");
+      row.className = "job";
+      row.style.padding = "6px 10px";
+      row.style.display = "flex";
+      row.style.justifyContent = "space-between";
+      row.style.alignItems = "center";
+      row.style.gap = "10px";
 
-      div.innerHTML = `
-        <div>
-          <div class="title">${job.title}</div>
-          <div class="meta">${job.desc}</div>
+      row.innerHTML = `
+        <div style="flex:1; min-width:0;">
+          <div class="title" style="font-size:14px; font-weight:700;">
+            ${job.title}
+          </div>
+          <div class="meta" style="
+            font-size:12px;
+            color:#666;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+          ">
+            ${job.desc}
+          </div>
         </div>
-        <div class="price">${job.price}</div>
+        <div class="price" style="
+          font-size:13px;
+          font-weight:700;
+          color:#2563eb;
+          white-space:nowrap;
+        ">
+          ${job.price || ""}
+        </div>
       `;
 
-      content.appendChild(div);
+      list.appendChild(row);
     });
   }
 </script>
