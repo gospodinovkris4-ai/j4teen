@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     bg: {
       siteTitle: "J4Teen",
 
+      /* MENU */
       home: "Начало",
       jobs: "Обяви",
       categories: "Категории",
@@ -23,18 +24,35 @@ document.addEventListener("DOMContentLoaded", function () {
       post: "Публикувай",
       chat: "Чат",
 
+      /* HERO */
       heroTitle: "Намери почасова работа или помощ наблизо",
       heroSubtitle: "J4Teen – общност и обяви за младежи",
       heroWork: "Искам да работя",
       heroHire: "Търся човек за работа",
 
+      /* TABS */
       tabWork: "Работа",
       tabCompanies: "Компании",
       tabNews: "Новини",
 
+      /* HOME */
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
       mobilePost: "+ Публикувай обява",
+
+      /* ===== COMPANIES (ТОВА ЛИПСВАШЕ) ===== */
+      companiesTitle: "За компании",
+
+      companiesPost: "Публикувай обяви",
+      companiesPostSub: "Намери млади хора бързо.",
+
+      companiesReach: "Достигни младежи",
+      companiesReachSub: "Точната аудитория.",
+
+      companiesPlans: "Гъвкави планове",
+      companiesPlansSub: "Абонаменти според нуждите.",
+
+      seePlans: "Виж планове",
 
       /* ===== CATEGORIES ===== */
       catDog: "Разходка на куче",
@@ -72,11 +90,12 @@ document.addEventListener("DOMContentLoaded", function () {
       categorySubtitle: "Налични обяви",
       noJobs: "Няма обяви в тази категория.",
 
+      /* JOBS */
       jobsPageTitle: "Обяви – J4Teen",
       jobsTitle: "Искам да работя",
       jobsSubtitle: "Всички налични обяви",
 
-      /* ===== NEWS ===== */
+      /* NEWS */
       newsPageTitle: "Новини – J4Teen",
       newsTitle: "Актуално 2026",
       newsSubtitle: "Новини и съвети за младежи",
@@ -95,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       allNews: "Всички новини",
 
-      /* ===== CHAT ===== */
+      /* CHAT */
       chatPageTitle: "Чат – J4Teen",
       chatTitle: "Чат",
       chatSubtitle: "Свържи се директно",
@@ -103,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
       chatMsgPh: "Съобщение",
       chatSend: "Изпрати",
 
-      /* ===== POST ===== */
+      /* POST */
       postPageTitle: "Публикувай обява – J4Teen",
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява за минута",
@@ -114,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
       postBtn: "Публикувай обява",
       postSuccess: "Обявата е публикувана успешно!",
 
-      /* ===== PRICING ===== */
+      /* PRICING */
       pricingPageTitle: "Абонаментни планове – J4Teen",
       pricingTitle: "Абонаментни планове",
       pricingHero: "Планове за компании",
@@ -166,6 +185,20 @@ document.addEventListener("DOMContentLoaded", function () {
       popularCats: "Popular categories",
       allCategories: "View all categories",
       mobilePost: "+ Post a job",
+
+      /* COMPANIES */
+      companiesTitle: "For companies",
+
+      companiesPost: "Post job ads",
+      companiesPostSub: "Find young people fast.",
+
+      companiesReach: "Reach young people",
+      companiesReachSub: "The right audience.",
+
+      companiesPlans: "Flexible plans",
+      companiesPlansSub: "Subscriptions that fit your needs.",
+
+      seePlans: "See plans",
 
       catDog: "Dog walking",
       catDogSub: "Hourly help",
