@@ -9,29 +9,35 @@
 
 <body>
 
+<!-- ✅ ЕДИННО МЕНЮ -->
 <nav class="topbar">
   <div class="logo">J4Teen</div>
+
+  <button id="lang-toggle" type="button">EN</button>
+
   <div class="burger">☰</div>
 
   <div class="menu">
-    <a href="index.html">Начало</a>
-    <a href="jobs.html">Обяви</a>
-    <a href="categories.html">Категории</a>
-    <a href="post.html">Публикувай</a>
-    <a href="chat.html">Чат</a>
+    <a href="index.html" data-key="home">Начало</a>
+    <a href="jobs.html" data-key="jobs">Обяви</a>
+    <a href="categories.html" data-key="categories">Категории</a>
+    <a href="news.html" data-key="newsMenu">Новини</a>
+    <a href="pricing.html" data-key="plans">Планове</a>
+    <a href="post.html" data-key="post">Публикувай</a>
+    <a href="chat.html" data-key="chat">Чат</a>
   </div>
 </nav>
 
 <header class="hero small">
   <div class="hero-content">
-    <h1>Искам да работя</h1>
-    <p>Всички налични обяви</p>
+    <h1 data-key="jobsTitle">Искам да работя</h1>
+    <p data-key="jobsSubtitle">Всички налични обяви</p>
   </div>
 </header>
 
 <main class="container">
 
-  <!-- DEMO JOBS -->
+  <!-- DEMO JOBS (STATIC) -->
   <div class="job">
     <div>
       <div class="title">Бране на череши</div>
@@ -58,47 +64,15 @@
 
   <div class="job">
     <div>
-      <div class="title">Гледане на котка</div>
-      <div class="meta">2 пъти на ден</div>
-    </div>
-    <div class="price">20 лв</div>
-  </div>
-
-  <div class="job">
-    <div>
       <div class="title">Домашен помощник</div>
       <div class="meta">2 часа дневно</div>
     </div>
     <div class="price">12 лв/час</div>
   </div>
 
-  <div class="job">
-    <div>
-      <div class="title">Помощник в склад</div>
-      <div class="meta">Подреждане на стока</div>
-    </div>
-    <div class="price">10 лв/час</div>
-  </div>
-
-  <div class="job">
-    <div>
-      <div class="title">Сервитьор за събитие</div>
-      <div class="meta">Сватба · Заведения</div>
-    </div>
-    <div class="price">100 лв</div>
-  </div>
-
-  <div class="job">
-    <div>
-      <div class="title">Гледане на дете</div>
-      <div class="meta">След училище</div>
-    </div>
-    <div class="price">10 лв/час</div>
-  </div>
-
 </main>
 
-<!-- 🔒 MENU SCRIPT – GUARANTEED -->
+<!-- ✅ BURGER ЛОГИКА -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const burger = document.querySelector(".burger");
@@ -111,6 +85,9 @@
     }
   });
 </script>
+
+<!-- ✅ ЕЗИЦИ + ОБЩА ЛОГИКА -->
+<script src="main.js"></script>
 
 </body>
 </html>
