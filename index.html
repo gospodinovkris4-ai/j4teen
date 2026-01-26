@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>J4Teen</title>
+  <title data-key="siteTitle">J4Teen</title>
   <link rel="stylesheet" href="style.css?v=2">
 </head>
 
@@ -132,12 +132,12 @@
 
 </main>
 
-<a href="post.html" class="mobile-cta">+ Публикувай обява</a>
+<a href="post.html" class="mobile-cta" data-key="mobilePost">+ Публикувай обява</a>
 
 <script src="main.js"></script>
 
 <script>
-  // TAB SWITCHING (ОСТАВА)
+  // TAB SWITCHING
   document.querySelectorAll(".tab").forEach(tab => {
     tab.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
@@ -148,7 +148,6 @@
     });
   });
 </script>
-
 
 </body>
 </html>
