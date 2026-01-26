@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Обяви – J4Teen</title>
+  <title data-key="jobsPageTitle">Обяви – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,11 +12,11 @@
 <nav class="topbar">
   <div class="logo">J4Teen</div>
 
-  <!-- 🔑 ID-та -->
   <button id="lang-toggle" type="button">EN</button>
-  <div id="burger" class="burger">☰</div>
 
-  <div id="menu" class="menu">
+  <div class="burger">☰</div>
+
+  <div class="menu">
     <a href="index.html" data-key="home">Начало</a>
     <a href="jobs.html" data-key="jobs">Обяви</a>
     <a href="categories.html" data-key="categories">Категории</a>
@@ -29,14 +29,14 @@
 
 <header class="hero small">
   <div class="hero-content">
-    <h1>Искам да работя</h1>
-    <p>Всички налични обяви</p>
+    <h1 data-key="jobsTitle">Искам да работя</h1>
+    <p data-key="jobsSubtitle">Всички налични обяви</p>
   </div>
 </header>
 
 <main class="container">
 
-  <!-- DEMO JOBS -->
+  <!-- DEMO JOBS (STATIC – за момента) -->
   <div class="job">
     <div>
       <div class="title">Бране на череши</div>
@@ -63,21 +63,7 @@
 
 </main>
 
-<!-- ✅ ГАРАНТИРАНА BURGER ЛОГИКА -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const burger = document.getElementById("burger");
-    const menu = document.getElementById("menu");
-
-    if (burger && menu) {
-      burger.addEventListener("click", function () {
-        menu.classList.toggle("show");
-      });
-    }
-  });
-</script>
-
-<!-- 🌍 ЕЗИЦИ + ОБЩА ЛОГИКА -->
+<!-- 🌍 ЕДИНСТВЕН JS: main.js -->
 <script src="main.js"></script>
 
 </body>
