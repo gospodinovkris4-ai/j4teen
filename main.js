@@ -12,33 +12,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /* ================= DEMO JOBS ================= */
   const DEMO_JOBS = [
-    { title: "Бране на череши", desc: "Сезонна работа за 5 дни", price: "80 лв/ден", category: "agriculture" },
-    { title: "Помощник в оранжерия", desc: "Поливане и подреждане", price: "60 лв/ден", category: "agriculture" },
+    { title: "Бране на череши", desc: "Сезонна работа за 5 дни", price: "80 лв/ден", category: "agriculture", isDemo: true },
+    { title: "Помощник в оранжерия", desc: "Поливане и подреждане", price: "60 лв/ден", category: "agriculture", isDemo: true },
 
-    { title: "Разходка на куче", desc: "Сутрин и вечер", price: "15 лв", category: "animals" },
-    { title: "Гледане на котка", desc: "2 пъти на ден", price: "20 лв", category: "animals" },
+    { title: "Разходка на куче", desc: "Сутрин и вечер", price: "15 лв", category: "animals", isDemo: true },
+    { title: "Гледане на котка", desc: "2 пъти на ден", price: "20 лв", category: "animals", isDemo: true },
 
-    { title: "Почистване на апартамент", desc: "Еднократно почистване", price: "70 лв", category: "home" },
-    { title: "Домашен помощник", desc: "2 часа дневно", price: "12 лв/час", category: "home" },
+    { title: "Почистване на апартамент", desc: "Еднократно почистване", price: "70 лв", category: "home", isDemo: true },
+    { title: "Домашен помощник", desc: "2 часа дневно", price: "12 лв/час", category: "home", isDemo: true },
 
-    { title: "Помощник в склад", desc: "Подреждане на стока", price: "10 лв/час", category: "physical" },
-    { title: "Носене на мебели", desc: "Кратка задача", price: "50 лв", category: "physical" },
+    { title: "Помощник в склад", desc: "Подреждане на стока", price: "10 лв/час", category: "physical", isDemo: true },
+    { title: "Носене на мебели", desc: "Кратка задача", price: "50 лв", category: "physical", isDemo: true },
 
-    { title: "Сервитьор за събитие", desc: "Сватба през уикенда", price: "100 лв", category: "food" },
-    { title: "Бар помощник", desc: "Вечерна смяна", price: "12 лв/час", category: "food" },
+    { title: "Сервитьор за събитие", desc: "Сватба през уикенда", price: "100 лв", category: "food", isDemo: true },
+    { title: "Бар помощник", desc: "Вечерна смяна", price: "12 лв/час", category: "food", isDemo: true },
 
-    { title: "Гледане на дете", desc: "След училище", price: "10 лв/час", category: "care" },
-    { title: "Помощ за възрастен човек", desc: "Пазаруване и компания", price: "40 лв", category: "care" },
+    { title: "Гледане на дете", desc: "След училище", price: "10 лв/час", category: "care", isDemo: true },
+    { title: "Помощ за възрастен човек", desc: "Пазаруване и компания", price: "40 лв", category: "care", isDemo: true },
 
-    { title: "Доставка на храна", desc: "Кратки курсове", price: "8 лв/доставка", category: "delivery" },
-    { title: "Доставка на пратки", desc: "Собствен транспорт", price: "15 лв", category: "delivery" },
+    { title: "Доставка на храна", desc: "Кратки курсове", price: "8 лв/доставка", category: "delivery", isDemo: true },
+    { title: "Доставка на пратки", desc: "Собствен транспорт", price: "15 лв", category: "delivery", isDemo: true },
 
-    { title: "Монтаж на рафтове", desc: "Домашна задача", price: "30 лв", category: "hourly" },
-    { title: "Почистване на мазе", desc: "Еднократна помощ", price: "40 лв", category: "hourly" }
+    { title: "Монтаж на рафтове", desc: "Домашна задача", price: "30 лв", category: "hourly", isDemo: true },
+    { title: "Почистване на мазе", desc: "Еднократна помощ", price: "40 лв", category: "hourly", isDemo: true }
   ];
 
-  const existingJobs = JSON.parse(localStorage.getItem("jobs") || "[]");
-  if (existingJobs.length === 0) {
+  let storedJobs = [];
+  try {
+    storedJobs = JSON.parse(localStorage.getItem("jobs")) || [];
+  } catch {
+    storedJobs = [];
+  }
+
+  const hasRealJobs = storedJobs.some(job => !job.isDemo);
+
+  if (!storedJobs.length || !hasRealJobs) {
     localStorage.setItem("jobs", JSON.stringify(DEMO_JOBS));
   }
 
@@ -58,14 +66,9 @@ document.addEventListener("DOMContentLoaded", function () {
       heroWork: "Искам да работя",
       heroHire: "Търся човек за работа",
 
-      tabWork: "Работа",
-      tabCompanies: "Компании",
-      tabNews: "Новини",
-
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
 
-      jobsPageTitle: "Обяви – J4Teen",
       jobsTitle: "Искам да работя",
       jobsSubtitle: "Всички налични обяви",
       jobsEmpty: "Няма публикувани обяви.",
@@ -73,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
       categorySubtitle: "Налични обяви",
       noJobs: "Няма обяви в тази категория.",
 
-      chatPageTitle: "Чат – J4Teen",
       chatTitle: "Чат",
       chatSubtitle: "Свържи се директно",
       chatNamePh: "Име",
@@ -95,14 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
       heroWork: "I want to work",
       heroHire: "I'm hiring",
 
-      tabWork: "Work",
-      tabCompanies: "Companies",
-      tabNews: "News",
-
       popularCats: "Popular categories",
       allCategories: "View all categories",
 
-      jobsPageTitle: "Jobs – J4Teen",
       jobsTitle: "I want to work",
       jobsSubtitle: "All available jobs",
       jobsEmpty: "No jobs available.",
@@ -110,7 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
       categorySubtitle: "Available jobs",
       noJobs: "No jobs in this category.",
 
-      chatPageTitle: "Chat – J4Teen",
       chatTitle: "Chat",
       chatSubtitle: "Connect directly",
       chatNamePh: "Name",
