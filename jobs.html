@@ -31,7 +31,7 @@
 
 <main class="container">
 
-  <!-- DEMO JOBS (STATIC) -->
+  <!-- DEMO JOBS -->
   <div class="job">
     <div>
       <div class="title">Бране на череши</div>
@@ -98,19 +98,19 @@
 
 </main>
 
-
+<!-- 🔒 MENU SCRIPT – GUARANTEED -->
 <script>
-  const burger = document.querySelector(".burger");
-  const menu = document.querySelector(".menu");
+  document.addEventListener("DOMContentLoaded", function () {
+    const burger = document.querySelector(".burger");
+    const menu = document.querySelector(".menu");
 
-  if (burger && menu) {
-    burger.addEventListener("click", () => {
-      menu.classList.toggle("show");
-    });
-  }
+    if (burger && menu) {
+      burger.addEventListener("click", function () {
+        menu.classList.toggle("show");
+      });
+    }
+  });
 </script>
 
-  
-  
 </body>
 </html>
