@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       allCategories: "Виж всички категории",
       mobilePost: "+ Публикувай обява",
 
-      /* CATEGORIES */
+      /* ===== CATEGORIES ===== */
       catDog: "Разходка на куче",
       catDogSub: "Почасова помощ",
 
@@ -64,22 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
       catHourly: "Почасова помощ",
       catHourlySub: "Кратки задачи",
 
-      /* CATEGORIES PAGE */
       categoriesPageTitle: "Категории – J4Teen",
       categoriesTitle: "Всички категории",
       categoriesSubtitle: "Избери област и разгледай обявите",
 
-      /* CATEGORY SINGLE */
       categoryPageTitle: "Категория – J4Teen",
       categorySubtitle: "Налични обяви",
       noJobs: "Няма обяви в тази категория.",
 
-      /* JOBS */
       jobsPageTitle: "Обяви – J4Teen",
       jobsTitle: "Искам да работя",
       jobsSubtitle: "Всички налични обяви",
 
-      /* NEWS */
+      /* ===== NEWS ===== */
       newsPageTitle: "Новини – J4Teen",
       newsTitle: "Актуално 2026",
       newsSubtitle: "Новини и съвети за младежи",
@@ -98,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       allNews: "Всички новини",
 
-      /* CHAT */
+      /* ===== CHAT ===== */
       chatPageTitle: "Чат – J4Teen",
       chatTitle: "Чат",
       chatSubtitle: "Свържи се директно",
@@ -106,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
       chatMsgPh: "Съобщение",
       chatSend: "Изпрати",
 
-      /* POST */
+      /* ===== POST ===== */
       postPageTitle: "Публикувай обява – J4Teen",
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява за минута",
@@ -117,17 +114,33 @@ document.addEventListener("DOMContentLoaded", function () {
       postBtn: "Публикувай обява",
       postSuccess: "Обявата е публикувана успешно!",
 
-      /* PRICING */
-      pricingPageTitle: "Планове – J4Teen",
+      /* ===== PRICING ===== */
+      pricingPageTitle: "Абонаментни планове – J4Teen",
       pricingTitle: "Абонаментни планове",
+      pricingHero: "Планове за компании",
+      pricingHeroSub: "Избери план, който ти пасва",
+
       pricingBasic: "Basic",
       pricingBasicSub: "За малки нужди",
       pricingPro: "Pro",
       pricingProSub: "По-добра видимост",
       pricingPremium: "Premium",
       pricingPremiumSub: "Най-добрият избор",
+
       pricingPopular: "Най-купуван",
-      pricingChoose: "Избери"
+      pricingChoose: "Избери",
+
+      pricingBasicFeat1: "✔️ До 3 обяви",
+      pricingBasicFeat2: "✔️ 7 дни активни",
+      pricingBasicFeat3: "✔️ Видима за всички",
+
+      pricingProFeat1: "✔️ До 5 обяви",
+      pricingProFeat2: "✔️ 15 дни активни",
+      pricingProFeat3: "✔️ По-добро позициониране",
+
+      pricingPremiumFeat1: "✔️ Неограничени обяви",
+      pricingPremiumFeat2: "✔️ 30 дни активни",
+      pricingPremiumFeat3: "✔️ Топ позиция"
     },
 
     en: {
@@ -223,21 +236,37 @@ document.addEventListener("DOMContentLoaded", function () {
       postSubtitle: "Post a job in one minute",
       jobTitlePh: "Job title",
       jobDescPh: "Description",
-      jobPricePh: "Price (e.g. 15 BGN)",
+      jobPricePh: "Price (e.g. 15 €)",
       selectCategory: "Select category",
       postBtn: "Post job",
       postSuccess: "Job posted successfully!",
 
-      pricingPageTitle: "Plans – J4Teen",
+      pricingPageTitle: "Pricing plans – J4Teen",
       pricingTitle: "Pricing plans",
+      pricingHero: "Plans for companies",
+      pricingHeroSub: "Choose a plan that fits you",
+
       pricingBasic: "Basic",
       pricingBasicSub: "For small needs",
       pricingPro: "Pro",
       pricingProSub: "Better visibility",
       pricingPremium: "Premium",
       pricingPremiumSub: "Best choice",
+
       pricingPopular: "Most popular",
-      pricingChoose: "Choose"
+      pricingChoose: "Choose",
+
+      pricingBasicFeat1: "✔️ Up to 3 listings",
+      pricingBasicFeat2: "✔️ Active for 7 days",
+      pricingBasicFeat3: "✔️ Visible to everyone",
+
+      pricingProFeat1: "✔️ Up to 5 listings",
+      pricingProFeat2: "✔️ Active for 15 days",
+      pricingProFeat3: "✔️ Better positioning",
+
+      pricingPremiumFeat1: "✔️ Unlimited listings",
+      pricingPremiumFeat2: "✔️ Active for 30 days",
+      pricingPremiumFeat3: "✔️ Top placement"
     }
   };
 
