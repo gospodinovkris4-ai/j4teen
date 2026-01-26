@@ -10,46 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /* ================= DEMO JOBS ================= */
-  const DEMO_JOBS = [
-    { title: "Бране на череши", desc: "Сезонна работа за 5 дни", price: "80 лв/ден", category: "agriculture", isDemo: true },
-    { title: "Помощник в оранжерия", desc: "Поливане и подреждане", price: "60 лв/ден", category: "agriculture", isDemo: true },
-
-    { title: "Разходка на куче", desc: "Сутрин и вечер", price: "15 лв", category: "animals", isDemo: true },
-    { title: "Гледане на котка", desc: "2 пъти на ден", price: "20 лв", category: "animals", isDemo: true },
-
-    { title: "Почистване на апартамент", desc: "Еднократно почистване", price: "70 лв", category: "home", isDemo: true },
-    { title: "Домашен помощник", desc: "2 часа дневно", price: "12 лв/час", category: "home", isDemo: true },
-
-    { title: "Помощник в склад", desc: "Подреждане на стока", price: "10 лв/час", category: "physical", isDemo: true },
-    { title: "Носене на мебели", desc: "Кратка задача", price: "50 лв", category: "physical", isDemo: true },
-
-    { title: "Сервитьор за събитие", desc: "Сватба през уикенда", price: "100 лв", category: "food", isDemo: true },
-    { title: "Бар помощник", desc: "Вечерна смяна", price: "12 лв/час", category: "food", isDemo: true },
-
-    { title: "Гледане на дете", desc: "След училище", price: "10 лв/час", category: "care", isDemo: true },
-    { title: "Помощ за възрастен човек", desc: "Пазаруване и компания", price: "40 лв", category: "care", isDemo: true },
-
-    { title: "Доставка на храна", desc: "Кратки курсове", price: "8 лв/доставка", category: "delivery", isDemo: true },
-    { title: "Доставка на пратки", desc: "Собствен транспорт", price: "15 лв", category: "delivery", isDemo: true },
-
-    { title: "Монтаж на рафтове", desc: "Домашна задача", price: "30 лв", category: "hourly", isDemo: true },
-    { title: "Почистване на мазе", desc: "Еднократна помощ", price: "40 лв", category: "hourly", isDemo: true }
-  ];
-
-  let storedJobs = [];
-  try {
-    storedJobs = JSON.parse(localStorage.getItem("jobs")) || [];
-  } catch {
-    storedJobs = [];
-  }
-
-  const hasRealJobs = storedJobs.some(job => !job.isDemo);
-
-  if (!storedJobs.length || !hasRealJobs) {
-    localStorage.setItem("jobs", JSON.stringify(DEMO_JOBS));
-  }
-
   /* ================= TRANSLATIONS ================= */
   const translations = {
     bg: {
@@ -66,21 +26,52 @@ document.addEventListener("DOMContentLoaded", function () {
       heroWork: "Искам да работя",
       heroHire: "Търся човек за работа",
 
+      tabWork: "Работа",
+      tabCompanies: "Компании",
+      tabNews: "Новини",
+
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
 
-      jobsTitle: "Искам да работя",
-      jobsSubtitle: "Всички налични обяви",
-      jobsEmpty: "Няма публикувани обяви.",
+      /* ===== CATEGORIES ===== */
+      catAnimals: "Грижа за животни",
+      catAnimalsSub: "Разходка, гледане",
 
-      categorySubtitle: "Налични обяви",
-      noJobs: "Няма обяви в тази категория.",
+      catHome: "Домашна помощ",
+      catHomeSub: "Почистване, помощник",
 
-      chatTitle: "Чат",
-      chatSubtitle: "Свържи се директно",
-      chatNamePh: "Име",
-      chatMsgPh: "Съобщение",
-      chatSend: "Изпрати"
+      catAgriculture: "Земеделие",
+      catAgricultureSub: "Бране, сезонна работа",
+
+      catPhysical: "Физическа работа",
+      catPhysicalSub: "Носене, склад",
+
+      catFood: "Заведения",
+      catFoodSub: "Сервитьор, бар",
+
+      catCare: "Грижа за хора",
+      catCareSub: "Деца, възрастни",
+
+      catDelivery: "Доставки",
+      catDeliverySub: "Храна, пратки",
+
+      catHourly: "Почасова помощ",
+      catHourlySub: "Кратки задачи",
+
+      /* ===== NEWS ===== */
+      newsTitle: "Актуално 2026",
+
+      news1: "Как да си намериш почасова работа",
+      news1Sub: "Практични съвети",
+
+      news2: "Търсени умения при младежи",
+      news2Sub: "Какво търсят компаниите",
+
+      allNews: "Всички новини",
+
+      /* ===== COMMON ===== */
+      categoriesTitle: "Всички категории",
+      categoriesSubtitle: "Избери област и разгледай обявите"
     },
 
     en: {
@@ -97,21 +88,52 @@ document.addEventListener("DOMContentLoaded", function () {
       heroWork: "I want to work",
       heroHire: "I'm hiring",
 
+      tabWork: "Work",
+      tabCompanies: "Companies",
+      tabNews: "News",
+
       popularCats: "Popular categories",
       allCategories: "View all categories",
 
-      jobsTitle: "I want to work",
-      jobsSubtitle: "All available jobs",
-      jobsEmpty: "No jobs available.",
+      /* ===== CATEGORIES ===== */
+      catAnimals: "Animal care",
+      catAnimalsSub: "Walking, sitting",
 
-      categorySubtitle: "Available jobs",
-      noJobs: "No jobs in this category.",
+      catHome: "Home help",
+      catHomeSub: "Cleaning, assistance",
 
-      chatTitle: "Chat",
-      chatSubtitle: "Connect directly",
-      chatNamePh: "Name",
-      chatMsgPh: "Message",
-      chatSend: "Send"
+      catAgriculture: "Agriculture",
+      catAgricultureSub: "Harvest, seasonal work",
+
+      catPhysical: "Physical work",
+      catPhysicalSub: "Lifting, warehouse",
+
+      catFood: "Food & hospitality",
+      catFoodSub: "Waiter, bar",
+
+      catCare: "People care",
+      catCareSub: "Children, elderly",
+
+      catDelivery: "Delivery",
+      catDeliverySub: "Food, packages",
+
+      catHourly: "Hourly help",
+      catHourlySub: "Short tasks",
+
+      /* ===== NEWS ===== */
+      newsTitle: "Updates 2026",
+
+      news1: "How to find part-time work",
+      news1Sub: "Practical tips",
+
+      news2: "In-demand youth skills",
+      news2Sub: "What companies look for",
+
+      allNews: "All news",
+
+      /* ===== COMMON ===== */
+      categoriesTitle: "All categories",
+      categoriesSubtitle: "Choose an area and browse jobs"
     }
   };
 
@@ -123,11 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("[data-key]").forEach(el => {
       const key = el.getAttribute("data-key");
       if (t[key]) el.textContent = t[key];
-    });
-
-    document.querySelectorAll("[data-key-placeholder]").forEach(el => {
-      const key = el.getAttribute("data-key-placeholder");
-      if (t[key]) el.placeholder = t[key];
     });
 
     const btn = document.getElementById("lang-toggle");
