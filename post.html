@@ -1,4 +1,4 @@
-първо ти пращам да оправиш пост и така и другите след това      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
@@ -148,16 +148,18 @@
 <script>
   const form = document.getElementById("post-form");
 
-  form.addEventListener("submit", function(e) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const title = job-title.value;
-    const desc = job-desc.value;
-    const price = job-price.value;
-    const category = job-category.value;
+    const title = document.getElementById("job-title").value;
+    const desc = document.getElementById("job-desc").value;
+    const price = document.getElementById("job-price").value;
+    const category = document.getElementById("job-category").value;
 
     const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+
     jobs.push({ title, desc, price, category });
+
     localStorage.setItem("jobs", JSON.stringify(jobs));
 
     window.location.href = "jobs.html";
