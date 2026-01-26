@@ -65,6 +65,36 @@
 
 <!-- 🌍 ЕДИНСТВЕН JS: main.js -->
 <script src="main.js"></script>
+<script>
+  (function () {
+    const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+    if (!jobs.length) return;
+
+    const container = document.querySelector("main.container");
+    if (!container) return;
+
+    jobs.forEach(job => {
+      // предотвратяваме дублиране по заглавие
+      const exists = [...container.querySelectorAll(".job .title")]
+        .some(t => t.textContent.trim() === job.title);
+
+      if (exists) return;
+
+      const div = document.createElement("div");
+      div.className = "job";
+
+      div.innerHTML = `
+        <div>
+          <div class="title">${job.title}</div>
+          <div class="meta">${job.desc}</div>
+        </div>
+        <div class="price">${job.price || ""}</div>
+      `;
+
+      container.appendChild(div);
+    });
+  })();
+</script>
 
 </body>
 </html>
