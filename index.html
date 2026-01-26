@@ -41,7 +41,6 @@
 
 <main class="container">
 
-  <!-- MOBILE TABS (OPTIONAL UX, NOT REQUIRED ANYMORE) -->
   <div class="tabs">
     <button class="tab active" data-tab="work" data-key="tabWork">Работа</button>
     <button class="tab" data-tab="companies" data-key="tabCompanies">Компании</button>
@@ -138,6 +137,7 @@
 <script src="main.js"></script>
 
 <script>
+  // TAB SWITCHING
   document.querySelectorAll(".tab").forEach(tab => {
     tab.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
@@ -145,6 +145,25 @@
 
       tab.classList.add("active");
       document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+    });
+  });
+
+  // BURGER MENU — СТАБИЛНО
+  document.addEventListener("DOMContentLoaded", function () {
+    const burger = document.querySelector(".burger");
+    const menu = document.querySelector(".menu");
+
+    if (!burger || !menu) return;
+
+    burger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      menu.classList.toggle("show");
+    });
+
+    document.addEventListener("click", function (e) {
+      if (!menu.contains(e.target) && !burger.contains(e.target)) {
+        menu.classList.remove("show");
+      }
     });
   });
 </script>
