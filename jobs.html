@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-key="jobsPageTitle">Jobs – J4Teen</title>
+  <title>Обяви – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,103 +11,92 @@
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
-  <button id="lang-toggle" type="button">EN</button>
   <div class="burger">☰</div>
 
   <div class="menu">
-    <a href="index.html" data-key="home">Начало</a>
-    <a href="jobs.html" data-key="jobs">Обяви</a>
-    <a href="categories.html" data-key="categories">Категории</a>
-    <a href="news.html" data-key="newsMenu">Новини</a>
-    <a href="pricing.html" data-key="plans">Планове</a>
-    <a href="post.html" data-key="post">Публикувай</a>
-    <a href="chat.html" data-key="chat">Чат</a>
+    <a href="index.html">Начало</a>
+    <a href="jobs.html">Обяви</a>
+    <a href="categories.html">Категории</a>
+    <a href="post.html">Публикувай</a>
+    <a href="chat.html">Чат</a>
   </div>
 </nav>
 
 <header class="hero small">
   <div class="hero-content">
-    <h1 data-key="jobsTitle">Искам да работя</h1>
-    <p data-key="jobsSubtitle">Всички налични обяви</p>
+    <h1>Искам да работя</h1>
+    <p>Всички налични обяви</p>
   </div>
 </header>
 
 <main class="container">
 
-  <div id="jobs-list" style="
-    max-width:900px;
-    margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-  "></div>
+  <!-- DEMO JOBS (STATIC) -->
+  <div class="job">
+    <div>
+      <div class="title">Бране на череши</div>
+      <div class="meta">Сезонна работа · Земеделие</div>
+    </div>
+    <div class="price">80 лв/ден</div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="title">Помощник в оранжерия</div>
+      <div class="meta">Поливане и подреждане</div>
+    </div>
+    <div class="price">60 лв/ден</div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="title">Разходка на куче</div>
+      <div class="meta">Сутрин и вечер · Животни</div>
+    </div>
+    <div class="price">15 лв</div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="title">Гледане на котка</div>
+      <div class="meta">2 пъти на ден</div>
+    </div>
+    <div class="price">20 лв</div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="title">Домашен помощник</div>
+      <div class="meta">2 часа дневно</div>
+    </div>
+    <div class="price">12 лв/час</div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="title">Помощник в склад</div>
+      <div class="meta">Подреждане на стока</div>
+    </div>
+    <div class="price">10 лв/час</div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="title">Сервитьор за събитие</div>
+      <div class="meta">Сватба · Заведения</div>
+    </div>
+    <div class="price">100 лв</div>
+  </div>
+
+  <div class="job">
+    <div>
+      <div class="title">Гледане на дете</div>
+      <div class="meta">След училище</div>
+    </div>
+    <div class="price">10 лв/час</div>
+  </div>
 
 </main>
-
-<script src="main.js"></script>
-
-<script>
-  // ✅ DEMO JOBS – ЛОКАЛНО ЗА JOBS СТРАНИЦАТА
-  const DEMO_JOBS = [
-    { title: "Бране на череши", desc: "Сезонна работа за 5 дни", price: "80 лв/ден" },
-    { title: "Помощник в оранжерия", desc: "Поливане и подреждане", price: "60 лв/ден" },
-    { title: "Разходка на куче", desc: "Сутрин и вечер", price: "15 лв" },
-    { title: "Гледане на котка", desc: "2 пъти на ден", price: "20 лв" },
-    { title: "Почистване на апартамент", desc: "Еднократно почистване", price: "70 лв" },
-    { title: "Домашен помощник", desc: "2 часа дневно", price: "12 лв/час" },
-    { title: "Помощник в склад", desc: "Подреждане на стока", price: "10 лв/час" },
-    { title: "Носене на мебели", desc: "Кратка задача", price: "50 лв" },
-    { title: "Сервитьор за събитие", desc: "Сватба през уикенда", price: "100 лв" },
-    { title: "Бар помощник", desc: "Вечерна смяна", price: "12 лв/час" },
-    { title: "Гледане на дете", desc: "След училище", price: "10 лв/час" },
-    { title: "Помощ за възрастен човек", desc: "Пазаруване и компания", price: "40 лв" },
-    { title: "Доставка на храна", desc: "Кратки курсове", price: "8 лв/доставка" },
-    { title: "Монтаж на рафтове", desc: "Домашна задача", price: "30 лв" },
-    { title: "Почистване на мазе", desc: "Еднократна помощ", price: "40 лв" }
-  ];
-
-  const list = document.getElementById("jobs-list");
-
-  const realJobs = JSON.parse(localStorage.getItem("jobs") || "[]");
-  const jobsToShow = realJobs.length ? realJobs : DEMO_JOBS;
-
-  jobsToShow.forEach(job => {
-    const row = document.createElement("div");
-    row.className = "job";
-    row.style.padding = "6px 10px";
-    row.style.display = "flex";
-    row.style.justifyContent = "space-between";
-    row.style.alignItems = "center";
-    row.style.gap = "10px";
-
-    row.innerHTML = `
-      <div style="flex:1; min-width:0;">
-        <div class="title" style="font-size:14px; font-weight:700;">
-          ${job.title}
-        </div>
-        <div class="meta" style="
-          font-size:12px;
-          color:#666;
-          white-space:nowrap;
-          overflow:hidden;
-          text-overflow:ellipsis;
-        ">
-          ${job.desc}
-        </div>
-      </div>
-      <div class="price" style="
-        font-size:13px;
-        font-weight:700;
-        color:#2563eb;
-        white-space:nowrap;
-      ">
-        ${job.price || ""}
-      </div>
-    `;
-
-    list.appendChild(row);
-  });
-</script>
 
 </body>
 </html>
