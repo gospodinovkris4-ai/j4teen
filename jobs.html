@@ -25,7 +25,6 @@
   </div>
 </nav>
 
-<!-- SLIM BLUE HERO (ОСТАВА!) -->
 <header class="hero small">
   <div class="hero-content">
     <h1 data-key="jobsTitle">Искам да работя</h1>
@@ -33,28 +32,8 @@
   </div>
 </header>
 
-<main class="container" style="padding-top:10px;">
+<main class="container">
 
-  <!-- FILTER -->
-  <div style="
-    display:flex;
-    justify-content:center;
-    margin:8px 0 12px;
-  ">
-    <select id="cityFilter"
-      style="
-        padding:8px 10px;
-        border-radius:8px;
-        border:1px solid #ccc;
-        width:100%;
-        max-width:260px;
-        font-size:13px;
-      ">
-      <option value="" data-key="allCities">Всички градове</option>
-    </select>
-  </div>
-
-  <!-- JOBS LIST -->
   <div id="jobs-list" style="
     max-width:900px;
     margin:0 auto;
@@ -63,15 +42,8 @@
     gap:6px;
   "></div>
 
-  <!-- EMPTY STATE -->
-  <div id="jobs-empty" style="display:none;">
-    <div class="card" style="max-width:420px; margin:24px auto;">
-      <div class="icon">📭</div>
-      <h3 data-key="jobsEmpty">Няма публикувани обяви в момента.</h3>
-      <a href="post.html" class="btn primary" style="margin-top:12px;">
-        Публикувай обява
-      </a>
-    </div>
+  <div id="jobs-empty" style="display:none; text-align:center; margin-top:40px;">
+    <p data-key="jobsEmpty">Няма публикувани обяви.</p>
   </div>
 
 </main>
@@ -79,20 +51,26 @@
 <script src="main.js"></script>
 
 <script>
-  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
-  const list = document.getElementById("jobs-list");
-  const empty = document.getElementById("jobs-empty");
+  // ⛑️ ГАРАНЦИЯ: изчакваме main.js да сложи demo jobs
+  window.addEventListener("load", function () {
 
-  if (jobs.length === 0) {
-    empty.style.display = "block";
-  } else {
+    const list = document.getElementById("jobs-list");
+    const empty = document.getElementById("jobs-empty");
+
+    const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+
+    if (!jobs.length) {
+      empty.style.display = "block";
+      return;
+    }
+
     jobs.forEach(job => {
       const row = document.createElement("div");
       row.className = "job";
       row.style.padding = "6px 10px";
       row.style.display = "flex";
-      row.style.alignItems = "center";
       row.style.justifyContent = "space-between";
+      row.style.alignItems = "center";
       row.style.gap = "10px";
 
       row.innerHTML = `
@@ -122,7 +100,7 @@
 
       list.appendChild(row);
     });
-  }
+  });
 </script>
 
 </body>
