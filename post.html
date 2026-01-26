@@ -92,24 +92,29 @@
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const job = {
-      id: Date.now(),
-      title: document.getElementById("job-title").value.trim(),
-      desc: document.getElementById("job-desc").value.trim(),
-      price: document.getElementById("job-price").value.trim(),
-      category: document.getElementById("job-category").value,
-      createdAt: new Date().toISOString()
-    };
+    const title = document.getElementById("job-title").value.trim();
+    const desc = document.getElementById("job-desc").value.trim();
+    const price = document.getElementById("job-price").value.trim();
+    const category = document.getElementById("job-category").value;
 
-    if (!job.title || !job.desc || !job.category) return;
+    if (!title || !desc || !category) return;
 
     const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
-    jobs.push(job);
+
+    jobs.push({
+      title: title,
+      desc: desc,
+      price: price,
+      category: category,
+      createdAt: Date.now()
+    });
+
     localStorage.setItem("jobs", JSON.stringify(jobs));
 
     window.location.href = "jobs.html";
   });
 </script>
+
 
 </body>
 </html>
