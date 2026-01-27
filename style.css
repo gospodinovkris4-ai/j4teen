@@ -294,3 +294,12 @@ main {
   font-weight: 700;
   cursor: pointer;
 }
+
+
+
+/* MOBILE: махаме табовете Работа / Компании / Новини */
+@media (max-width: 768px) {
+  .tabs {
+    display: none !important;
+  }
+}
