@@ -34,7 +34,6 @@
 
 <main class="container">
 
-  <!-- GRID (НЕ ПИРАМИДА) -->
   <div id="category-jobs" style="
     max-width:900px;
     margin:0 auto;
@@ -63,9 +62,10 @@
   const list = document.getElementById("category-jobs");
   const empty = document.getElementById("category-empty");
 
-  // Заглавия
+  /* 🔤 ЗАГЛАВИЯ */
   const categoryLabels = {
     animals: { bg: "Грижа за животни", en: "Animal care" },
+    dog: { bg: "Разходка на куче", en: "Dog walking" },   // ✅ ДОБАВЕНО
     home: { bg: "Домашна помощ", en: "Home help" },
     agriculture: { bg: "Земеделие", en: "Agriculture" },
     physical: { bg: "Физическа работа", en: "Physical work" },
@@ -79,9 +79,10 @@
     titleEl.textContent = categoryLabels[category][lang];
   }
 
-  // Категориен мост (НЕ ГО ПИПАМЕ)
+  /* 🔗 КАТЕГОРИЕН МОСТ */
   const categoryAliases = {
-    animals: ["dog", "animals"],
+    animals: ["animals", "dog"],
+    dog: ["animals", "dog"],          // ✅ КЛЮЧОВИЯТ ФИКС
     home: ["home"],
     delivery: ["delivery"],
     agriculture: ["agriculture"],
@@ -94,7 +95,6 @@
   const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
   const allowed = categoryAliases[category] || [];
 
-  // ✅ ФИНАЛЕН ФИЛТЪР — ТОВА БЕШЕ ПРОБЛЕМЪТ
   const filtered = jobs.filter(job =>
     allowed.includes(job.category)
   );
@@ -124,7 +124,6 @@
       list.appendChild(div);
     });
 
-    // запазваме ID-тата
     localStorage.setItem("jobs", JSON.stringify(jobs));
   }
 </script>
