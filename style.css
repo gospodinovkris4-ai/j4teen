@@ -71,7 +71,6 @@ a {
   box-shadow: 0 20px 40px rgba(0,0,0,0.18);
   display: flex;
   flex-direction: column;
-
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
@@ -88,7 +87,6 @@ a {
   padding: 14px 16px;
   border-radius: 12px;
   font-weight: 600;
-  color: #111;
 }
 
 .menu a:hover {
@@ -158,8 +156,20 @@ a {
   background: #1e40af;
 }
 
+/* 🔶 FIX: Публикувай бутон в секция Обяви → оранжев */
+.jobs .btn,
+a[href="post.html"].btn {
+  background: #f59e0b !important;
+  color: #111 !important;
+}
+
+.jobs .btn:hover,
+a[href="post.html"].btn:hover {
+  background: #d97706 !important;
+}
+
 /* =========================
-   MAIN LAYOUT
+   MAIN
    ========================= */
 main {
   max-width: 1100px;
@@ -168,14 +178,13 @@ main {
 }
 
 /* =========================
-   CARDS – FINAL CENTERED GRID
+   CARDS
    ========================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
   justify-content: center;
-  align-items: stretch;
 }
 
 .card {
@@ -193,23 +202,13 @@ main {
   box-shadow: 0 16px 34px rgba(37,99,235,0.25);
 }
 
-.card .icon {
-  font-size: 36px;
-  margin-bottom: 12px;
-  color: #2563eb;
-}
-
 .card.highlight {
   background: linear-gradient(135deg, #2563eb, #1e40af);
   color: #fff;
 }
 
-.card.highlight .icon {
-  color: #fff;
-}
-
 /* =========================
-   JOB CARDS
+   JOB
    ========================= */
 .job {
   max-width: 900px;
@@ -221,7 +220,37 @@ main {
 }
 
 /* =========================
-   TABS
+   PRICING BUTTONS (FIX)
+   ========================= */
+.card button[data-key="pricingChoose"] {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.card button[data-key="pricingChoose"]:hover {
+  background: #1e40af;
+  transform: translateY(-1px);
+}
+
+.card.highlight button[data-key="pricingChoose"] {
+  background: #f59e0b;
+  color: #111;
+}
+
+.card.highlight button[data-key="pricingChoose"]:hover {
+  background: #d97706;
+}
+
+/* =========================
+   TABS (DESKTOP ONLY)
    ========================= */
 .tabs {
   display: flex;
@@ -237,7 +266,6 @@ main {
   background: #fff;
   color: #2563eb;
   font-weight: 700;
-  cursor: pointer;
 }
 
 .tab.active {
@@ -280,6 +308,11 @@ main {
     font-weight: 700;
     z-index: 999;
   }
+
+  /* ❌ махаме табовете на мобилно */
+  .tabs {
+    display: none !important;
+  }
 }
 
 /* =========================
@@ -293,13 +326,4 @@ main {
   border-radius: 999px;
   font-weight: 700;
   cursor: pointer;
-}
-
-
-
-/* MOBILE: махаме табовете Работа / Компании / Новини */
-@media (max-width: 768px) {
-  .tabs {
-    display: none !important;
-  }
 }
