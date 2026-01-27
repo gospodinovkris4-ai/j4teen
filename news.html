@@ -11,9 +11,7 @@
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
-
   <button id="lang-toggle" type="button">EN</button>
-
   <div class="burger">☰</div>
 
   <div class="menu">
@@ -27,52 +25,66 @@
   </div>
 </nav>
 
-
 <header class="hero small">
   <div class="hero-content">
-    <h1 data-key="newsTitle">Актуално 2026</h1>
-    <p data-key="newsSubtitle">Новини и съвети за младежи</p>
+    <h1 data-key="newsTitle">Актуално</h1>
+    <p data-key="newsSubtitle">Реални новини за работа и младежи</p>
   </div>
 </header>
 
 <main class="container">
 
-  <div class="cards">
-
-    <!-- NEWS ITEM -->
-    <div class="card">
-      <div class="icon">📰</div>
-      <h3 data-key="news1">Как да си намериш почасова работа</h3>
-      <p data-key="news1Sub">Практични съвети за старт през 2026</p>
-      <p style="font-size:13px; color:#777;">12.01.2026</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">📊</div>
-      <h3 data-key="news2">Търсени умения при младежи</h3>
-      <p data-key="news2Sub">Какво търсят работодателите</p>
-      <p style="font-size:13px; color:#777;">08.01.2026</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">🎓</div>
-      <h3 data-key="news3">Как да комбинираш училище и работа</h3>
-      <p data-key="news3Sub">Реалистичен баланс без прегаряне</p>
-      <p style="font-size:13px; color:#777;">03.01.2026</p>
-    </div>
-
-    <div class="card">
-      <div class="icon">💼</div>
-      <h3 data-key="news4">Най-подходящи първи работи</h3>
-      <p data-key="news4Sub">Идеи за ученици и студенти</p>
-      <p style="font-size:13px; color:#777;">28.12.2025</p>
-    </div>
-
-  </div>
+  <!-- REAL NEWS -->
+  <div class="cards" id="news-list"></div>
 
 </main>
 
 <script src="main.js"></script>
+
+<script>
+  const newsList = document.getElementById("news-list");
+
+  // Google News RSS (work + youth related)
+  const RSS_URL =
+    "https://news.google.com/rss/search?q=работа+младежи+кариера&hl=bg&gl=BG&ceid=BG:bg";
+
+  // CORS proxy
+  const FEED_URL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(RSS_URL);
+
+  fetch(FEED_URL)
+    .then(res => res.text())
+    .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+    .then(data => {
+      const items = Array.from(data.querySelectorAll("item")).slice(0, 8);
+
+      items.forEach(item => {
+        const title = item.querySelector("title").textContent;
+        const link = item.querySelector("link").textContent;
+        const date = new Date(item.querySelector("pubDate").textContent)
+          .toLocaleDateString("bg-BG");
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.style.cursor = "pointer";
+
+        card.innerHTML = `
+          <div class="icon">📰</div>
+          <h3>${title}</h3>
+          <p style="font-size:13px; color:#777;">${date}</p>
+        `;
+
+        card.addEventListener("click", () => {
+          window.open(link, "_blank");
+        });
+
+        newsList.appendChild(card);
+      });
+    })
+    .catch(() => {
+      newsList.innerHTML =
+        "<p style='text-align:center;'>Новините не могат да се заредят в момента.</p>";
+    });
+</script>
 
 </body>
 </html>
