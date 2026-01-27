@@ -314,3 +314,13 @@ form#post-form button[type="submit"]:hover {
   background: #d97706 !important;
 }
 
+
+
+
+
+/* ✅ ГАРАНЦИЯ: hero бутонът винаги син */
+.hero .btn.primary {
+  background: #2563eb !important;
+  color: #fff !important;
+}
+
