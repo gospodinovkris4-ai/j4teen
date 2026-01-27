@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-key="jobPageTitle">Обява – J4Teen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="topbar">
+  <div class="logo">J4Teen</div>
+  <button id="lang-toggle" type="button">EN</button>
+  <div class="burger">☰</div>
+
+  <div class="menu">
+    <a href="index.html" data-key="home">Начало</a>
+    <a href="jobs.html" data-key="jobs">Обяви</a>
+    <a href="categories.html" data-key="categories">Категории</a>
+    <a href="news.html" data-key="newsMenu">Новини</a>
+    <a href="pricing.html" data-key="plans">Планове</a>
+    <a href="post.html" data-key="post">Публикувай</a>
+    <a href="chat.html" data-key="chat">Чат</a>
+  </div>
+</nav>
+
+<header class="hero small">
+  <div class="hero-content">
+    <h1 id="job-title">Обява</h1>
+    <p id="job-category"></p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="job" style="max-width:700px; margin:0 auto;">
+    <div style="margin-bottom:12px;">
+      <strong>Описание:</strong>
+      <p id="job-desc"></p>
+    </div>
+
+    <div style="margin-bottom:12px;">
+      <strong>Заплащане:</strong>
+      <p id="job-price"></p>
+    </div>
+
+    <button
+      class="btn primary"
+      style="margin-top:16px;"
+      id="chat-btn"
+    >
+      Пиши в чата
+    </button>
+  </div>
+
+</main>
+
+<script src="main.js"></script>
+
+<script>
+  // 1️⃣ взимаме ID от URL
+  const params = new URLSearchParams(window.location.search);
+  const jobId = params.get("id");
+
+  // 2️⃣ взимаме обявите
+  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+
+  // 3️⃣ намираме конкретната
+  const job = jobs.find(j => j.id === jobId);
+
+  if (!job) {
+    document.querySelector("main").innerHTML =
+      "<p style='text-align:center;'>Обявата не е намерена.</p>";
+  } else {
+    document.getElementById("job-title").textContent = job.title;
+    document.getElementById("job-desc").textContent = job.desc;
+    document.getElementById("job-price").textContent = job.price || "По договаряне";
+    document.getElementById("job-category").textContent = job.category;
+
+    // 4️⃣ бутон към чат (за сега общ)
+    document.getElementById("chat-btn").addEventListener("click", () => {
+      window.location.href = "chat.html";
+    });
+  }
+</script>
+
+</body>
+</html>
