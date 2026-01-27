@@ -11,9 +11,7 @@
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
-
   <button id="lang-toggle" type="button">EN</button>
-
   <div class="burger">☰</div>
 
   <div class="menu">
@@ -36,46 +34,49 @@
 
 <main class="container">
 
-  <!-- DEMO JOBS (STATIC – за момента) -->
-  <div class="job">
-    <div>
-      <div class="title">Бране на череши</div>
-      <div class="meta">Сезонна работа · Земеделие</div>
-    </div>
-    <div class="price">80 лв/ден</div>
-  </div>
+  <!-- 👇 ЕДИНЕН КОНТЕЙНЕР ЗА ВСИЧКИ ОБЯВИ -->
+  <div id="jobs-list">
 
-  <div class="job">
-    <div>
-      <div class="title">Помощник в оранжерия</div>
-      <div class="meta">Поливане и подреждане</div>
+    <!-- DEMO JOBS -->
+    <div class="job">
+      <div>
+        <div class="title">Бране на череши</div>
+        <div class="meta">Сезонна работа · Земеделие</div>
+      </div>
+      <div class="price">80 лв/ден</div>
     </div>
-    <div class="price">60 лв/ден</div>
-  </div>
 
-  <div class="job">
-    <div>
-      <div class="title">Разходка на куче</div>
-      <div class="meta">Сутрин и вечер · Животни</div>
+    <div class="job">
+      <div>
+        <div class="title">Помощник в оранжерия</div>
+        <div class="meta">Поливане и подреждане</div>
+      </div>
+      <div class="price">60 лв/ден</div>
     </div>
-    <div class="price">15 лв</div>
-  </div>
 
+    <div class="job">
+      <div>
+        <div class="title">Разходка на куче</div>
+        <div class="meta">Сутрин и вечер · Животни</div>
+      </div>
+      <div class="price">15 лв</div>
+    </div>
+
+  </div>
 </main>
 
-<!-- 🌍 ЕДИНСТВЕН JS: main.js -->
 <script src="main.js"></script>
+
 <script>
   (function () {
     const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
     if (!jobs.length) return;
 
-    const container = document.querySelector("main.container");
-    if (!container) return;
+    const list = document.getElementById("jobs-list");
+    if (!list) return;
 
     jobs.forEach(job => {
-      // предотвратяваме дублиране по заглавие
-      const exists = [...container.querySelectorAll(".job .title")]
+      const exists = [...list.querySelectorAll(".job .title")]
         .some(t => t.textContent.trim() === job.title);
 
       if (exists) return;
@@ -91,7 +92,7 @@
         <div class="price">${job.price || ""}</div>
       `;
 
-      container.appendChild(div);
+      list.appendChild(div);
     });
   })();
 </script>
