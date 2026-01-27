@@ -304,12 +304,13 @@ main {
   }
 }
 
-/* 🔶 FIX: Само бутонът "Публикувай" да е оранжев */
-a[href="post.html"].btn {
+/* 🔶 FIX: САМО бутона "Публикувай обява" в post.html */
+form#post-form button[type="submit"] {
   background: #f59e0b !important;
   color: #111 !important;
 }
 
-a[href="post.html"].btn:hover {
+form#post-form button[type="submit"]:hover {
   background: #d97706 !important;
 }
+
