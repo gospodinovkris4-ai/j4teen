@@ -34,12 +34,13 @@
 
 <main class="container">
 
+  <!-- ✅ GRID вместо пирамида -->
   <div id="category-jobs" style="
     max-width:900px;
     margin:0 auto;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+    gap:16px;
   "></div>
 
   <div id="category-empty" style="display:none;">
@@ -77,7 +78,6 @@
     titleEl.textContent = categoryLabels[category][lang];
   }
 
-  // 🔗 CATEGORY BRIDGE
   const categoryAliases = {
     animals: ["dog"],
     home: ["home"],
@@ -104,7 +104,6 @@
       div.className = "job";
       div.style.cursor = "pointer";
 
-      // гарантираме ID (НЕ пипаме логиката)
       const jobId = job.id || (job.id = Date.now() + "_" + index);
 
       div.innerHTML = `
@@ -122,7 +121,6 @@
       list.appendChild(div);
     });
 
-    // запазваме ID-тата за следващи кликове
     localStorage.setItem("jobs", JSON.stringify(jobs));
   }
 </script>
