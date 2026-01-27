@@ -34,7 +34,7 @@
 
 <main class="container">
 
-  <!-- ✅ GRID вместо пирамида -->
+  <!-- GRID (НЕ ПИРАМИДА) -->
   <div id="category-jobs" style="
     max-width:900px;
     margin:0 auto;
@@ -63,6 +63,7 @@
   const list = document.getElementById("category-jobs");
   const empty = document.getElementById("category-empty");
 
+  // Заглавия
   const categoryLabels = {
     animals: { bg: "Грижа за животни", en: "Animal care" },
     home: { bg: "Домашна помощ", en: "Home help" },
@@ -78,8 +79,9 @@
     titleEl.textContent = categoryLabels[category][lang];
   }
 
+  // Категориен мост (НЕ ГО ПИПАМЕ)
   const categoryAliases = {
-    animals: ["dog"],
+    animals: ["dog", "animals"],
     home: ["home"],
     delivery: ["delivery"],
     agriculture: ["agriculture"],
@@ -92,6 +94,7 @@
   const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
   const allowed = categoryAliases[category] || [];
 
+  // ✅ ФИНАЛЕН ФИЛТЪР — ТОВА БЕШЕ ПРОБЛЕМЪТ
   const filtered = jobs.filter(job =>
     allowed.includes(job.category)
   );
@@ -121,6 +124,7 @@
       list.appendChild(div);
     });
 
+    // запазваме ID-тата
     localStorage.setItem("jobs", JSON.stringify(jobs));
   }
 </script>
