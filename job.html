@@ -36,12 +36,12 @@
 
   <div class="job" style="max-width:700px; margin:0 auto;">
     <div style="margin-bottom:12px;">
-      <strong>Описание:</strong>
+      <strong data-key="jobDescLabel">Описание:</strong>
       <p id="job-desc"></p>
     </div>
 
     <div style="margin-bottom:12px;">
-      <strong>Заплащане:</strong>
+      <strong data-key="jobPriceLabel">Заплащане:</strong>
       <p id="job-price"></p>
     </div>
 
@@ -49,6 +49,7 @@
       class="btn primary"
       style="margin-top:16px;"
       id="chat-btn"
+      data-key="jobChatBtn"
     >
       Пиши в чата
     </button>
@@ -59,15 +60,24 @@
 <script src="main.js"></script>
 
 <script>
-  // 1️⃣ взимаме ID от URL
   const params = new URLSearchParams(window.location.search);
   const jobId = params.get("id");
 
-  // 2️⃣ взимаме обявите
   const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
-
-  // 3️⃣ намираме конкретната
   const job = jobs.find(j => j.id === jobId);
+
+  const categoryLabels = {
+    dog: { bg: "Разходка на куче", en: "Dog walking" },
+    home: { bg: "Домашна помощ", en: "Home help" },
+    delivery: { bg: "Доставки", en: "Delivery" },
+    agriculture: { bg: "Земеделие", en: "Agriculture" },
+    physical: { bg: "Физическа работа", en: "Physical work" },
+    food: { bg: "Заведения", en: "Food & hospitality" },
+    care: { bg: "Грижа за хора", en: "People care" },
+    hourly: { bg: "Почасова помощ", en: "Hourly help" }
+  };
+
+  const lang = localStorage.getItem("lang") || "bg";
 
   if (!job) {
     document.querySelector("main").innerHTML =
@@ -75,10 +85,16 @@
   } else {
     document.getElementById("job-title").textContent = job.title;
     document.getElementById("job-desc").textContent = job.desc;
-    document.getElementById("job-price").textContent = job.price || "По договаряне";
-    document.getElementById("job-category").textContent = job.category;
+    document.getElementById("job-price").textContent =
+      job.price || (lang === "bg" ? "По договаряне" : "Negotiable");
 
-    // 4️⃣ бутон към чат (за сега общ)
+    const label =
+      categoryLabels[job.category]
+        ? categoryLabels[job.category][lang]
+        : job.category;
+
+    document.getElementById("job-category").textContent = label;
+
     document.getElementById("chat-btn").addEventListener("click", () => {
       window.location.href = "chat.html";
     });
