@@ -62,7 +62,6 @@
   const list = document.getElementById("category-jobs");
   const empty = document.getElementById("category-empty");
 
-  // Показване на заглавие (НЕ пипаме преводите)
   const categoryLabels = {
     animals: { bg: "Грижа за животни", en: "Animal care" },
     home: { bg: "Домашна помощ", en: "Home help" },
@@ -78,7 +77,7 @@
     titleEl.textContent = categoryLabels[category][lang];
   }
 
-  // 🔗 CATEGORY BRIDGE (ТОВА Е ФИКСА)
+  // 🔗 CATEGORY BRIDGE
   const categoryAliases = {
     animals: ["dog"],
     home: ["home"],
@@ -100,9 +99,13 @@
   if (!filtered.length) {
     empty.style.display = "block";
   } else {
-    filtered.forEach(job => {
+    filtered.forEach((job, index) => {
       const div = document.createElement("div");
       div.className = "job";
+      div.style.cursor = "pointer";
+
+      // гарантираме ID (НЕ пипаме логиката)
+      const jobId = job.id || (job.id = Date.now() + "_" + index);
 
       div.innerHTML = `
         <div>
@@ -112,8 +115,15 @@
         <div class="price">${job.price || ""}</div>
       `;
 
+      div.addEventListener("click", () => {
+        window.location.href = "job.html?id=" + jobId;
+      });
+
       list.appendChild(div);
     });
+
+    // запазваме ID-тата за следващи кликове
+    localStorage.setItem("jobs", JSON.stringify(jobs));
   }
 </script>
 
