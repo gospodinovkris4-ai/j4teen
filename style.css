@@ -303,3 +303,13 @@ main {
     display: none !important;
   }
 }
+
+/* 🔶 FIX: Само бутонът "Публикувай" да е оранжев */
+a[href="post.html"].btn {
+  background: #f59e0b !important;
+  color: #111 !important;
+}
+
+a[href="post.html"].btn:hover {
+  background: #d97706 !important;
+}
