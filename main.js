@@ -1,3 +1,24 @@
+// 🔄 MIGRATION: оправя стари категории (ЕДИН ПЪТ)
+(function migrateJobs() {
+  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+  if (!jobs.length) return;
+
+  let changed = false;
+
+  jobs.forEach(job => {
+    if (job.category === "dog") {
+      job.category = "animals";
+      changed = true;
+    }
+  });
+
+  if (changed) {
+    localStorage.setItem("jobs", JSON.stringify(jobs));
+  }
+})();
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
 
   /* ================= MENU ================= */
