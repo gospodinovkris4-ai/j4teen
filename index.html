@@ -11,9 +11,7 @@
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
-
   <button id="lang-toggle" type="button">EN</button>
-
   <div class="burger">☰</div>
 
   <div class="menu">
@@ -109,21 +107,9 @@
 
   <!-- NEWS -->
   <section class="tab-content" id="tab-news">
-    <h2 data-key="newsTitle">Актуално 2026</h2>
+    <h2 data-key="newsTitle">Актуално</h2>
 
-    <div class="cards">
-      <div class="card">
-        <div class="icon">📰</div>
-        <h3 data-key="news1">Как да си намериш почасова работа</h3>
-        <p data-key="news1Sub">Практични съвети</p>
-      </div>
-
-      <div class="card">
-        <div class="icon">📊</div>
-        <h3 data-key="news2">Търсени умения при младежи</h3>
-        <p data-key="news2Sub">Какво търсят компаниите</p>
-      </div>
-    </div>
+    <div class="cards" id="home-news"></div>
 
     <div style="text-align:center; margin-top:24px;">
       <a href="news.html" class="btn secondary" data-key="allNews">Всички новини</a>
@@ -134,6 +120,7 @@
 
 <a href="post.html" class="mobile-cta" data-key="mobilePost">+ Публикувай обява</a>
 
+<script src="news-feed.js"></script>
 <script src="main.js"></script>
 
 <script>
@@ -147,6 +134,32 @@
       document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
     });
   });
+
+  // HOME NEWS (daily, internal)
+  const homeNews = document.getElementById("home-news");
+  const lang = localStorage.getItem("lang") || "bg";
+
+  if (window.J4TEEN_DAILY_NEWS && homeNews) {
+    J4TEEN_DAILY_NEWS(2).forEach(item => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.cursor = "pointer";
+
+      card.innerHTML = `
+        <img src="${item.image}" style="width:100%; border-radius:12px; margin-bottom:12px;">
+        <h3>${lang === "bg" ? item.title_bg : item.title_en}</h3>
+        <p style="font-size:13px; color:#777;">
+          ${new Date(item.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB")}
+        </p>
+      `;
+
+      card.addEventListener("click", () => {
+        window.location.href = "news-item.html?id=" + item.id;
+      });
+
+      homeNews.appendChild(card);
+    });
+  }
 </script>
 
 </body>
