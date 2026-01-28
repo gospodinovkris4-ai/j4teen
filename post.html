@@ -34,7 +34,7 @@
 
 <main class="container">
 
-  <!-- BLUE FORM -->
+  <!-- FORM -->
   <form id="post-form" style="
     max-width:520px;
     margin:24px auto;
@@ -47,148 +47,115 @@
     gap:14px;
   ">
 
-    <input
-      type="text"
-      id="job-title"
-      data-key-placeholder="jobTitlePh"
-      placeholder="Заглавие на обявата"
-      required
-      style="
-        padding:14px 16px;
-        border-radius:14px;
-        border:2px solid #e5edff;
-        font-size:15px;
-        outline:none;
-      "
-      onfocus="this.style.borderColor='#2563eb'"
-      onblur="this.style.borderColor='#e5edff'"
-    >
+    <input type="text" id="job-title" placeholder="Заглавие на обявата" required
+      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;">
 
-    <select
-      id="job-category"
-      required
-      style="
-        padding:14px 16px;
-        border-radius:14px;
-        border:2px solid #e5edff;
-        font-size:15px;
-        outline:none;
-        background:white;
-      "
-      onfocus="this.style.borderColor='#2563eb'"
-      onblur="this.style.borderColor='#e5edff'"
-    >
-      <option value="" data-key="selectCategory">Избери категория</option>
-      <option value="dog" data-key="catDog">Разходка на куче</option>
-      <option value="home" data-key="catHome">Помощ в дома</option>
-      <option value="delivery" data-key="catDelivery">Доставка</option>
+    <select id="job-category" required
+      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;">
+      <option value="">Избери категория</option>
+      <option value="dog">Разходка на куче</option>
+      <option value="home">Помощ в дома</option>
+      <option value="delivery">Доставка</option>
     </select>
 
-    <textarea
-      id="job-desc"
-      rows="4"
-      data-key-placeholder="jobDescPh"
-      placeholder="Опиши каква помощ търсиш, кога и къде"
-      required
-      style="
-        padding:14px 16px;
-        border-radius:14px;
-        border:2px solid #e5edff;
-        font-size:15px;
-        outline:none;
-        resize:none;
-      "
-      onfocus="this.style.borderColor='#2563eb'"
-      onblur="this.style.borderColor='#e5edff'"
-    ></textarea>
+    <textarea id="job-desc" rows="4" placeholder="Опиши каква помощ търсиш" required
+      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;resize:none;"></textarea>
 
-    <input
-      type="text"
-      id="job-price"
-      data-key-placeholder="jobPricePh"
-      placeholder="Цена (напр. 15 лв)"
-      style="
-        padding:14px 16px;
-        border-radius:14px;
-        border:2px solid #e5edff;
-        font-size:15px;
-        outline:none;
-      "
-      onfocus="this.style.borderColor='#2563eb'"
-      onblur="this.style.borderColor='#e5edff'"
-    >
+    <input type="text" id="job-price" placeholder="Цена (напр. 15 лв)"
+      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;">
 
-    <button
-      type="submit"
-      data-key="postBtn"
-      style="
-        margin-top:6px;
-        padding:16px;
-        border-radius:999px;
-        background:#2563eb;
-        color:white;
-        font-weight:800;
-        font-size:15px;
-        border:none;
-        cursor:pointer;
-        box-shadow:0 8px 20px rgba(37,99,235,0.4);
-      "
-      onmouseover="this.style.background='#1e40af'"
-      onmouseout="this.style.background='#2563eb'"
-    >
+    <button type="submit"
+      style="margin-top:6px;padding:16px;border-radius:999px;background:#2563eb;color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;">
       Публикувай обява
     </button>
-
   </form>
 
 </main>
+
+<!-- ✅ MODAL -->
+<div id="plan-modal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+">
+  <div style="
+    background:#fff;
+    border-radius:20px;
+    padding:28px;
+    max-width:360px;
+    width:90%;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  ">
+    <div style="font-size:36px;">⚠️</div>
+    <h3 style="margin:12px 0;">Нямаш активен план</h3>
+    <p style="color:#555; margin-bottom:20px;">
+      За да публикуваш обява, трябва първо да избереш абонаментен план.
+    </p>
+
+    <a href="pricing.html"
+       style="
+         display:block;
+         margin-bottom:12px;
+         padding:14px;
+         border-radius:999px;
+         background:#f59e0b;
+         color:#111;
+         font-weight:800;
+       ">
+       Виж планове
+    </a>
+
+    <button onclick="closeModal()"
+      style="background:none;border:none;color:#2563eb;font-weight:700;cursor:pointer;">
+      Отказ
+    </button>
+  </div>
+</div>
 
 <script src="main.js"></script>
 
 <script>
   const form = document.getElementById("post-form");
+  const modal = document.getElementById("plan-modal");
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
 
   form.addEventListener("submit", function (e) {
-  e.preventDefault();
+    e.preventDefault();
 
-  const plan = JSON.parse(localStorage.getItem("j4teen_plan"));
+    const plan = JSON.parse(localStorage.getItem("j4teen_plan"));
+    if (!plan) {
+      modal.style.display = "flex";
+      return;
+    }
 
-  if (!plan) {
-    alert("Моля, избери абонаментен план преди да публикуваш обява.");
-    window.location.href = "pricing.html";
-    return;
-  }
+    const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+    if (jobs.length >= plan.maxJobs) {
+      alert("Достигна лимита за твоя план.");
+      return;
+    }
 
-  // броим само обявите на текущия потребител (MVP = всички)
-  if (jobs.length >= plan.maxJobs) {
-    alert(
-      `Достигна лимита от ${plan.maxJobs} обяви за плана "${plan.type.toUpperCase()}".`
-    );
-    return;
-  }
+    const job = {
+      id: Date.now().toString(),
+      title: job-title.value,
+      desc: job-desc.value,
+      price: job-price.value,
+      category: job-category.value,
+      createdAt: new Date().toISOString()
+    };
 
-  const title = document.getElementById("job-title").value;
-  const desc = document.getElementById("job-desc").value;
-  const price = document.getElementById("job-price").value;
-  const category = document.getElementById("job-category").value;
-
-  const job = {
-    id: Date.now().toString(),
-    title,
-    desc,
-    price,
-    category,
-    createdAt: new Date().toISOString()
-  };
-
-  jobs.push(job);
-  localStorage.setItem("jobs", JSON.stringify(jobs));
-
-  window.location.href = "jobs.html";
-});
-
+    jobs.push(job);
+    localStorage.setItem("jobs", JSON.stringify(jobs));
+    window.location.href = "jobs.html";
+  });
 </script>
 
 </body>
