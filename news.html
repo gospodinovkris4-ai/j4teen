@@ -49,19 +49,24 @@
     .forEach(item => {
       const card = document.createElement("div");
       card.className = "card";
+      card.style.cursor = "pointer";
 
       card.innerHTML = `
         <div class="icon">📰</div>
         <h3>${lang === "bg" ? item.title_bg : item.title_en}</h3>
-        <p>${lang === "bg" ? item.text_bg : item.text_en}</p>
         <p style="font-size:13px; color:#777;">
           ${new Date(item.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB")}
         </p>
       `;
 
+      card.addEventListener("click", () => {
+        window.location.href = "news-item.html?id=" + item.id;
+      });
+
       list.appendChild(card);
     });
 </script>
+
 
 </body>
 </html>
