@@ -39,32 +39,34 @@
 <script src="news-feed.js"></script>
 <script src="main.js"></script>
 
+<script src="news-feed.js"></script>
+<script src="main.js"></script>
+
 <script>
   const list = document.getElementById("news-list");
   const lang = localStorage.getItem("lang") || "bg";
 
-  J4TEEN_NEWS
-    .slice()
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .forEach(item => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.style.cursor = "pointer";
+  const news = window.J4TEEN_DAILY_NEWS(4);
 
-      card.innerHTML = `
-        <div class="icon">📰</div>
-        <h3>${lang === "bg" ? item.title_bg : item.title_en}</h3>
-        <p style="font-size:13px; color:#777;">
-          ${new Date(item.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB")}
-        </p>
-      `;
+  news.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.cursor = "pointer";
 
-      card.addEventListener("click", () => {
-        window.location.href = "news-item.html?id=" + item.id;
-      });
+    card.innerHTML = `
+      <div class="icon">📰</div>
+      <h3>${lang === "bg" ? item.title_bg : item.title_en}</h3>
+      <p style="font-size:13px; color:#777;">
+        ${new Date(item.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB")}
+      </p>
+    `;
 
-      list.appendChild(card);
+    card.addEventListener("click", () => {
+      window.location.href = "news-item.html?id=" + item.id;
     });
+
+    list.appendChild(card);
+  });
 </script>
 
 
