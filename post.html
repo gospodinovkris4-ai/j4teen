@@ -73,49 +73,82 @@
 </main>
 
 <!-- ✅ MODAL -->
+<!-- ✅ PREMIUM MODAL -->
 <div id="plan-modal" style="
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.45);
+  background:rgba(15,23,42,0.55);
   align-items:center;
   justify-content:center;
   z-index:2000;
 ">
+
   <div style="
-    background:#fff;
-    border-radius:20px;
-    padding:28px;
-    max-width:360px;
+    background:#ffffff;
+    border-radius:24px;
+    padding:32px 28px;
+    max-width:420px;
     width:90%;
     text-align:center;
-    box-shadow:0 20px 40px rgba(0,0,0,0.25);
+    box-shadow:0 30px 60px rgba(0,0,0,0.35);
+    animation:popIn 0.25s ease;
   ">
-    <div style="font-size:36px;">⚠️</div>
-    <h3 style="margin:12px 0;">Нямаш активен план</h3>
-    <p style="color:#555; margin-bottom:20px;">
-      За да публикуваш обява, трябва първо да избереш абонаментен план.
+
+    <!-- ИЛЮСТРАЦИЯ -->
+    <img
+      src="https://images.unsplash.com/photo-1551836022-d5d88e9218df"
+      alt="Upgrade plan"
+      style="
+        width:100%;
+        max-height:160px;
+        object-fit:cover;
+        border-radius:16px;
+        margin-bottom:20px;
+      "
+    >
+
+    <h3 style="font-size:20px; margin-bottom:8px;">
+      Достигна лимита на плана си
+    </h3>
+
+    <p style="color:#555; font-size:15px; line-height:1.5; margin-bottom:22px;">
+      Тази обява няма как да бъде публикувана, защото текущият ти абонамент
+      е достигнал максималния брой активни обяви.
+      <br><br>
+      С ъпгрейд можеш веднага да публикуваш още.
     </p>
 
+    <!-- CTA -->
     <a href="pricing.html"
        style="
          display:block;
-         margin-bottom:12px;
-         padding:14px;
+         margin-bottom:14px;
+         padding:15px;
          border-radius:999px;
          background:#f59e0b;
          color:#111;
          font-weight:800;
+         font-size:15px;
+         box-shadow:0 10px 24px rgba(245,158,11,0.4);
        ">
-       Виж планове
+       Виж абонаментни планове
     </a>
 
     <button onclick="closeModal()"
-      style="background:none;border:none;color:#2563eb;font-weight:700;cursor:pointer;">
-      Отказ
+      style="
+        background:none;
+        border:none;
+        color:#2563eb;
+        font-weight:700;
+        cursor:pointer;
+        font-size:14px;
+      ">
+      Не сега
     </button>
   </div>
 </div>
+
 
 <script src="main.js"></script>
 
