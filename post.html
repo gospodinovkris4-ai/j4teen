@@ -149,21 +149,46 @@
   const form = document.getElementById("post-form");
 
   form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const title = document.getElementById("job-title").value;
-    const desc = document.getElementById("job-desc").value;
-    const price = document.getElementById("job-price").value;
-    const category = document.getElementById("job-category").value;
+  const plan = JSON.parse(localStorage.getItem("j4teen_plan"));
 
-    const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+  if (!plan) {
+    alert("Моля, избери абонаментен план преди да публикуваш обява.");
+    window.location.href = "pricing.html";
+    return;
+  }
 
-    jobs.push({ title, desc, price, category });
+  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-    localStorage.setItem("jobs", JSON.stringify(jobs));
+  // броим само обявите на текущия потребител (MVP = всички)
+  if (jobs.length >= plan.maxJobs) {
+    alert(
+      `Достигна лимита от ${plan.maxJobs} обяви за плана "${plan.type.toUpperCase()}".`
+    );
+    return;
+  }
 
-    window.location.href = "jobs.html";
-  });
+  const title = document.getElementById("job-title").value;
+  const desc = document.getElementById("job-desc").value;
+  const price = document.getElementById("job-price").value;
+  const category = document.getElementById("job-category").value;
+
+  const job = {
+    id: Date.now().toString(),
+    title,
+    desc,
+    price,
+    category,
+    createdAt: new Date().toISOString()
+  };
+
+  jobs.push(job);
+  localStorage.setItem("jobs", JSON.stringify(jobs));
+
+  window.location.href = "jobs.html";
+});
+
 </script>
 
 </body>
