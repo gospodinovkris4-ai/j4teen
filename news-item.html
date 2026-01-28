@@ -11,21 +11,15 @@
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
-  <button id="lang-toggle" type="button">EN</button>
+  <button id="lang-toggle">EN</button>
   <div class="burger">☰</div>
-
   <div class="menu">
     <a href="index.html">Начало</a>
-    <a href="jobs.html">Обяви</a>
-    <a href="categories.html">Категории</a>
     <a href="news.html">Новини</a>
-    <a href="pricing.html">Планове</a>
-    <a href="post.html">Публикувай</a>
-    <a href="chat.html">Чат</a>
   </div>
 </nav>
 
-<header class="hero small">
+<header class="hero small" id="news-hero">
   <div class="hero-content">
     <h1 id="news-title"></h1>
     <p id="news-date"></p>
@@ -33,9 +27,26 @@
 </header>
 
 <main class="container">
-  <div class="job" style="max-width:700px; margin:0 auto;">
-    <p id="news-text"></p>
+
+  <img id="news-image" style="
+    width:100%;
+    max-width:900px;
+    border-radius:24px;
+    margin:24px auto;
+    display:block;
+  ">
+
+  <div class="card" style="max-width:900px; margin:0 auto;">
+    <div id="news-text"></div>
   </div>
+
+  <div style="text-align:center; margin:32px;">
+    <a href="news.html" class="btn primary">← Назад към новини</a>
+  </div>
+
+  <h2 style="text-align:center; margin-bottom:16px;">Още новини</h2>
+  <div class="cards" id="more-news"></div>
+
 </main>
 
 <script src="news-feed.js"></script>
@@ -43,23 +54,35 @@
 
 <script>
   const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
+  const id = Number(params.get("id"));
   const lang = localStorage.getItem("lang") || "bg";
 
-  const item = J4TEEN_NEWS.find(n => n.id === id);
+  const news = J4TEEN_NEWS.find(n => n.id === id);
 
-  if (!item) {
-    document.querySelector("main").innerHTML =
-      "<p style='text-align:center;'>Новината не е намерена.</p>";
+  if (!news) {
+    document.body.innerHTML = "<p>Новината не е намерена.</p>";
   } else {
     document.getElementById("news-title").textContent =
-      lang === "bg" ? item.title_bg : item.title_en;
-
-    document.getElementById("news-text").textContent =
-      lang === "bg" ? item.text_bg : item.text_en;
+      lang === "bg" ? news.title_bg : news.title_en;
 
     document.getElementById("news-date").textContent =
-      new Date(item.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB");
+      new Date(news.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB");
+
+    document.getElementById("news-image").src = news.image;
+    document.getElementById("news-text").innerText =
+      lang === "bg" ? news.text_bg : news.text_en;
+
+    const more = document.getElementById("more-news");
+    J4TEEN_NEWS.filter(n => n.id !== id).forEach(n => {
+      const c = document.createElement("div");
+      c.className = "card";
+      c.innerHTML = `
+        <h3>${lang === "bg" ? n.title_bg : n.title_en}</h3>
+        <p>${new Date(n.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB")}</p>
+      `;
+      c.onclick = () => location.href = "news-item.html?id=" + n.id;
+      more.appendChild(c);
+    });
   }
 </script>
 
