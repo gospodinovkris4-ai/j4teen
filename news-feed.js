@@ -1,40 +1,64 @@
 // news-feed.js
-// MVP NEWS ENGINE (frontend-only, backend-ready)
+// J4Teen Internal News Feed (MVP → Backend-ready)
 
-const J4TEEN_NEWS = [
+const J4TEEN_NEWS_POOL = [
   {
-    id: "n1",
+    id: "youth-jobs",
+    category: "jobs",
+    title_bg: "Младежката заетост в България расте",
+    title_en: "Youth employment in Bulgaria is rising",
+    text_bg: "Все повече млади хора намират почасова и гъвкава работа според последни наблюдения на пазара.",
+    text_en: "More young people are finding part-time and flexible jobs according to recent market observations."
+  },
+  {
+    id: "part-time-trend",
+    category: "jobs",
+    title_bg: "Почасовата работа е новият стандарт",
+    title_en: "Part-time work becomes the new standard",
+    text_bg: "Гъвкавите работни модели са предпочитани от ученици и студенти.",
+    text_en: "Flexible work models are preferred by students and young people."
+  },
+  {
+    id: "employers-youth",
     category: "business",
-    source: "Capital.bg",
-    date: "2026-01-15",
-    title_bg: "Бизнесът в България търси повече млади кадри",
-    title_en: "Bulgarian businesses seek more young professionals",
-    text_bg: "Компании от ИТ, логистика и услуги изпитват недостиг на млади служители.",
-    text_en: "Companies in IT, logistics and services report a lack of young employees.",
-    url: "https://www.capital.bg/biznes/"
+    title_bg: "Работодателите търсят млади кадри",
+    title_en: "Employers are looking for young talent",
+    text_bg: "Бизнесът все по-често инвестира в млади служители и стажанти.",
+    text_en: "Businesses increasingly invest in young employees and interns."
   },
   {
-    id: "n2",
-    category: "hr",
-    source: "Dnevnik.bg",
-    date: "2026-01-14",
-    title_bg: "Как HR мениджърите наемат младежи без опит",
-    title_en: "How HR managers hire young people without experience",
-    text_bg: "Все повече работодатели залагат на обучение вместо предишен опит.",
-    text_en: "More employers focus on training instead of previous experience.",
-    url: "https://www.dnevnik.bg/ikonomika/"
+    id: "skills-2026",
+    category: "skills",
+    title_bg: "Най-търсените умения през 2026",
+    title_en: "Most demanded skills in 2026",
+    text_bg: "Комуникация, адаптивност и базови дигитални умения са ключови.",
+    text_en: "Communication, adaptability and basic digital skills are key."
   },
   {
-    id: "n3",
-    category: "management",
-    source: "Forbes Bulgaria",
-    date: "2026-01-13",
-    title_bg: "Новото поколение мениджъри мисли различно",
-    title_en: "The new generation of managers thinks differently",
-    text_bg: "Лидерите под 35 години залагат на гъвкавост и технологии.",
-    text_en: "Leaders under 35 focus on flexibility and technology.",
-    url: "https://forbesbulgaria.com/"
+    id: "first-job",
+    category: "career",
+    title_bg: "Как да намериш първата си работа",
+    title_en: "How to get your first job",
+    text_bg: "Практични съвети за младежи без предишен опит.",
+    text_en: "Practical advice for young people with no prior experience."
   }
 ];
 
+// 👉 deterministic daily rotation
+function getDailyNews(count = 3) {
+  const today = new Date();
+  const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
 
+  const shuffled = [...J4TEEN_NEWS_POOL]
+    .map((item, i) => ({ item, key: (seed + i * 31) % 997 }))
+    .sort((a, b) => a.key - b.key)
+    .map(x => x.item);
+
+  return shuffled.slice(0, count).map(n => ({
+    ...n,
+    date: today.toISOString()
+  }));
+}
+
+// expose globally
+window.J4TEEN_DAILY_NEWS = getDailyNews;
