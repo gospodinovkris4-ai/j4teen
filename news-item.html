@@ -2,64 +2,39 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Новина – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
-  <button id="lang-toggle" type="button">EN</button>
-  <div class="burger">☰</div>
-
-  <div class="menu">
-    <a href="index.html">Начало</a>
-    <a href="jobs.html">Обяви</a>
-    <a href="categories.html">Категории</a>
-    <a href="news.html">Новини</a>
-    <a href="pricing.html">Планове</a>
-    <a href="post.html">Публикувай</a>
-    <a href="chat.html">Чат</a>
-  </div>
 </nav>
 
-<header class="hero small">
-  <div class="hero-content">
-    <h1 id="news-title"></h1>
-    <p id="news-date"></p>
-  </div>
-</header>
-
-<main class="container">
-  <div class="card" style="max-width:800px; margin:0 auto;">
-    <p id="news-text"></p>
-  </div>
-</main>
+<main class="container" id="news-content"></main>
 
 <script src="news-feed.js"></script>
-<script src="main.js"></script>
-
 <script>
   const params = new URLSearchParams(window.location.search);
-  const id = Number(params.get("id"));
+  const id = params.get("id");
   const lang = localStorage.getItem("lang") || "bg";
 
   const news = J4TEEN_NEWS.find(n => n.id === id);
+  const container = document.getElementById("news-content");
 
   if (!news) {
-    document.querySelector("main").innerHTML =
-      "<p style='text-align:center;'>Новината не е намерена.</p>";
+    container.innerHTML = "<p>Новината не е намерена.</p>";
   } else {
-    document.getElementById("news-title").textContent =
-      lang === "bg" ? news.title_bg : news.title_en;
-
-    document.getElementById("news-text").textContent =
-      lang === "bg" ? news.text_bg : news.text_en;
-
-    document.getElementById("news-date").textContent =
-      new Date(news.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB");
+    container.innerHTML = `
+      <h1>${lang === "bg" ? news.title_bg : news.title_en}</h1>
+      <p style="color:#777;">${news.source} · ${news.date}</p>
+      <p style="margin-top:16px;">
+        ${lang === "bg" ? news.text_bg : news.text_en}
+      </p>
+      <a href="${news.url}" target="_blank" class="btn primary" style="margin-top:20px;">
+        Виж оригиналната новина
+      </a>
+    `;
   }
 </script>
 
