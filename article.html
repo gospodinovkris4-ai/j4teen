@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Новина – J4Teen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="topbar">
+  <div class="logo">J4Teen</div>
+  <button id="lang-toggle" type="button">EN</button>
+  <div class="burger">☰</div>
+
+  <div class="menu">
+    <a href="index.html">Начало</a>
+    <a href="jobs.html">Обяви</a>
+    <a href="categories.html">Категории</a>
+    <a href="news.html">Новини</a>
+    <a href="pricing.html">Планове</a>
+    <a href="post.html">Публикувай</a>
+    <a href="chat.html">Чат</a>
+  </div>
+</nav>
+
+<header class="hero small">
+  <div class="hero-content">
+    <h1 id="article-title">Новина</h1>
+    <p id="article-date"></p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="card" style="max-width:800px; margin:0 auto;">
+    <p id="article-content"></p>
+  </div>
+
+</main>
+
+<script src="main.js"></script>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  const lang = localStorage.getItem("lang") || "bg";
+
+  const articles = [
+    {
+      id: "1",
+      bgTitle: "Как да си намериш първа почасова работа",
+      enTitle: "How to find your first part-time job",
+      bgText: "Първата работа е важна стъпка. Започни с почасови задачи близо до теб, които не изискват опит.",
+      enText: "Your first job is an important step. Start with local part-time tasks that require no experience.",
+      date: "12.01.2026"
+    },
+    {
+      id: "2",
+      bgTitle: "Най-търсените почасови работи през 2026",
+      enTitle: "Most in-demand part-time jobs in 2026",
+      bgText: "Разходка на кучета, доставки и помощ в дома са сред най-търсените дейности.",
+      enText: "Dog walking, deliveries and home help are among the most demanded activities.",
+      date: "10.01.2026"
+    },
+    {
+      id: "3",
+      bgTitle: "Как да комбинираш училище и работа",
+      enTitle: "How to balance school and work",
+      bgText: "Балансът е ключов – избирай работа с гъвкаво време и не се претоварвай.",
+      enText: "Balance is key – choose flexible work and don’t overload yourself.",
+      date: "08.01.2026"
+    }
+  ];
+
+  const article = articles.find(a => a.id === id);
+
+  if (!article) {
+    document.querySelector("main").innerHTML =
+      "<p style='text-align:center;'>Новината не е намерена.</p>";
+  } else {
+    document.getElementById("article-title").textContent =
+      lang === "bg" ? article.bgTitle : article.enTitle;
+
+    document.getElementById("article-content").textContent =
+      lang === "bg" ? article.bgText : article.enText;
+
+    document.getElementById("article-date").textContent = article.date;
+  }
+</script>
+
+</body>
+</html>
