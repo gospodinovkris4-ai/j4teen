@@ -324,3 +324,14 @@ form#post-form button[type="submit"]:hover {
   color: #fff !important;
 }
 
+
+
+/* 🎯 Hero: вторият бутон да е оранжев */
+.hero-buttons a[href="post.html"] {
+  background: #f59e0b !important;
+  color: #111 !important;
+}
+
+.hero-buttons a[href="post.html"]:hover {
+  background: #d97706 !important;
+}
