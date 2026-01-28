@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-key="newsPageTitle">Актуално – J4Teen</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -28,14 +28,12 @@
 <header class="hero small">
   <div class="hero-content">
     <h1 data-key="newsTitle">Актуално</h1>
-    <p data-key="newsSubtitle">Реални теми за работа и младежи</p>
+    <p data-key="newsSubtitle">Новини и съвети за работа и младежи</p>
   </div>
 </header>
 
 <main class="container">
-
   <div class="cards" id="news-list"></div>
-
 </main>
 
 <script src="main.js"></script>
@@ -44,47 +42,47 @@
   const newsList = document.getElementById("news-list");
   const lang = localStorage.getItem("lang") || "bg";
 
-  const today = new Date().toLocaleDateString(
-    lang === "bg" ? "bg-BG" : "en-GB"
-  );
-
-  // 🇧🇬 БЪЛГАРСКИ, УТВЪРДЕНИ ИЗТОЧНИЦИ
-  const newsFeed = [
+  const newsData = [
     {
-      bg: "Младежката заетост в България се увеличава през 2026 г.",
-      en: "Youth employment in Bulgaria is increasing in 2026",
-      link: "https://www.dnevnik.bg/bulgaria/"
+      id: "1",
+      bgTitle: "Как да си намериш първа почасова работа",
+      enTitle: "How to find your first part-time job",
+      bgExcerpt: "Практични съвети за ученици и младежи без опит.",
+      enExcerpt: "Practical tips for students and young people without experience.",
+      date: "2026-01-12"
     },
     {
-      bg: "Почасовата работа става все по-популярна сред младите",
-      en: "Part-time work becomes more popular among young people",
-      link: "https://www.capital.bg/politika_i_ikonomika/"
+      id: "2",
+      bgTitle: "Най-търсените почасови работи през 2026",
+      enTitle: "Most in-demand part-time jobs in 2026",
+      bgExcerpt: "Къде има най-много възможности за младежи.",
+      enExcerpt: "Where young people have the most opportunities.",
+      date: "2026-01-10"
     },
     {
-      bg: "Как ученици и студенти съчетават работа и обучение",
-      en: "How students combine work and education",
-      link: "https://nova.bg/news"
-    },
-    {
-      bg: "Работа без опит: кои сектори наемат най-много",
-      en: "Jobs without experience: which sectors hire the most",
-      link: "https://btvnovinite.bg/bulgaria/"
+      id: "3",
+      bgTitle: "Как да комбинираш училище и работа",
+      enTitle: "How to balance school and work",
+      bgExcerpt: "Съвети за баланс без прегаряне.",
+      enExcerpt: "Tips for balance without burnout.",
+      date: "2026-01-08"
     }
   ];
 
-  newsFeed.forEach(item => {
+  newsData.forEach(item => {
     const card = document.createElement("div");
     card.className = "card";
     card.style.cursor = "pointer";
 
     card.innerHTML = `
       <div class="icon">📰</div>
-      <h3>${lang === "bg" ? item.bg : item.en}</h3>
-      <p style="font-size:13px; color:#777;">${today}</p>
+      <h3>${lang === "bg" ? item.bgTitle : item.enTitle}</h3>
+      <p>${lang === "bg" ? item.bgExcerpt : item.enExcerpt}</p>
+      <p style="font-size:13px; color:#777;">${item.date}</p>
     `;
 
     card.addEventListener("click", () => {
-      window.open(item.link, "_blank");
+      window.location.href = "article.html?id=" + item.id;
     });
 
     newsList.appendChild(card);
