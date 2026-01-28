@@ -3,41 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Новина – J4Teen</title>
+  <title data-key="newsPageTitle">Новина – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <nav class="topbar">
   <div class="logo">J4Teen</div>
+  <button id="lang-toggle" type="button">EN</button>
+  <div class="burger">☰</div>
+
+  <div class="menu">
+    <a href="index.html">Начало</a>
+    <a href="jobs.html">Обяви</a>
+    <a href="categories.html">Категории</a>
+    <a href="news.html">Новини</a>
+    <a href="pricing.html">Планове</a>
+    <a href="post.html">Публикувай</a>
+    <a href="chat.html">Чат</a>
+  </div>
 </nav>
 
-<main class="container" style="max-width:800px;">
-  <h1 id="title"></h1>
-  <p id="date" style="color:#777;"></p>
-  <p id="text" style="margin-top:20px; font-size:16px;"></p>
+<header class="hero small">
+  <div class="hero-content">
+    <h1 id="news-title">Новина</h1>
+    <p id="news-date"></p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div style="max-width:900px; margin:0 auto;">
+
+    <img id="news-image" src="" alt="" style="
+      width:100%;
+      max-height:420px;
+      object-fit:cover;
+      border-radius:18px;
+      margin-bottom:24px;
+    ">
+
+    <div id="news-content" style="
+      font-size:16px;
+      line-height:1.7;
+      color:#333;
+    "></div>
+
+  </div>
+
 </main>
 
 <script src="news-feed.js"></script>
+<script src="main.js"></script>
+
 <script>
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   const lang = localStorage.getItem("lang") || "bg";
 
-  const all = window.J4TEEN_DAILY_NEWS(10);
-  const news = all.find(n => n.id === id);
+  const article = J4TEEN_NEWS.find(n => n.id === id);
 
-  if (!news) {
-    document.querySelector("main").innerHTML = "<p>Новината не е намерена.</p>";
+  if (!article) {
+    document.querySelector("main").innerHTML =
+      "<p style='text-align:center;'>Новината не е намерена.</p>";
   } else {
-    document.getElementById("title").textContent =
-      lang === "bg" ? news.title_bg : news.title_en;
+    document.getElementById("news-title").textContent =
+      lang === "bg" ? article.title_bg : article.title_en;
 
-    document.getElementById("text").textContent =
-      lang === "bg" ? news.text_bg : news.text_en;
+    document.getElementById("news-date").textContent =
+      new Date(article.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB");
 
-    document.getElementById("date").textContent =
-      new Date(news.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB");
+    document.getElementById("news-image").src = article.image;
+
+    document.getElementById("news-content").innerHTML =
+      lang === "bg" ? article.content_bg : article.content_en;
   }
 </script>
 
