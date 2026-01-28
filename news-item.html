@@ -2,6 +2,7 @@
 <html lang="bg">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Новина – J4Teen</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,7 +12,11 @@
   <div class="logo">J4Teen</div>
 </nav>
 
-<main class="container" id="news-content"></main>
+<main class="container" style="max-width:800px;">
+  <h1 id="title"></h1>
+  <p id="date" style="color:#777;"></p>
+  <p id="text" style="margin-top:20px; font-size:16px;"></p>
+</main>
 
 <script src="news-feed.js"></script>
 <script>
@@ -19,22 +24,20 @@
   const id = params.get("id");
   const lang = localStorage.getItem("lang") || "bg";
 
-  const news = J4TEEN_NEWS.find(n => n.id === id);
-  const container = document.getElementById("news-content");
+  const all = window.J4TEEN_DAILY_NEWS(10);
+  const news = all.find(n => n.id === id);
 
   if (!news) {
-    container.innerHTML = "<p>Новината не е намерена.</p>";
+    document.querySelector("main").innerHTML = "<p>Новината не е намерена.</p>";
   } else {
-    container.innerHTML = `
-      <h1>${lang === "bg" ? news.title_bg : news.title_en}</h1>
-      <p style="color:#777;">${news.source} · ${news.date}</p>
-      <p style="margin-top:16px;">
-        ${lang === "bg" ? news.text_bg : news.text_en}
-      </p>
-      <a href="${news.url}" target="_blank" class="btn primary" style="margin-top:20px;">
-        Виж оригиналната новина
-      </a>
-    `;
+    document.getElementById("title").textContent =
+      lang === "bg" ? news.title_bg : news.title_en;
+
+    document.getElementById("text").textContent =
+      lang === "bg" ? news.text_bg : news.text_en;
+
+    document.getElementById("date").textContent =
+      new Date(news.date).toLocaleDateString(lang === "bg" ? "bg-BG" : "en-GB");
   }
 </script>
 
