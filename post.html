@@ -171,10 +171,14 @@
 
     const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-    if (jobs.length >= plan.maxJobs) {
-      alert("Достигна лимита за твоя план.");
-      return;
-    }
+  if (jobs.length >= plan.maxJobs) {
+  const modal = document.getElementById("plan-modal");
+  if (modal) {
+    modal.style.display = "flex";
+  }
+  return;
+}
+
 
     const job = {
       id: Date.now().toString(),
