@@ -153,46 +153,33 @@
 <script src="main.js"></script>
 
 <script>
-  const form = document.getElementById("post-form");
-  const modal = document.getElementById("plan-modal");
+ const form = document.getElementById("post-form");
 
-  function closeModal() {
-    modal.style.display = "none";
-  }
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+  const title = document.getElementById("job-title").value;
+  const desc = document.getElementById("job-desc").value;
+  const price = document.getElementById("job-price").value;
+  const category = document.getElementById("job-category").value;
 
-    const plan = JSON.parse(localStorage.getItem("j4teen_plan"));
-    if (!plan) {
-      modal.style.display = "flex";
-      return;
-    }
+  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-    const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+  const job = {
+    id: Date.now().toString(),
+    title,
+    desc,
+    price,
+    category,
+    createdAt: new Date().toISOString()
+  };
 
-  if (jobs.length >= plan.maxJobs) {
-  const modal = document.getElementById("plan-modal");
-  if (modal) {
-    modal.style.display = "flex";
-  }
-  return;
-}
+  jobs.push(job);
+  localStorage.setItem("jobs", JSON.stringify(jobs));
 
+  window.location.href = "jobs.html";
+});
 
-    const job = {
-      id: Date.now().toString(),
-      title: job-title.value,
-      desc: job-desc.value,
-      price: job-price.value,
-      category: job-category.value,
-      createdAt: new Date().toISOString()
-    };
-
-    jobs.push(job);
-    localStorage.setItem("jobs", JSON.stringify(jobs));
-    window.location.href = "jobs.html";
-  });
 </script>
 
 </body>
