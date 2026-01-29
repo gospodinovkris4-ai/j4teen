@@ -44,13 +44,12 @@
       <h2 style="margin:24px 0;">1.50 €</h2>
 
       <ul style="list-style:none; padding:0; margin:0 0 24px 0;">
-        <li data-key="pricingBasicFeat1">✔️ До 3 обяви</li>
-        <li data-key="pricingBasicFeat2">✔️ 7 дни активни</li>
-        <li data-key="pricingBasicFeat3">✔️ Видима за всички</li>
+        <li>✔️ До 3 обяви</li>
+        <li>✔️ 7 дни активни</li>
+        <li>✔️ Видима за всички</li>
       </ul>
 
-<button onclick="selectPlan('basic', 3)">Избери</button>
-
+      <button onclick="selectPlan('basic', 3, 7)">Избери</button>
     </div>
 
     <!-- PRO -->
@@ -61,12 +60,12 @@
       <h2 style="margin:24px 0;">3 €</h2>
 
       <ul style="list-style:none; padding:0; margin:0 0 24px 0;">
-        <li data-key="pricingProFeat1">✔️ До 5 обяви</li>
-        <li data-key="pricingProFeat2">✔️ 15 дни активни</li>
-        <li data-key="pricingProFeat3">✔️ По-добро позициониране</li>
+        <li>✔️ До 5 обяви</li>
+        <li>✔️ 15 дни активни</li>
+        <li>✔️ По-добро позициониране</li>
       </ul>
-<button onclick="selectPlan('pro', 5)">Избери</button>
 
+      <button onclick="selectPlan('pro', 5, 15)">Избери</button>
     </div>
 
     <!-- PREMIUM -->
@@ -84,60 +83,78 @@
         font-size:13px;
         font-weight:700;
         margin:14px 0;
-      " data-key="pricingPopular">
+      ">
         Най-купуван
       </div>
 
       <h2 style="margin:26px 0;">4 €</h2>
 
       <ul style="list-style:none; padding:0; margin:0 0 26px 0;">
-        <li data-key="pricingPremiumFeat1">✔️ Неограничени обяви</li>
-        <li data-key="pricingPremiumFeat2">✔️ 30 дни активни</li>
-        <li data-key="pricingPremiumFeat3">✔️ Топ позиция</li>
+        <li>✔️ Неограничени обяви</li>
+        <li>✔️ 30 дни активни</li>
+        <li>✔️ Топ позиция</li>
       </ul>
-<button onclick="selectPlan('pro', 5)">Избери</button>
 
+      <button onclick="selectPlan('premium', 999, 30)">Избери</button>
     </div>
 
   </div>
 
 </main>
 
+<!-- MODAL -->
+<div id="plan-modal" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.45);
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+">
+  <div style="
+    background:#fff;
+    padding:32px;
+    border-radius:20px;
+    max-width:420px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  ">
+    <h2>✅ Планът е активиран</h2>
+    <p id="plan-info" style="margin:16px 0; color:#555;"></p>
+    <p style="font-size:14px; color:#777;">Пренасочване към публикуване…</p>
+  </div>
+</div>
+
 <script src="main.js"></script>
 
 <script>
   function selectPlan(type, maxJobs, days) {
+    const now = new Date();
+    const expiresAt = new Date(now);
+    expiresAt.setDate(expiresAt.getDate() + days);
+
     const plan = {
       type,
       maxJobs,
       durationDays: days,
-      activatedAt: new Date().toISOString()
-    };
-
-    localStorage.setItem("j4teen_plan", JSON.stringify(plan));
-    window.location.href = "post.html";
-  }
-</script>
-
-<script>
-  function selectPlan(type, maxJobs) {
-    const plan = {
-      type,
-      maxJobs,
-      activatedAt: new Date().toISOString()
+      activatedAt: now.toISOString(),
+      expiresAt: expiresAt.toISOString()
     };
 
     localStorage.setItem("j4teen_plan", JSON.stringify(plan));
 
-    alert("Планът е активиран успешно!");
-    window.location.href = "post.html";
+    document.getElementById("plan-info").textContent =
+      `План "${type.toUpperCase()}" е активен за ${days} дни.`;
+
+    const modal = document.getElementById("plan-modal");
+    modal.style.display = "flex";
+
+    setTimeout(() => {
+      window.location.href = "post.html";
+    }, 2500);
   }
 </script>
 
-
-
-
-
-  
 </body>
 </html>
