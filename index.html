@@ -81,23 +81,23 @@
     <h2 data-key="companiesTitle">За компании</h2>
 
     <div class="cards">
-      <div class="card">
+      <a href="post.html" class="card">
         <div class="icon">🏢</div>
         <h3 data-key="companiesPost">Публикувай обяви</h3>
         <p data-key="companiesPostSub">Намери млади хора бързо.</p>
-      </div>
+      </a>
 
-      <div class="card">
+      <a href="jobs.html" class="card">
         <div class="icon">📣</div>
         <h3 data-key="companiesReach">Достигни младежи</h3>
         <p data-key="companiesReachSub">Точната аудитория.</p>
-      </div>
+      </a>
 
-      <div class="card highlight">
+      <a href="pricing.html" class="card highlight">
         <div class="icon">⭐</div>
         <h3 data-key="companiesPlans">Гъвкави планове</h3>
         <p data-key="companiesPlansSub">Абонаменти според нуждите.</p>
-      </div>
+      </a>
     </div>
 
     <div style="text-align:center; margin-top:24px;">
@@ -124,7 +124,6 @@
 <script src="main.js"></script>
 
 <script>
-  // TAB SWITCHING
   document.querySelectorAll(".tab").forEach(tab => {
     tab.addEventListener("click", () => {
       document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
@@ -135,7 +134,6 @@
     });
   });
 
-  // HOME NEWS (daily, internal)
   const homeNews = document.getElementById("home-news");
   const lang = localStorage.getItem("lang") || "bg";
 
