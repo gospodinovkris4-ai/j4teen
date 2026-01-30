@@ -34,7 +34,6 @@
 
 <main class="container">
 
-  <!-- FORM -->
   <form id="post-form" style="
     max-width:520px;
     margin:24px auto;
@@ -47,145 +46,84 @@
     gap:14px;
   ">
 
-    <input type="text" id="job-title" placeholder="Заглавие на обявата" required
-      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;">
+    <input
+      type="text"
+      id="job-title"
+      data-key-placeholder="jobTitlePh"
+      placeholder="Заглавие на обявата"
+      required
+      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;"
+    >
 
-    <select id="job-category" required
-      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;">
-      <option value="">Избери категория</option>
-      <option value="dog">Разходка на куче</option>
-      <option value="home">Помощ в дома</option>
-      <option value="delivery">Доставка</option>
+    <select
+      id="job-category"
+      required
+      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;"
+    >
+      <option value="" data-key="selectCategory">Избери категория</option>
+      <option value="dog" data-key="catDog">Разходка на куче</option>
+      <option value="home" data-key="catHome">Помощ в дома</option>
+      <option value="delivery" data-key="catDelivery">Доставка</option>
     </select>
 
-    <textarea id="job-desc" rows="4" placeholder="Опиши каква помощ търсиш" required
-      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;resize:none;"></textarea>
+    <textarea
+      id="job-desc"
+      rows="4"
+      data-key-placeholder="jobDescPh"
+      placeholder="Опиши каква помощ търсиш"
+      required
+      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;resize:none;"
+    ></textarea>
 
-    <input type="text" id="job-price" placeholder="Цена (напр. 15 лв)"
-      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;">
+    <input
+      type="text"
+      id="job-price"
+      data-key-placeholder="jobPricePh"
+      placeholder="Цена (напр. 15 лв)"
+      style="padding:14px 16px;border-radius:14px;border:2px solid #e5edff;font-size:15px;"
+    >
 
-    <button type="submit"
-      style="margin-top:6px;padding:16px;border-radius:999px;background:#2563eb;color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;">
+    <button
+      type="submit"
+      data-key="postBtn"
+      style="margin-top:6px;padding:16px;border-radius:999px;background:#2563eb;color:white;font-weight:800;font-size:15px;border:none;cursor:pointer;"
+    >
       Публикувай обява
     </button>
+
   </form>
 
 </main>
 
-<!-- ✅ MODAL -->
-<!-- ✅ PREMIUM MODAL -->
-<div id="plan-modal" style="
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(15,23,42,0.55);
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-">
-
-  <div style="
-    background:#ffffff;
-    border-radius:24px;
-    padding:32px 28px;
-    max-width:420px;
-    width:90%;
-    text-align:center;
-    box-shadow:0 30px 60px rgba(0,0,0,0.35);
-    animation:popIn 0.25s ease;
-  ">
-
-    <!-- ИЛЮСТРАЦИЯ -->
-    <img
-      src="https://images.unsplash.com/photo-1551836022-d5d88e9218df"
-      alt="Upgrade plan"
-      style="
-        width:100%;
-        max-height:160px;
-        object-fit:cover;
-        border-radius:16px;
-        margin-bottom:20px;
-      "
-    >
-
-    <h3 style="font-size:20px; margin-bottom:8px;">
-      Достигна лимита на плана си
-    </h3>
-
-    <p style="color:#555; font-size:15px; line-height:1.5; margin-bottom:22px;">
-      Тази обява няма как да бъде публикувана, защото текущият ти абонамент
-      е достигнал максималния брой активни обяви.
-      <br><br>
-      С ъпгрейд можеш веднага да публикуваш още.
-    </p>
-
-    <!-- CTA -->
-    <a href="pricing.html"
-       style="
-         display:block;
-         margin-bottom:14px;
-         padding:15px;
-         border-radius:999px;
-         background:#f59e0b;
-         color:#111;
-         font-weight:800;
-         font-size:15px;
-         box-shadow:0 10px 24px rgba(245,158,11,0.4);
-       ">
-       Виж абонаментни планове
-    </a>
-
-    <button onclick="closeModal()"
-      style="
-        background:none;
-        border:none;
-        color:#2563eb;
-        font-weight:700;
-        cursor:pointer;
-        font-size:14px;
-      ">
-      Не сега
-    </button>
-  </div>
-</div>
-
 <script src="supabase.js"></script>
 <script src="main.js"></script>
 
-
 <script>
- const form = document.getElementById("post-form");
+  const form = document.getElementById("post-form");
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  const title = document.getElementById("job-title").value;
-  const desc = document.getElementById("job-desc").value;
-  const price = document.getElementById("job-price").value;
-  const category = document.getElementById("job-category").value;
+    const title = document.getElementById("job-title").value;
+    const desc = document.getElementById("job-desc").value;
+    const price = document.getElementById("job-price").value;
+    const category = document.getElementById("job-category").value;
 
-  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+    const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
 
-  const job = {
-    id: Date.now().toString(),
-    title,
-    desc,
-    price,
-    category,
-    createdAt: new Date().toISOString()
-  };
+    jobs.push({
+      id: Date.now().toString(),
+      title,
+      desc,
+      price,
+      category,
+      createdAt: new Date().toISOString()
+    });
 
-  jobs.push(job);
-  localStorage.setItem("jobs", JSON.stringify(jobs));
-
-  window.location.href = "jobs.html";
-});
-
+    localStorage.setItem("jobs", JSON.stringify(jobs));
+    window.location.href = "jobs.html";
+  });
 </script>
 
-
-
-
-  
 </body>
 </html>
