@@ -1,12 +1,12 @@
 /*********************************
  * J4Teen – MAIN.JS (FINAL STABLE)
- * ONLY: MENU + LANGUAGES
+ * MENU + LANGUAGES (GLOBAL)
  *********************************/
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =============================
-     1️⃣ MENU – ЕДИНСТВЕНО МЯСТО
+     1️⃣ MENU – GLOBAL FIX
   ============================= */
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".menu");
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =============================
-     2️⃣ TRANSLATIONS – ПЪЛНИ
+     2️⃣ TRANSLATIONS – FULL
   ============================= */
   const translations = {
     bg: {
@@ -88,10 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
       newsSubtitle: "Новини и съвети за младежи",
       allNews: "Всички новини",
 
-      /* POST */
+      /* POST / FORMS */
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява за минута",
       postBtn: "Публикувай обява",
+      jobTitlePh: "Заглавие на обявата",
+      jobDescPh: "Описание",
+      jobPricePh: "Цена (напр. 15 лв)",
+      selectCategory: "Избери категория",
 
       /* JOB */
       jobChatBtn: "Пиши в чата"
@@ -157,13 +161,17 @@ document.addEventListener("DOMContentLoaded", () => {
       postTitle: "I'm hiring",
       postSubtitle: "Post a job in one minute",
       postBtn: "Post job",
+      jobTitlePh: "Job title",
+      jobDescPh: "Description",
+      jobPricePh: "Price (e.g. 15 €)",
+      selectCategory: "Select category",
 
       jobChatBtn: "Chat"
     }
   };
 
   /* =============================
-     3️⃣ APPLY LANGUAGE
+     3️⃣ APPLY LANGUAGE (TEXT + PLACEHOLDER)
   ============================= */
   let currentLang = localStorage.getItem("lang") || "bg";
 
@@ -173,6 +181,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("[data-key]").forEach(el => {
       const key = el.dataset.key;
       if (t[key]) el.textContent = t[key];
+    });
+
+    document.querySelectorAll("[data-key-placeholder]").forEach(el => {
+      const key = el.dataset.keyPlaceholder;
+      if (t[key]) el.placeholder = t[key];
     });
 
     const titleEl = document.querySelector("title[data-key]");
