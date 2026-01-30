@@ -122,7 +122,7 @@
 
 <script src="news-feed.js"></script>
   
-<script src="supabase.js"></script>
+
 <script src="main.js"></script>
 
 
@@ -163,25 +163,6 @@
   }
 </script>
 
-<script>
-  (function () {
-    const burger = document.querySelector(".burger");
-    const menu = document.querySelector(".menu");
-
-    if (!burger || !menu) return;
-
-    burger.addEventListener("click", function (e) {
-      e.stopPropagation();
-      menu.classList.toggle("show");
-    });
-
-    document.addEventListener("click", function (e) {
-      if (!menu.contains(e.target) && !burger.contains(e.target)) {
-        menu.classList.remove("show");
-      }
-    });
-  })();
-</script>
 
 
   
