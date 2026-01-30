@@ -39,63 +39,65 @@
     <!-- BASIC -->
     <div class="card" style="padding:32px;">
       <div class="icon">🌱</div>
-      <h3>Basic</h3>
-      <p>За малки нужди</p>
+      <h3 data-key="pricingBasic">Basic</h3>
+      <p data-key="pricingBasicSub">За малки нужди</p>
       <h2 style="margin:24px 0;">1.50 €</h2>
 
       <ul style="list-style:none; padding:0; margin:0 0 24px 0;">
-        <li>✔️ До 3 обяви</li>
-        <li>✔️ 7 дни активни</li>
-        <li>✔️ Видима за всички</li>
+        <li data-key="pricingBasicFeat1">✔️ До 3 обяви</li>
+        <li data-key="pricingBasicFeat2">✔️ 7 дни активни</li>
+        <li data-key="pricingBasicFeat3">✔️ Видима за всички</li>
       </ul>
 
-      <button onclick="selectPlan('basic', 3, 7)">Избери</button>
+      <button data-key="pricingChoose" onclick="selectPlan('basic', 3, 7)">Избери</button>
     </div>
 
     <!-- PRO -->
     <div class="card" style="padding:32px;">
       <div class="icon">🚀</div>
-      <h3>Pro</h3>
-      <p>По-добра видимост</p>
+      <h3 data-key="pricingPro">Pro</h3>
+      <p data-key="pricingProSub">По-добра видимост</p>
       <h2 style="margin:24px 0;">3 €</h2>
 
       <ul style="list-style:none; padding:0; margin:0 0 24px 0;">
-        <li>✔️ До 5 обяви</li>
-        <li>✔️ 15 дни активни</li>
-        <li>✔️ По-добро позициониране</li>
+        <li data-key="pricingProFeat1">✔️ До 5 обяви</li>
+        <li data-key="pricingProFeat2">✔️ 15 дни активни</li>
+        <li data-key="pricingProFeat3">✔️ По-добро позициониране</li>
       </ul>
 
-      <button onclick="selectPlan('pro', 5, 15)">Избери</button>
+      <button data-key="pricingChoose" onclick="selectPlan('pro', 5, 15)">Избери</button>
     </div>
 
     <!-- PREMIUM -->
     <div class="card highlight" style="padding:36px;">
       <div class="icon">⭐</div>
-      <h3>Premium</h3>
-      <p>Най-добрият избор</p>
+      <h3 data-key="pricingPremium">Premium</h3>
+      <p data-key="pricingPremiumSub">Най-добрият избор</p>
 
-      <div style="
-        background:#fff;
-        color:#2563eb;
-        display:inline-block;
-        padding:6px 14px;
-        border-radius:999px;
-        font-size:13px;
-        font-weight:700;
-        margin:14px 0;
-      ">
-        НАЙ-КУПУВАН
+      <div
+        data-key="pricingPopular"
+        style="
+          background:#fff;
+          color:#2563eb;
+          display:inline-block;
+          padding:6px 14px;
+          border-radius:999px;
+          font-size:13px;
+          font-weight:700;
+          margin:14px 0;
+        ">
+        Най-купуван
       </div>
 
       <h2 style="margin:26px 0;">4 €</h2>
 
       <ul style="list-style:none; padding:0; margin:0 0 26px 0;">
-        <li>✔️ Неограничени обяви</li>
-        <li>✔️ 30 дни активни</li>
-        <li>✔️ Топ позиция</li>
+        <li data-key="pricingPremiumFeat1">✔️ Неограничени обяви</li>
+        <li data-key="pricingPremiumFeat2">✔️ 30 дни активни</li>
+        <li data-key="pricingPremiumFeat3">✔️ Топ позиция</li>
       </ul>
 
-      <button onclick="selectPlan('premium', 999, 30)">Избери</button>
+      <button data-key="pricingChoose" onclick="selectPlan('premium', 999, 30)">Избери</button>
     </div>
 
   </div>
@@ -124,13 +126,15 @@
       J4TEEN
     </div>
 
-    <div style="font-size:18px; font-weight:800; margin-bottom:8px;">
-      АБОНАМЕНТЪТ Е АКТИВИРАН УСПЕШНО
+    <div data-key="pricingActivatedTitle"
+         style="font-size:18px; font-weight:800; margin-bottom:8px;">
+      Абонаментът е активиран успешно
     </div>
 
     <p id="plan-info" style="margin:16px 0; color:#444; font-size:15px;"></p>
 
-    <p style="font-size:14px; color:#777;">
+    <p data-key="pricingRedirectInfo"
+       style="font-size:14px; color:#777;">
       След малко ще бъдеш пренасочен към публикуване на обява.
     </p>
   </div>
@@ -157,8 +161,7 @@
     document.getElementById("plan-info").textContent =
       `План "${type.toUpperCase()}" е активен за ${days} дни.`;
 
-    const modal = document.getElementById("plan-modal");
-    modal.style.display = "flex";
+    document.getElementById("plan-modal").style.display = "flex";
 
     setTimeout(() => {
       window.location.href = "post.html";
@@ -166,8 +169,5 @@
   }
 </script>
 
-
-
-  
 </body>
 </html>
