@@ -64,9 +64,14 @@
   const jobId = params.get("id");
 
   const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+
+  // намираме обявата
   const job = jobs.find(j => j.id === jobId);
 
+  const lang = localStorage.getItem("lang") || "bg";
+
   const categoryLabels = {
+    animals: { bg: "Грижа за животни", en: "Animal care" },
     dog: { bg: "Разходка на куче", en: "Dog walking" },
     home: { bg: "Домашна помощ", en: "Home help" },
     delivery: { bg: "Доставки", en: "Delivery" },
@@ -77,12 +82,30 @@
     hourly: { bg: "Почасова помощ", en: "Hourly help" }
   };
 
-  const lang = localStorage.getItem("lang") || "bg";
-
+  // ако няма обява
   if (!job) {
-    document.querySelector("main").innerHTML =
-      "<p style='text-align:center;'>Обявата не е намерена.</p>";
-  } else {
+    document.querySelector("main").innerHTML = `
+      <p style="text-align:center;">
+        ${lang === "bg" ? "Обявата не е намерена." : "Job not found."}
+      </p>
+    `;
+  }
+  // ако е маркирана като изтрита
+  else if (job.status === "deleted") {
+    document.querySelector("main").innerHTML = `
+      <p style="text-align:center;">
+        ${lang === "bg"
+          ? "Тази обява вече не е активна."
+          : "This job is no longer active."}
+      </p>
+    `;
+  }
+  else {
+    // гарантираме backend-ready полета (НЕ чупи старите)
+    job.status = job.status || "active";
+    job.owner_id = job.owner_id || null;
+    job.createdAt = job.createdAt || new Date().toISOString();
+
     document.getElementById("job-title").textContent = job.title;
     document.getElementById("job-desc").textContent = job.desc;
     document.getElementById("job-price").textContent =
@@ -98,6 +121,9 @@
     document.getElementById("chat-btn").addEventListener("click", () => {
       window.location.href = "chat.html";
     });
+
+    // записваме евентуалните нови полета (безопасно)
+    localStorage.setItem("jobs", JSON.stringify(jobs));
   }
 </script>
 
