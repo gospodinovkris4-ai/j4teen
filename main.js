@@ -1,23 +1,23 @@
-/*******************************
- * J4Teen – MAIN.JS (STABLE)
+/*********************************
+ * J4Teen – MAIN.JS (FINAL STABLE)
  * ONLY: MENU + LANGUAGES
- *******************************/
+ *********************************/
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
   /* =============================
-     MENU (BURGER) – СТАБИЛНО
+     1️⃣ MENU – ЕДИНСТВЕНО МЯСТО
   ============================= */
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".menu");
 
   if (burger && menu) {
-    burger.addEventListener("click", function (e) {
+    burger.addEventListener("click", e => {
       e.stopPropagation();
       menu.classList.toggle("show");
     });
 
-    document.addEventListener("click", function (e) {
+    document.addEventListener("click", e => {
       if (!menu.contains(e.target) && !burger.contains(e.target)) {
         menu.classList.remove("show");
       }
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* =============================
-     TRANSLATIONS – ПЪЛНИ
+     2️⃣ TRANSLATIONS – ПЪЛНИ
   ============================= */
   const translations = {
     bg: {
@@ -52,6 +52,28 @@ document.addEventListener("DOMContentLoaded", function () {
       allCategories: "Виж всички категории",
       mobilePost: "+ Публикувай обява",
 
+      /* CATEGORIES */
+      catDog: "Разходка на куче",
+      catDogSub: "Почасова помощ",
+      catHome: "Помощ в дома",
+      catHomeSub: "Почистване, грижа",
+      catDelivery: "Доставки",
+      catDeliverySub: "Храна, пратки",
+
+      catAnimals: "Грижа за животни",
+      catAnimalsSub: "Разходка, гледане",
+      catAgriculture: "Земеделие",
+      catAgricultureSub: "Бране, сезонна работа",
+      catPhysical: "Физическа работа",
+      catPhysicalSub: "Носене, склад",
+      catFood: "Заведения",
+      catFoodSub: "Сервитьор, бар",
+      catCare: "Грижа за хора",
+      catCareSub: "Деца, възрастни",
+      catHourly: "Почасова помощ",
+      catHourlySub: "Кратки задачи",
+
+      /* COMPANIES */
       companiesTitle: "За компании",
       companiesPost: "Публикувай обяви",
       companiesPostSub: "Намери млади хора бързо.",
@@ -61,34 +83,18 @@ document.addEventListener("DOMContentLoaded", function () {
       companiesPlansSub: "Абонаменти според нуждите.",
       seePlans: "Виж планове",
 
-      catDog: "Разходка на куче",
-      catDogSub: "Почасова помощ",
-      catHome: "Помощ в дома",
-      catHomeSub: "Почистване, грижа",
-      catDelivery: "Доставки",
-      catDeliverySub: "Храна, пратки",
-
-      categoriesPageTitle: "Категории – J4Teen",
-      categoriesTitle: "Всички категории",
-      categoriesSubtitle: "Избери област и разгледай обявите",
-
-      jobsPageTitle: "Обяви – J4Teen",
-      jobsTitle: "Искам да работя",
-      jobsSubtitle: "Всички налични обяви",
-
-      newsPageTitle: "Новини – J4Teen",
+      /* NEWS */
       newsTitle: "Актуално",
       newsSubtitle: "Новини и съвети за младежи",
       allNews: "Всички новини",
 
-      pricingPageTitle: "Абонаментни планове – J4Teen",
-      pricingHero: "Планове за компании",
-      pricingHeroSub: "Избери план, който ти пасва",
-
-      postPageTitle: "Публикувай обява – J4Teen",
+      /* POST */
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява за минута",
-      postBtn: "Публикувай обява"
+      postBtn: "Публикувай обява",
+
+      /* JOB */
+      jobChatBtn: "Пиши в чата"
     },
 
     en: {
@@ -115,6 +121,26 @@ document.addEventListener("DOMContentLoaded", function () {
       allCategories: "View all categories",
       mobilePost: "+ Post a job",
 
+      catDog: "Dog walking",
+      catDogSub: "Hourly help",
+      catHome: "Home help",
+      catHomeSub: "Cleaning, care",
+      catDelivery: "Delivery",
+      catDeliverySub: "Food, packages",
+
+      catAnimals: "Animal care",
+      catAnimalsSub: "Walking, sitting",
+      catAgriculture: "Agriculture",
+      catAgricultureSub: "Harvest, seasonal work",
+      catPhysical: "Physical work",
+      catPhysicalSub: "Lifting, warehouse",
+      catFood: "Food & hospitality",
+      catFoodSub: "Waiter, bar",
+      catCare: "People care",
+      catCareSub: "Children, elderly",
+      catHourly: "Hourly help",
+      catHourlySub: "Short tasks",
+
       companiesTitle: "For companies",
       companiesPost: "Post job ads",
       companiesPostSub: "Find young people fast.",
@@ -124,44 +150,28 @@ document.addEventListener("DOMContentLoaded", function () {
       companiesPlansSub: "Subscriptions that fit your needs.",
       seePlans: "See plans",
 
-      catDog: "Dog walking",
-      catDogSub: "Hourly help",
-      catHome: "Home help",
-      catHomeSub: "Cleaning, care",
-      catDelivery: "Delivery",
-      catDeliverySub: "Food, packages",
-
-      categoriesPageTitle: "Categories – J4Teen",
-      categoriesTitle: "All categories",
-      categoriesSubtitle: "Choose an area and browse jobs",
-
-      jobsPageTitle: "Jobs – J4Teen",
-      jobsTitle: "I want to work",
-      jobsSubtitle: "All available jobs",
-
-      newsPageTitle: "News – J4Teen",
       newsTitle: "Updates",
       newsSubtitle: "News and tips for youth",
       allNews: "All news",
 
-      pricingPageTitle: "Pricing plans – J4Teen",
-      pricingHero: "Plans for companies",
-      pricingHeroSub: "Choose a plan that fits you",
-
-      postPageTitle: "Post a job – J4Teen",
       postTitle: "I'm hiring",
       postSubtitle: "Post a job in one minute",
-      postBtn: "Post job"
+      postBtn: "Post job",
+
+      jobChatBtn: "Chat"
     }
   };
 
+  /* =============================
+     3️⃣ APPLY LANGUAGE
+  ============================= */
   let currentLang = localStorage.getItem("lang") || "bg";
 
   function applyLang() {
     const t = translations[currentLang];
 
     document.querySelectorAll("[data-key]").forEach(el => {
-      const key = el.getAttribute("data-key");
+      const key = el.dataset.key;
       if (t[key]) el.textContent = t[key];
     });
 
