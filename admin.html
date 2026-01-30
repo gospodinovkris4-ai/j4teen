@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – J4Teen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="topbar">
+  <div class="logo">J4Teen <span style="font-size:14px; color:#555;">ADMIN</span></div>
+</nav>
+
+<header class="hero small">
+  <div class="hero-content">
+    <h1>Администрация</h1>
+    <p>Управление на обяви (MVP)</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div id="admin-jobs" style="max-width:900px; margin:0 auto;"></div>
+
+  <p id="empty" style="text-align:center; margin-top:40px; display:none;">
+    Няма публикувани обяви.
+  </p>
+
+</main>
+
+<script>
+  // 🔐 ПРОСТА ЗАЩИТА (MVP)
+  if (localStorage.getItem("j4teen_admin") !== "true") {
+    document.body.innerHTML =
+      "<p style='text-align:center; margin-top:100px;'>Нямаш достъп.</p>";
+  }
+</script>
+
+<script>
+  const container = document.getElementById("admin-jobs");
+  const empty = document.getElementById("empty");
+
+  const jobs = JSON.parse(localStorage.getItem("jobs") || "[]");
+
+  if (!jobs.length) {
+    empty.style.display = "block";
+  } else {
+    jobs.forEach((job, index) => {
+      const row = document.createElement("div");
+      row.className = "job";
+      row.style.display = "flex";
+      row.style.justifyContent = "space-between";
+      row.style.alignItems = "center";
+      row.style.gap = "12px";
+
+      row.innerHTML = `
+        <div style="flex:1;">
+          <strong>${job.title}</strong><br>
+          <small>${job.desc}</small>
+        </div>
+
+        <div style="display:flex; gap:10px;">
+          <span>${job.price || ""}</span>
+          <button style="
+            background:#ef4444;
+            color:white;
+            border:none;
+            padding:8px 12px;
+            border-radius:8px;
+            cursor:pointer;
+          ">
+            Изтрий
+          </button>
+        </div>
+      `;
+
+      row.querySelector("button").addEventListener("click", () => {
+        if (!confirm("Сигурен ли си, че искаш да изтриеш тази обява?")) return;
+
+        jobs.splice(index, 1);
+        localStorage.setItem("jobs", JSON.stringify(jobs));
+        location.reload();
+      });
+
+      container.appendChild(row);
+    });
+  }
+</script>
+
+</body>
+</html>
