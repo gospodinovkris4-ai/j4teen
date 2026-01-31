@@ -1,12 +1,12 @@
-/*********************************
- * J4Teen – MAIN.JS (FINAL, STABLE)
- * MENU + LANGUAGES + CHAT
+  /*********************************
+ * J4Teen – MAIN.JS (FINAL, FIXED)
+ * MENU + LANGUAGES (GLOBAL)
  *********************************/
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =============================
-     1️⃣ MENU – STABLE (GLOBAL)
+     MENU (STABLE)
   ============================= */
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".menu");
@@ -25,13 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =============================
-     2️⃣ TRANSLATIONS – FULL + CHAT
+     TRANSLATIONS (FULL)
   ============================= */
   const translations = {
     bg: {
       siteTitle: "J4Teen",
 
-      /* MENU */
       home: "Начало",
       jobs: "Обяви",
       categories: "Категории",
@@ -40,32 +39,30 @@ document.addEventListener("DOMContentLoaded", () => {
       post: "Публикувай",
       chat: "Чат",
 
-      /* HERO */
       heroTitle: "Намери почасова работа или помощ наблизо",
       heroSubtitle: "J4Teen – общност и обяви за младежи",
       heroWork: "Искам да работя",
       heroHire: "Търся човек за работа",
 
-      /* TABS */
       tabWork: "Работа",
       tabCompanies: "Компании",
       tabNews: "Новини",
 
-      /* HOME */
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
       mobilePost: "+ Публикувай обява",
 
-      /* JOBS */
+      /* JOBS PAGE */
       jobsPageTitle: "Обяви – J4Teen",
       jobsTitle: "Искам да работя",
       jobsSubtitle: "Всички налични обяви",
 
-      /* CATEGORIES */
+      /* CATEGORIES PAGE */
       categoriesPageTitle: "Категории – J4Teen",
       categoriesTitle: "Всички категории",
       categoriesSubtitle: "Избери област и разгледай обявите",
 
+      /* CATEGORIES */
       catDog: "Разходка на куче",
       catDogSub: "Почасова помощ",
       catHome: "Помощ в дома",
@@ -111,16 +108,32 @@ document.addEventListener("DOMContentLoaded", () => {
       jobPricePh: "Цена (напр. 15 лв)",
       selectCategory: "Избери категория",
 
-      /* JOB */
-      jobChatBtn: "Пиши в чата",
+      /* PRICING */
+      pricingTitle: "Абонаментни планове – J4Teen",
+      pricingHero: "Планове за компании",
+      pricingHeroSub: "Избери план, който ти пасва",
+      pricingBasic: "Basic",
+      pricingBasicSub: "За малки нужди",
+      pricingPro: "Pro",
+      pricingProSub: "По-добра видимост",
+      pricingPremium: "Premium",
+      pricingPremiumSub: "Най-добрият избор",
+      pricingChoose: "Избери",
 
-      /* CHAT ✅ */
-      chatPageTitle: "Чат – J4Teen",
-      chatTitle: "Чат",
-      chatSubtitle: "Свържи се директно",
-      chatNamePh: "Име",
-      chatMsgPh: "Съобщение",
-      chatSend: "Изпрати"
+      pricingBasicFeat1: "✔️ До 3 обяви",
+      pricingBasicFeat2: "✔️ 7 дни активни",
+      pricingBasicFeat3: "✔️ Видима за всички",
+
+      pricingProFeat1: "✔️ До 5 обяви",
+      pricingProFeat2: "✔️ 15 дни активни",
+      pricingProFeat3: "✔️ По-добро позициониране",
+
+      pricingPremiumFeat1: "✔️ Неограничени обяви",
+      pricingPremiumFeat2: "✔️ 30 дни активни",
+      pricingPremiumFeat3: "✔️ Топ позиция",
+
+      /* JOB */
+      jobChatBtn: "Пиши в чата"
     },
 
     en: {
@@ -197,20 +210,35 @@ document.addEventListener("DOMContentLoaded", () => {
       jobPricePh: "Price (e.g. 15 €)",
       selectCategory: "Select category",
 
-      jobChatBtn: "Chat",
+      pricingTitle: "Pricing plans – J4Teen",
+      pricingHero: "Plans for companies",
+      pricingHeroSub: "Choose a plan that fits you",
+      pricingBasic: "Basic",
+      pricingBasicSub: "For small needs",
+      pricingPro: "Pro",
+      pricingProSub: "Better visibility",
+      pricingPremium: "Premium",
+      pricingPremiumSub: "Best choice",
+      pricingChoose: "Choose",
 
-      /* CHAT ✅ */
-      chatPageTitle: "Chat – J4Teen",
-      chatTitle: "Chat",
-      chatSubtitle: "Connect directly",
-      chatNamePh: "Name",
-      chatMsgPh: "Message",
-      chatSend: "Send"
+      pricingBasicFeat1: "✔️ Up to 3 listings",
+      pricingBasicFeat2: "✔️ Active for 7 days",
+      pricingBasicFeat3: "✔️ Visible to everyone",
+
+      pricingProFeat1: "✔️ Up to 5 listings",
+      pricingProFeat2: "✔️ Active for 15 days",
+      pricingProFeat3: "✔️ Better positioning",
+
+      pricingPremiumFeat1: "✔️ Unlimited listings",
+      pricingPremiumFeat2: "✔️ Active for 30 days",
+      pricingPremiumFeat3: "✔️ Top placement",
+
+      jobChatBtn: "Chat"
     }
   };
 
   /* =============================
-     3️⃣ APPLY LANGUAGE (TEXT + PLACEHOLDERS)
+     APPLY LANGUAGE
   ============================= */
   let currentLang = localStorage.getItem("lang") || "bg";
 
