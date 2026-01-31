@@ -52,6 +52,19 @@ document.addEventListener("DOMContentLoaded", () => {
       allCategories: "Виж всички категории",
       mobilePost: "+ Публикувай обява",
 
+
+
+      /* CHAT */
+      chatPageTitle: "Чат – J4Teen",
+      chatTitle: "Чат",
+      chatSubtitle: "Свържи се директно",
+      chatNamePh: "Име",
+      chatMsgPh: "Съобщение",
+      chatSend: "Изпрати"
+
+
+
+      
       /* JOBS PAGE */
       jobsPageTitle: "Обяви – J4Teen",
       jobsTitle: "Искам да работя",
@@ -234,6 +247,18 @@ document.addEventListener("DOMContentLoaded", () => {
       pricingPremiumFeat3: "✔️ Top placement",
 
       jobChatBtn: "Chat"
+
+
+      /* CHAT */
+      chatPageTitle: "Chat – J4Teen",
+      chatTitle: "Chat",
+      chatSubtitle: "Connect directly",
+      chatNamePh: "Name",
+      chatMsgPh: "Message",
+      chatSend: "Send"
+
+  
+  
     }
   };
 
@@ -275,3 +300,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+
+
+
+
+
+
+
