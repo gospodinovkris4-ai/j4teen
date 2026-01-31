@@ -1,12 +1,12 @@
 /*********************************
- * J4Teen – MAIN.JS (FINAL STABLE)
+ * J4Teen – MAIN.JS (FINAL, FIXED)
  * MENU + LANGUAGES (GLOBAL)
  *********************************/
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =============================
-     1️⃣ MENU – GLOBAL FIX
+     MENU (STABLE)
   ============================= */
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".menu");
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =============================
-     2️⃣ TRANSLATIONS – FULL
+     TRANSLATIONS (FULL)
   ============================= */
   const translations = {
     bg: {
@@ -51,6 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
       mobilePost: "+ Публикувай обява",
+
+      /* JOBS PAGE */
+      jobsPageTitle: "Обяви – J4Teen",
+      jobsTitle: "Искам да работя",
+      jobsSubtitle: "Всички налични обяви",
+
+      /* CATEGORIES PAGE */
+      categoriesPageTitle: "Категории – J4Teen",
+      categoriesTitle: "Всички категории",
+      categoriesSubtitle: "Избери област и разгледай обявите",
 
       /* CATEGORIES */
       catDog: "Разходка на куче",
@@ -88,7 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
       newsSubtitle: "Новини и съвети за младежи",
       allNews: "Всички новини",
 
-      /* POST / FORMS */
+      /* POST */
+      postPageTitle: "Публикувай обява – J4Teen",
       postTitle: "Търся човек за работа",
       postSubtitle: "Публикувай обява за минута",
       postBtn: "Публикувай обява",
@@ -96,6 +107,30 @@ document.addEventListener("DOMContentLoaded", () => {
       jobDescPh: "Описание",
       jobPricePh: "Цена (напр. 15 лв)",
       selectCategory: "Избери категория",
+
+      /* PRICING */
+      pricingTitle: "Абонаментни планове – J4Teen",
+      pricingHero: "Планове за компании",
+      pricingHeroSub: "Избери план, който ти пасва",
+      pricingBasic: "Basic",
+      pricingBasicSub: "За малки нужди",
+      pricingPro: "Pro",
+      pricingProSub: "По-добра видимост",
+      pricingPremium: "Premium",
+      pricingPremiumSub: "Най-добрият избор",
+      pricingChoose: "Избери",
+
+      pricingBasicFeat1: "✔️ До 3 обяви",
+      pricingBasicFeat2: "✔️ 7 дни активни",
+      pricingBasicFeat3: "✔️ Видима за всички",
+
+      pricingProFeat1: "✔️ До 5 обяви",
+      pricingProFeat2: "✔️ 15 дни активни",
+      pricingProFeat3: "✔️ По-добро позициониране",
+
+      pricingPremiumFeat1: "✔️ Неограничени обяви",
+      pricingPremiumFeat2: "✔️ 30 дни активни",
+      pricingPremiumFeat3: "✔️ Топ позиция",
 
       /* JOB */
       jobChatBtn: "Пиши в чата"
@@ -124,6 +159,14 @@ document.addEventListener("DOMContentLoaded", () => {
       popularCats: "Popular categories",
       allCategories: "View all categories",
       mobilePost: "+ Post a job",
+
+      jobsPageTitle: "Jobs – J4Teen",
+      jobsTitle: "I want to work",
+      jobsSubtitle: "All available jobs",
+
+      categoriesPageTitle: "Categories – J4Teen",
+      categoriesTitle: "All categories",
+      categoriesSubtitle: "Choose an area and browse jobs",
 
       catDog: "Dog walking",
       catDogSub: "Hourly help",
@@ -158,6 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
       newsSubtitle: "News and tips for youth",
       allNews: "All news",
 
+      postPageTitle: "Post a job – J4Teen",
       postTitle: "I'm hiring",
       postSubtitle: "Post a job in one minute",
       postBtn: "Post job",
@@ -166,12 +210,35 @@ document.addEventListener("DOMContentLoaded", () => {
       jobPricePh: "Price (e.g. 15 €)",
       selectCategory: "Select category",
 
+      pricingTitle: "Pricing plans – J4Teen",
+      pricingHero: "Plans for companies",
+      pricingHeroSub: "Choose a plan that fits you",
+      pricingBasic: "Basic",
+      pricingBasicSub: "For small needs",
+      pricingPro: "Pro",
+      pricingProSub: "Better visibility",
+      pricingPremium: "Premium",
+      pricingPremiumSub: "Best choice",
+      pricingChoose: "Choose",
+
+      pricingBasicFeat1: "✔️ Up to 3 listings",
+      pricingBasicFeat2: "✔️ Active for 7 days",
+      pricingBasicFeat3: "✔️ Visible to everyone",
+
+      pricingProFeat1: "✔️ Up to 5 listings",
+      pricingProFeat2: "✔️ Active for 15 days",
+      pricingProFeat3: "✔️ Better positioning",
+
+      pricingPremiumFeat1: "✔️ Unlimited listings",
+      pricingPremiumFeat2: "✔️ Active for 30 days",
+      pricingPremiumFeat3: "✔️ Top placement",
+
       jobChatBtn: "Chat"
     }
   };
 
   /* =============================
-     3️⃣ APPLY LANGUAGE (TEXT + PLACEHOLDER)
+     APPLY LANGUAGE
   ============================= */
   let currentLang = localStorage.getItem("lang") || "bg";
 
