@@ -106,36 +106,25 @@
 <script src="main.js"></script>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const jobId = params.get("jobId") || "global";
-
-  const STORAGE_KEY = "chat_" + jobId;
-
   const chatBox = document.getElementById("chat-box");
   const chatForm = document.getElementById("chat-form");
   const nameInput = document.getElementById("chat-name");
   const messageInput = document.getElementById("chat-message");
 
-  messageInput.focus();
-
   function renderChat() {
-    const messages = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    const messages = JSON.parse(localStorage.getItem("chat") || "[]");
     chatBox.innerHTML = "";
 
     messages.forEach(msg => {
-      const isMe = msg.name === nameInput.value;
-
       const bubble = document.createElement("div");
-      bubble.style.alignSelf = isMe ? "flex-end" : "flex-start";
       bubble.style.maxWidth = "80%";
-      bubble.style.background = isMe ? "#2563eb" : "#ffffff";
-      bubble.style.color = isMe ? "#ffffff" : "#111111";
+      bubble.style.background = "#ffffff";
       bubble.style.padding = "12px 16px";
       bubble.style.borderRadius = "16px";
       bubble.style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
 
       bubble.innerHTML = `
-        <div style="font-weight:700; font-size:13px; opacity:0.85; margin-bottom:4px;">
+        <div style="font-weight:700; margin-bottom:4px; font-size:13px;">
           ${msg.name}
         </div>
         <div style="font-size:15px; white-space:pre-wrap;">
@@ -151,27 +140,19 @@
 
   renderChat();
 
-  messageInput.addEventListener("keydown", e => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      chatForm.requestSubmit();
-    }
-  });
-
-  chatForm.addEventListener("submit", e => {
+  chatForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
     const name = nameInput.value.trim();
     const text = messageInput.value.trim();
     if (!name || !text) return;
 
-    const messages = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-    messages.push({ name, text, createdAt: new Date().toISOString() });
+    const messages = JSON.parse(localStorage.getItem("chat") || "[]");
+    messages.push({ name, text });
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    localStorage.setItem("chat", JSON.stringify(messages));
 
     messageInput.value = "";
-    messageInput.focus();
     renderChat();
   });
 </script>
