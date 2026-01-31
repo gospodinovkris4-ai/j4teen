@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Вход – J4Teen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="topbar">
+  <div class="logo">J4Teen</div>
+</nav>
+
+<header class="hero small">
+  <div class="hero-content">
+    <h1>Вход / Регистрация</h1>
+    <p>Влез в профила си, за да публикуваш и чатиш</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <div style="
+    max-width:420px;
+    margin:0 auto;
+    background:#fff;
+    padding:28px;
+    border-radius:24px;
+    box-shadow:0 12px 32px rgba(0,0,0,0.15);
+  ">
+
+    <input id="email" type="email" placeholder="Имейл"
+      style="width:100%;padding:14px;border-radius:14px;border:2px solid #e5edff;margin-bottom:12px;" />
+
+    <input id="password" type="password" placeholder="Парола"
+      style="width:100%;padding:14px;border-radius:14px;border:2px solid #e5edff;margin-bottom:18px;" />
+
+    <button onclick="login()"
+      style="width:100%;padding:14px;border-radius:999px;background:#2563eb;color:white;font-weight:800;border:none;margin-bottom:10px;">
+      Вход
+    </button>
+
+    <button onclick="register()"
+      style="width:100%;padding:14px;border-radius:999px;background:#f59e0b;color:#111;font-weight:800;border:none;">
+      Регистрация
+    </button>
+
+    <p id="auth-msg" style="margin-top:16px;color:#c00;text-align:center;"></p>
+
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+<script>
+  const SUPABASE_URL = "https://aujswymolniwtdxyangf.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_UNykLLkp5Jzb9TQlq-qijg_U94miJxS";
+
+  const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+  async function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email, password
+    });
+
+    if (error) {
+      document.getElementById("auth-msg").textContent = error.message;
+    } else {
+      window.location.href = "index.html";
+    }
+  }
+
+  async function register() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const { error } = await supabase.auth.signUp({
+      email, password
+    });
+
+    if (error) {
+      document.getElementById("auth-msg").textContent = error.message;
+    } else {
+      document.getElementById("auth-msg").style.color = "green";
+      document.getElementById("auth-msg").textContent =
+        "Успешна регистрация! Влез сега.";
+    }
+  }
+</script>
+
+</body>
+</html>
