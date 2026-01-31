@@ -54,14 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-      /* CHAT */
-      chatPageTitle: "Чат – J4Teen",
-      chatTitle: "Чат",
-      chatSubtitle: "Свържи се директно",
-      chatNamePh: "Име",
-      chatMsgPh: "Съобщение",
-      chatSend: "Изпрати"
-
+   
 
 
       
@@ -147,8 +140,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       /* JOB */
       jobChatBtn: "Пиши в чата"
+
+      
     },
 
+
+   
+  
+    
     en: {
       siteTitle: "J4Teen",
 
@@ -249,13 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
       jobChatBtn: "Chat"
 
 
-      /* CHAT */
-      chatPageTitle: "Chat – J4Teen",
-      chatTitle: "Chat",
-      chatSubtitle: "Connect directly",
-      chatNamePh: "Name",
-      chatMsgPh: "Message",
-      chatSend: "Send"
 
   
   
