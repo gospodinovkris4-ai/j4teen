@@ -1,12 +1,12 @@
 /*********************************
- * J4Teen – MAIN.JS (FINAL, FIXED)
- * MENU + LANGUAGES (GLOBAL)
+ * J4Teen – MAIN.JS (FINAL, STABLE)
+ * MENU + LANGUAGES + CHAT
  *********************************/
 
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =============================
-     MENU (STABLE)
+     1️⃣ MENU – STABLE (GLOBAL)
   ============================= */
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".menu");
@@ -25,12 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =============================
-     TRANSLATIONS (FULL)
+     2️⃣ TRANSLATIONS – FULL + CHAT
   ============================= */
   const translations = {
     bg: {
       siteTitle: "J4Teen",
 
+      /* MENU */
       home: "Начало",
       jobs: "Обяви",
       categories: "Категории",
@@ -39,36 +40,32 @@ document.addEventListener("DOMContentLoaded", () => {
       post: "Публикувай",
       chat: "Чат",
 
+      /* HERO */
       heroTitle: "Намери почасова работа или помощ наблизо",
       heroSubtitle: "J4Teen – общност и обяви за младежи",
       heroWork: "Искам да работя",
       heroHire: "Търся човек за работа",
 
+      /* TABS */
       tabWork: "Работа",
       tabCompanies: "Компании",
       tabNews: "Новини",
 
+      /* HOME */
       popularCats: "Популярни категории",
       allCategories: "Виж всички категории",
       mobilePost: "+ Публикувай обява",
 
-
-
-   
-
-
-      
-      /* JOBS PAGE */
+      /* JOBS */
       jobsPageTitle: "Обяви – J4Teen",
       jobsTitle: "Искам да работя",
       jobsSubtitle: "Всички налични обяви",
 
-      /* CATEGORIES PAGE */
+      /* CATEGORIES */
       categoriesPageTitle: "Категории – J4Teen",
       categoriesTitle: "Всички категории",
       categoriesSubtitle: "Избери област и разгледай обявите",
 
-      /* CATEGORIES */
       catDog: "Разходка на куче",
       catDogSub: "Почасова помощ",
       catHome: "Помощ в дома",
@@ -114,40 +111,18 @@ document.addEventListener("DOMContentLoaded", () => {
       jobPricePh: "Цена (напр. 15 лв)",
       selectCategory: "Избери категория",
 
-      /* PRICING */
-      pricingTitle: "Абонаментни планове – J4Teen",
-      pricingHero: "Планове за компании",
-      pricingHeroSub: "Избери план, който ти пасва",
-      pricingBasic: "Basic",
-      pricingBasicSub: "За малки нужди",
-      pricingPro: "Pro",
-      pricingProSub: "По-добра видимост",
-      pricingPremium: "Premium",
-      pricingPremiumSub: "Най-добрият избор",
-      pricingChoose: "Избери",
-
-      pricingBasicFeat1: "✔️ До 3 обяви",
-      pricingBasicFeat2: "✔️ 7 дни активни",
-      pricingBasicFeat3: "✔️ Видима за всички",
-
-      pricingProFeat1: "✔️ До 5 обяви",
-      pricingProFeat2: "✔️ 15 дни активни",
-      pricingProFeat3: "✔️ По-добро позициониране",
-
-      pricingPremiumFeat1: "✔️ Неограничени обяви",
-      pricingPremiumFeat2: "✔️ 30 дни активни",
-      pricingPremiumFeat3: "✔️ Топ позиция",
-
       /* JOB */
-      jobChatBtn: "Пиши в чата"
+      jobChatBtn: "Пиши в чата",
 
-      
+      /* CHAT ✅ */
+      chatPageTitle: "Чат – J4Teen",
+      chatTitle: "Чат",
+      chatSubtitle: "Свържи се директно",
+      chatNamePh: "Име",
+      chatMsgPh: "Съобщение",
+      chatSend: "Изпрати"
     },
 
-
-   
-  
-    
     en: {
       siteTitle: "J4Teen",
 
@@ -222,40 +197,20 @@ document.addEventListener("DOMContentLoaded", () => {
       jobPricePh: "Price (e.g. 15 €)",
       selectCategory: "Select category",
 
-      pricingTitle: "Pricing plans – J4Teen",
-      pricingHero: "Plans for companies",
-      pricingHeroSub: "Choose a plan that fits you",
-      pricingBasic: "Basic",
-      pricingBasicSub: "For small needs",
-      pricingPro: "Pro",
-      pricingProSub: "Better visibility",
-      pricingPremium: "Premium",
-      pricingPremiumSub: "Best choice",
-      pricingChoose: "Choose",
+      jobChatBtn: "Chat",
 
-      pricingBasicFeat1: "✔️ Up to 3 listings",
-      pricingBasicFeat2: "✔️ Active for 7 days",
-      pricingBasicFeat3: "✔️ Visible to everyone",
-
-      pricingProFeat1: "✔️ Up to 5 listings",
-      pricingProFeat2: "✔️ Active for 15 days",
-      pricingProFeat3: "✔️ Better positioning",
-
-      pricingPremiumFeat1: "✔️ Unlimited listings",
-      pricingPremiumFeat2: "✔️ Active for 30 days",
-      pricingPremiumFeat3: "✔️ Top placement",
-
-      jobChatBtn: "Chat"
-
-
-
-  
-  
+      /* CHAT ✅ */
+      chatPageTitle: "Chat – J4Teen",
+      chatTitle: "Chat",
+      chatSubtitle: "Connect directly",
+      chatNamePh: "Name",
+      chatMsgPh: "Message",
+      chatSend: "Send"
     }
   };
 
   /* =============================
-     APPLY LANGUAGE
+     3️⃣ APPLY LANGUAGE (TEXT + PLACEHOLDERS)
   ============================= */
   let currentLang = localStorage.getItem("lang") || "bg";
 
@@ -292,12 +247,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-
-
-
-
-
-
-
-
