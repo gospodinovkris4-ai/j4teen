@@ -106,16 +106,20 @@
 <script src="main.js"></script>
 
 <script>
+  const params = new URLSearchParams(window.location.search);
+  const jobId = params.get("jobId") || "global";
+
+  const STORAGE_KEY = "chat_" + jobId;
+
   const chatBox = document.getElementById("chat-box");
   const chatForm = document.getElementById("chat-form");
   const nameInput = document.getElementById("chat-name");
   const messageInput = document.getElementById("chat-message");
 
-  // Auto-focus message
   messageInput.focus();
 
   function renderChat() {
-    const messages = JSON.parse(localStorage.getItem("chat") || "[]");
+    const messages = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     chatBox.innerHTML = "";
 
     messages.forEach(msg => {
@@ -128,11 +132,10 @@
       bubble.style.color = isMe ? "#ffffff" : "#111111";
       bubble.style.padding = "12px 16px";
       bubble.style.borderRadius = "16px";
-      bubble.style.marginBottom = "6px";
       bubble.style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
 
       bubble.innerHTML = `
-        <div style="font-weight:700; margin-bottom:4px; font-size:13px; opacity:0.9;">
+        <div style="font-weight:700; font-size:13px; opacity:0.85; margin-bottom:4px;">
           ${msg.name}
         </div>
         <div style="font-size:15px; white-space:pre-wrap;">
@@ -148,25 +151,24 @@
 
   renderChat();
 
-  // Enter = Send (Shift+Enter = new line)
-  messageInput.addEventListener("keydown", function(e) {
+  messageInput.addEventListener("keydown", e => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       chatForm.requestSubmit();
     }
   });
 
-  chatForm.addEventListener("submit", function(e) {
+  chatForm.addEventListener("submit", e => {
     e.preventDefault();
 
     const name = nameInput.value.trim();
     const text = messageInput.value.trim();
     if (!name || !text) return;
 
-    const messages = JSON.parse(localStorage.getItem("chat") || "[]");
-    messages.push({ name, text });
+    const messages = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    messages.push({ name, text, createdAt: new Date().toISOString() });
 
-    localStorage.setItem("chat", JSON.stringify(messages));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
 
     messageInput.value = "";
     messageInput.focus();
@@ -174,8 +176,5 @@
   });
 </script>
 
-
-
-  
 </body>
 </html>
