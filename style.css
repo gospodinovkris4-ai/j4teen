@@ -361,6 +361,24 @@ main {
 }
 
 
+/* 🚑 EMERGENCY FIX – кликовете ДА РАБОТЯТ НАВСЯКЪДЕ */
+
+/* main винаги над всички overlay-и */
+main {
+  position: relative !important;
+  z-index: 3000 !important;
+}
+
+/* формите и бутоните вътре */
+main * {
+  pointer-events: auto !important;
+}
+
+/* hero остава визуален, но не краде кликове */
+.hero {
+  position: relative;
+  z-index: 1 !important;
+}
 
 
 
