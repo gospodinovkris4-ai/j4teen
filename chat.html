@@ -55,19 +55,7 @@
     gap:10px;
     flex-wrap:wrap;
   ">
-    <input
-      id="chat-name"
-      data-key-placeholder="chatNamePh"
-      placeholder="Име"
-      required
-      style="
-        flex:1;
-        min-width:140px;
-        padding:12px;
-        border-radius:999px;
-        border:1px solid #d1d5db;
-      "
-    >
+    <!-- ❌ НЯМА input за име -->
 
     <textarea
       id="chat-message"
@@ -76,7 +64,7 @@
       required
       rows="1"
       style="
-        flex:3;
+        flex:1;
         min-width:220px;
         padding:12px 16px;
         border-radius:999px;
@@ -103,22 +91,43 @@
 
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="main.js"></script>
 
 <script>
   const chatBox = document.getElementById("chat-box");
   const chatForm = document.getElementById("chat-form");
-  const nameInput = document.getElementById("chat-name");
   const messageInput = document.getElementById("chat-message");
+
+  const SUPABASE_URL = "https://aujswymolniwtdxyangf.supabase.co";
+  const SUPABASE_KEY = "sb_publishable_UNykLLkp5Jzb9TQlq-qijg_U94miJxS";
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  let currentUserEmail = "";
+
+  // 🔐 CHECK LOGIN
+  document.addEventListener("DOMContentLoaded", async () => {
+    const { data } = await supabase.auth.getUser();
+    if (!data.user) {
+      window.location.href = "login.html";
+      return;
+    }
+    currentUserEmail = data.user.email;
+    renderChat();
+  });
 
   function renderChat() {
     const messages = JSON.parse(localStorage.getItem("chat") || "[]");
     chatBox.innerHTML = "";
 
     messages.forEach(msg => {
+      const isMe = msg.name === currentUserEmail;
+
       const bubble = document.createElement("div");
+      bubble.style.alignSelf = isMe ? "flex-end" : "flex-start";
       bubble.style.maxWidth = "80%";
-      bubble.style.background = "#ffffff";
+      bubble.style.background = isMe ? "#2563eb" : "#ffffff";
+      bubble.style.color = isMe ? "#ffffff" : "#111111";
       bubble.style.padding = "12px 16px";
       bubble.style.borderRadius = "16px";
       bubble.style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)";
@@ -138,20 +147,19 @@
     chatBox.scrollTop = chatBox.scrollHeight;
   }
 
-  renderChat();
-
   chatForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const name = nameInput.value.trim();
     const text = messageInput.value.trim();
-    if (!name || !text) return;
+    if (!text) return;
 
     const messages = JSON.parse(localStorage.getItem("chat") || "[]");
-    messages.push({ name, text });
+    messages.push({
+      name: currentUserEmail,
+      text
+    });
 
     localStorage.setItem("chat", JSON.stringify(messages));
-
     messageInput.value = "";
     renderChat();
   });
