@@ -277,3 +277,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+
+/*********************************
+ * AUTH SESSION (GLOBAL, SAFE)
+ *********************************/
+
+async function getCurrentUser() {
+  if (!window.supabase) return null;
+  const { data } = await supabase.auth.getUser();
+  return data?.user || null;
+}
+
+async function requireAuth(redirect = "login.html") {
+  const user = await getCurrentUser();
+  if (!user) {
+    window.location.href = redirect;
+    return null;
+  }
+  return user;
+}
