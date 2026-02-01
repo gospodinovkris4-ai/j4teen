@@ -380,6 +380,29 @@ main * {
   z-index: 1 !important;
 }
 
+/* 🚨 FIX: НИКАКВИ НЕВИДИМИ СЛОЕВЕ ДА НЕ БЛОКИРАТ КЛИКОВЕ */
+
+/* менюто да НЕ краде кликове, когато е затворено */
+.menu {
+  pointer-events: auto !important;
+}
+
+.menu:not(.show) {
+  display: none !important;
+}
+
+/* main винаги да приема кликове */
+main {
+  position: relative;
+  z-index: 10;
+}
+
+/* формите и бутоните – винаги активни */
+button, input, textarea, a {
+  pointer-events: auto !important;
+}
+
+
 
 
 
