@@ -95,6 +95,20 @@
 
 </main>
 
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    if (window.requireAuth) {
+      await requireAuth();
+    }
+  });
+</script>
+
+
+
+
+  
 <script src="supabase.js"></script>
 <script src="main.js"></script>
 
