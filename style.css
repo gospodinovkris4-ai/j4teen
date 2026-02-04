@@ -405,3 +405,21 @@ button, input, textarea, a {
 
 
 
+
+
+
+/* ✅ FIX: позволяваме кликове в login/register */
+body > div,
+body > form,
+body button {
+  pointer-events: auto !important;
+}
+
+/* ✅ FIX: login container да е над всички */
+body > div {
+  position: relative;
+  z-index: 20;
+}
+
+
+
