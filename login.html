@@ -5,14 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Вход – J4Teen</title>
   <link rel="stylesheet" href="style.css">
-
-  <!-- ✅ ЛОКАЛЕН FIX САМО ЗА LOGIN -->
-  <style>
-    main {
-      position: relative;
-      z-index: 50;
-    }
-  </style>
 </head>
 
 <body>
@@ -37,6 +29,8 @@
     padding:28px;
     border-radius:24px;
     box-shadow:0 12px 32px rgba(0,0,0,0.15);
+    position:relative;
+    z-index:9999;
   ">
 
     <input id="email" type="email" placeholder="Имейл"
@@ -45,15 +39,13 @@
     <input id="password" type="password" placeholder="Парола"
       style="width:100%;padding:14px;border-radius:14px;border:2px solid #e5edff;margin-bottom:18px;" />
 
-    <!-- ✅ type="button" -->
-    <button type="button" onclick="login()"
-      style="width:100%;padding:14px;border-radius:999px;background:#2563eb;color:white;font-weight:800;border:none;margin-bottom:10px;">
+    <button id="loginBtn"
+      style="width:100%;padding:14px;border-radius:999px;background:#2563eb;color:white;font-weight:800;border:none;margin-bottom:10px;pointer-events:auto;z-index:99999;">
       Вход
     </button>
 
-    <!-- ✅ type="button" -->
-    <button type="button" onclick="register()"
-      style="width:100%;padding:14px;border-radius:999px;background:#f59e0b;color:#111;font-weight:800;border:none;">
+    <button id="registerBtn"
+      style="width:100%;padding:14px;border-radius:999px;background:#f59e0b;color:#111;font-weight:800;border:none;pointer-events:auto;z-index:99999;">
       Регистрация
     </button>
 
@@ -69,12 +61,12 @@
   const SUPABASE_URL = "https://aujswymolniwtdxyangf.supabase.co";
   const SUPABASE_KEY = "sb_publishable_UNykLLkp5Jzb9TQlq-qijg_U94miJxS";
 
-  const supabase = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  async function login() {
+  const loginBtn = document.getElementById("loginBtn");
+  const registerBtn = document.getElementById("registerBtn");
+
+  loginBtn.addEventListener("click", async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -85,9 +77,9 @@
     } else {
       window.location.href = "index.html";
     }
-  }
+  });
 
-  async function register() {
+  registerBtn.addEventListener("click", async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -100,7 +92,7 @@
       document.getElementById("auth-msg").textContent =
         "Успешна регистрация! Влез сега.";
     }
-  }
+  });
 </script>
 
 </body>
