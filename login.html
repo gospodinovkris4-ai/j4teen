@@ -1,147 +1,111 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Вход – J4Teen</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Login – J4Teen</title>
 
+  <!-- Минимални стилове само за работещи бутони -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #f7f7f7;
+      text-align: center;
+    }
+    .box {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
+      width: 100%;
+      max-width: 380px;
+    }
+    input {
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+    }
+    button.register {
+      background: #f59e0b;
+      color: #111;
+    }
+    p {
+      margin-top: 12px;
+      color: #c00;
+    }
+  </style>
+</head>
 <body>
 
-<nav class="topbar">
-  <div class="logo">J4Teen</div>
-</nav>
+<div class="box">
+  <h2>Вход / Регистрация</h2>
 
-<header class="hero small">
-  <div class="hero-content">
-    <h1>Вход / Регистрация</h1>
-    <p>Влез в профила си, за да публикуваш и чатиш</p>
-  </div>
-</header>
+  <input id="email" type="email" placeholder="Имейл">
+  <input id="password" type="password" placeholder="Парола">
 
-<main class="container">
+  <button id="btnLogin">Вход</button>
+  <button id="btnRegister" class="register">Регистрация</button>
 
-  <div style="
-    max-width:420px;
-    margin:0 auto;
-    background:#fff;
-    padding:28px;
-    border-radius:24px;
-    box-shadow:0 12px 32px rgba(0,0,0,0.15);
-    position:relative;
-    z-index:9999;
-  ">
+  <p id="authMessage"></p>
+</div>
 
-    <input id="email" type="email" placeholder="Имейл"
-      style="width:100%;padding:14px;border-radius:14px;border:2px solid #e5edff;margin-bottom:12px;" />
-
-    <input id="password" type="password" placeholder="Парола"
-      style="width:100%;padding:14px;border-radius:14px;border:2px solid #e5edff;margin-bottom:18px;" />
-
-    <button id="loginBtn"
-      style="width:100%;padding:14px;border-radius:999px;background:#2563eb;color:white;font-weight:800;border:none;margin-bottom:10px;pointer-events:auto;z-index:99999;">
-      Вход
-    </button>
-
-    <button id="registerBtn"
-      style="width:100%;padding:14px;border-radius:999px;background:#f59e0b;color:#111;font-weight:800;border:none;pointer-events:auto;z-index:99999;">
-      Регистрация
-    </button>
-
-    <p id="auth-msg" style="margin-top:16px;color:#c00;text-align:center;"></p>
-
-  </div>
-
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
 <script>
   const SUPABASE_URL = "https://aujswymolniwtdxyangf.supabase.co";
   const SUPABASE_KEY = "sb_publishable_UNykLLkp5Jzb9TQlq-qijg_U94miJxS";
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const authMessage = document.getElementById("authMessage");
 
-  const loginBtn = document.getElementById("loginBtn");
-  const registerBtn = document.getElementById("registerBtn");
-
-  loginBtn.addEventListener("click", async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
+  document.getElementById("btnLogin").addEventListener("click", async () => {
+    authMessage.textContent = "";
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    if (!email || !password) {
+      authMessage.textContent = "Попълни имейл и парола";
+      return;
+    }
     const { error } = await supabase.auth.signInWithPassword({ email, password });
-
     if (error) {
-      document.getElementById("auth-msg").textContent = error.message;
+      authMessage.textContent = error.message;
     } else {
       window.location.href = "index.html";
     }
   });
 
-  registerBtn.addEventListener("click", async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
+  document.getElementById("btnRegister").addEventListener("click", async () => {
+    authMessage.textContent = "";
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    if (!email || !password) {
+      authMessage.textContent = "Попълни имейл и парола";
+      return;
+    }
     const { error } = await supabase.auth.signUp({ email, password });
-
     if (error) {
-      document.getElementById("auth-msg").textContent = error.message;
+      authMessage.textContent = error.message;
     } else {
-      document.getElementById("auth-msg").style.color = "green";
-      document.getElementById("auth-msg").textContent =
-        "Успешна регистрация! Влез сега.";
+      authMessage.style.color = "green";
+      authMessage.textContent = "Регистрацията е успешна! Може да влезеш.";
     }
   });
 </script>
 
-
-
-
-<script>
-/* 🚑 EMERGENCY CLICK FIX – НЕ МОЖЕ ДА СЕ БЛОКИРА */
-document.addEventListener("click", function (e) {
-  const loginBtn = document.getElementById("loginBtn");
-  const registerBtn = document.getElementById("registerBtn");
-
-  if (!loginBtn || !registerBtn) return;
-
-  if (e.target === loginBtn) {
-    e.stopPropagation();
-    e.preventDefault();
-    login();
-  }
-
-  if (e.target === registerBtn) {
-    e.stopPropagation();
-    e.preventDefault();
-    register();
-  }
-}, true); // ⬅️ CAPTURE PHASE (прескача overlay-и)
-</script>
-
-
-
-<script>
-/* ✅ FINAL FIX – БУТОНИТЕ НЯМА КАК ДА НЕ РАБОТЯТ */
-document.addEventListener("click", function (e) {
-
-  if (e.target.id === "loginBtn") {
-    e.preventDefault();
-    e.stopPropagation();
-    login();      // извиква твоята функция
-  }
-
-  if (e.target.id === "registerBtn") {
-    e.preventDefault();
-    e.stopPropagation();
-    register();   // извиква твоята функция
-  }
-
-}, true); // capture phase – над всичко
-</script>
-
-  
-  
 </body>
 </html>
