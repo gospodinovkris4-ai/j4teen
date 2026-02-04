@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Вход – J4Teen</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ ЛОКАЛЕН FIX САМО ЗА LOGIN -->
+  <style>
+    main {
+      position: relative;
+      z-index: 50;
+    }
+  </style>
 </head>
 
 <body>
@@ -37,12 +45,14 @@
     <input id="password" type="password" placeholder="Парола"
       style="width:100%;padding:14px;border-radius:14px;border:2px solid #e5edff;margin-bottom:18px;" />
 
-    <button id="login-btn"
+    <!-- ✅ type="button" -->
+    <button type="button" onclick="login()"
       style="width:100%;padding:14px;border-radius:999px;background:#2563eb;color:white;font-weight:800;border:none;margin-bottom:10px;">
       Вход
     </button>
 
-    <button id="register-btn"
+    <!-- ✅ type="button" -->
+    <button type="button" onclick="register()"
       style="width:100%;padding:14px;border-radius:999px;background:#f59e0b;color:#111;font-weight:800;border:none;">
       Регистрация
     </button>
@@ -64,52 +74,33 @@
     SUPABASE_KEY
   );
 
-  const msg = document.getElementById("auth-msg");
+  async function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-  // 🔒 ако вече е логнат → директно в сайта
-  (async () => {
-    const { data } = await supabase.auth.getUser();
-    if (data.user) {
-      window.location.href = "index.html";
-    }
-  })();
-
-  document.getElementById("login-btn").addEventListener("click", async () => {
-    msg.textContent = "";
-
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
-      msg.textContent = error.message;
+      document.getElementById("auth-msg").textContent = error.message;
     } else {
       window.location.href = "index.html";
     }
-  });
+  }
 
-  document.getElementById("register-btn").addEventListener("click", async () => {
-    msg.textContent = "";
+  async function register() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password
-    });
+    const { error } = await supabase.auth.signUp({ email, password });
 
     if (error) {
-      msg.textContent = error.message;
+      document.getElementById("auth-msg").textContent = error.message;
     } else {
-      msg.style.color = "green";
-      msg.textContent = "Регистрацията е успешна. Влез сега.";
+      document.getElementById("auth-msg").style.color = "green";
+      document.getElementById("auth-msg").textContent =
+        "Успешна регистрация! Влез сега.";
     }
-  });
+  }
 </script>
 
 </body>
