@@ -95,5 +95,32 @@
   });
 </script>
 
+
+
+
+<script>
+/* 🚑 EMERGENCY CLICK FIX – НЕ МОЖЕ ДА СЕ БЛОКИРА */
+document.addEventListener("click", function (e) {
+  const loginBtn = document.getElementById("loginBtn");
+  const registerBtn = document.getElementById("registerBtn");
+
+  if (!loginBtn || !registerBtn) return;
+
+  if (e.target === loginBtn) {
+    e.stopPropagation();
+    e.preventDefault();
+    login();
+  }
+
+  if (e.target === registerBtn) {
+    e.stopPropagation();
+    e.preventDefault();
+    register();
+  }
+}, true); // ⬅️ CAPTURE PHASE (прескача overlay-и)
+</script>
+
+
+  
 </body>
 </html>
