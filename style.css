@@ -71,11 +71,11 @@ a {
   box-shadow: 0 20px 40px rgba(0,0,0,0.18);
   display: flex;
   flex-direction: column;
-
   opacity: 0;
   transform: translateY(-10px);
   pointer-events: none;
   transition: 0.25s ease;
+  z-index: 1100;
 }
 
 .menu.show {
@@ -105,6 +105,8 @@ a {
   color: white;
   padding: 70px 20px;
   border-radius: 0 0 32px 32px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero.small {
@@ -142,20 +144,21 @@ a {
   font-weight: 700;
   display: inline-block;
   text-align: center;
+  cursor: pointer;
 }
 
 .btn.primary {
-  background: #f59e0b;
-  color: #111;
-}
-
-.btn.secondary {
   background: #2563eb;
   color: #fff;
 }
 
+.btn.secondary {
+  background: #f59e0b;
+  color: #111;
+}
+
 .btn.secondary:hover {
-  background: #1e40af;
+  background: #d97706;
 }
 
 /* =========================
@@ -165,17 +168,17 @@ main {
   max-width: 1100px;
   margin: 40px auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================
-   CARDS – FINAL CENTERED GRID
+   CARDS
    ========================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
-  justify-content: center;
-  align-items: stretch;
 }
 
 .card {
@@ -186,6 +189,7 @@ main {
   border: 1px solid #e5edff;
   box-shadow: 0 6px 18px rgba(37,99,235,0.12);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 
 .card:hover {
@@ -204,51 +208,15 @@ main {
   color: #fff;
 }
 
-.card.highlight .icon {
-  color: #fff;
-}
-
 /* =========================
-   JOB CARDS
+   JOB CARD
    ========================= */
 .job {
-  max-width: 900px;
-  margin: 16px auto;
   background: #fff;
   border-radius: 14px;
   padding: 16px 20px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-}
-
-/* =========================
-   TABS
-   ========================= */
-.tabs {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin: 24px auto;
-}
-
-.tab {
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 2px solid #2563eb;
-  background: #fff;
-  color: #2563eb;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.tab.active {
-  background: #2563eb;
-  color: #fff;
-}
-
-@media (min-width: 768px) {
-  .tabs {
-    display: none;
-  }
+  margin-bottom: 12px;
 }
 
 /* =========================
@@ -267,6 +235,10 @@ main {
     flex-direction: column;
   }
 
+  .tabs {
+    display: none;
+  }
+
   .mobile-cta {
     position: fixed;
     bottom: 16px;
@@ -278,7 +250,7 @@ main {
     border-radius: 16px;
     text-align: center;
     font-weight: 700;
-    z-index: 999;
+    z-index: 1200;
   }
 }
 
@@ -294,115 +266,3 @@ main {
   font-weight: 700;
   cursor: pointer;
 }
-
-
-
-/* MOBILE: махаме табовете Работа / Компании / Новини */
-@media (max-width: 768px) {
-  .tabs {
-    display: none !important;
-  }
-}
-
-/* 🔶 FIX: САМО бутона "Публикувай обява" в post.html */
-form#post-form button[type="submit"] {
-  background: #f59e0b !important;
-  color: #111 !important;
-}
-
-form#post-form button[type="submit"]:hover {
-  background: #d97706 !important;
-}
-
-
-
-
-
-/* ✅ ГАРАНЦИЯ: hero бутонът винаги син */
-.hero .btn.primary {
-  background: #2563eb !important;
-  color: #fff !important;
-}
-
-
-
-/* 🎯 Hero: вторият бутон да е оранжев */
-.hero-buttons a[href="post.html"] {
-  background: #f59e0b !important;
-  color: #111 !important;
-}
-
-.hero-buttons a[href="post.html"]:hover {
-  background: #d97706 !important;
-}
-
-@keyframes popIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-
-/* 🧠 FIX: разрешаваме кликове върху съдържанието */
-main {
-  position: relative;
-  z-index: 2;
-}
-
-/* 🧠 FIX: hero остава визуално отгоре, но не краде кликове */
-.hero {
-  position: relative;
-  z-index: 1;
-}
-
-
-/* 🚑 EMERGENCY FIX – кликовете ДА РАБОТЯТ НАВСЯКЪДЕ */
-
-/* main винаги над всички overlay-и */
-main {
-  position: relative !important;
-  z-index: 3000 !important;
-}
-
-/* формите и бутоните вътре */
-main * {
-  pointer-events: auto !important;
-}
-
-/* hero остава визуален, но не краде кликове */
-.hero {
-  position: relative;
-  z-index: 1 !important;
-}
-
-/* 🚨 FIX: НИКАКВИ НЕВИДИМИ СЛОЕВЕ ДА НЕ БЛОКИРАТ КЛИКОВЕ */
-
-/* менюто да НЕ краде кликове, когато е затворено */
-.menu {
-  pointer-events: auto !important;
-}
-
-.menu:not(.show) {
-  display: none !important;
-}
-
-/* main винаги да приема кликове */
-main {
-  position: relative;
-  z-index: 10;
-}
-
-/* формите и бутоните – винаги активни */
-button, input, textarea, a {
-  pointer-events: auto !important;
-}
-
-
-
-
-
