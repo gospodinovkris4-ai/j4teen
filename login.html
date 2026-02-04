@@ -121,6 +121,27 @@ document.addEventListener("click", function (e) {
 </script>
 
 
+
+<script>
+/* ✅ FINAL FIX – БУТОНИТЕ НЯМА КАК ДА НЕ РАБОТЯТ */
+document.addEventListener("click", function (e) {
+
+  if (e.target.id === "loginBtn") {
+    e.preventDefault();
+    e.stopPropagation();
+    login();      // извиква твоята функция
+  }
+
+  if (e.target.id === "registerBtn") {
+    e.preventDefault();
+    e.stopPropagation();
+    register();   // извиква твоята функция
+  }
+
+}, true); // capture phase – над всичко
+</script>
+
+  
   
 </body>
 </html>
