@@ -72,48 +72,59 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
 <script>
   const SUPABASE_URL = "https://aujswymolniwtdxyangf.supabase.co";
   const SUPABASE_KEY = "sb_publishable_UNykLLkp5Jzb9TQlq-qijg_U94miJxS";
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-  const authMessage = document.getElementById("authMessage");
+  const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
-  document.getElementById("btnLogin").addEventListener("click", async () => {
-    authMessage.textContent = "";
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-    if (!email || !password) {
-      authMessage.textContent = "Попълни имейл и парола";
-      return;
-    }
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const loginBtn = document.getElementById("loginBtn");
+  const registerBtn = document.getElementById("registerBtn");
+  const msg = document.getElementById("auth-msg");
+
+  loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    msg.textContent = "";
+
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+
     if (error) {
-      authMessage.textContent = error.message;
+      msg.textContent = error.message;
     } else {
       window.location.href = "index.html";
     }
   });
 
-  document.getElementById("btnRegister").addEventListener("click", async () => {
-    authMessage.textContent = "";
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-    if (!email || !password) {
-      authMessage.textContent = "Попълни имейл и парола";
-      return;
-    }
-    const { error } = await supabase.auth.signUp({ email, password });
+  registerBtn.addEventListener("click", async () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    msg.textContent = "";
+
+    const { error } = await supabase.auth.signUp({
+      email,
+      password
+    });
+
     if (error) {
-      authMessage.textContent = error.message;
+      msg.textContent = error.message;
     } else {
-      authMessage.style.color = "green";
-      authMessage.textContent = "Регистрацията е успешна! Може да влезеш.";
+      msg.style.color = "green";
+      msg.textContent = "Регистрацията е успешна. Влез сега.";
     }
   });
 </script>
+
 
 </body>
 </html>
