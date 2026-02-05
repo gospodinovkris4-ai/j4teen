@@ -74,8 +74,6 @@
     SUPABASE_KEY
   );
 
-  const msg = document.getElementById("authMessage");
-
   document.getElementById("loginBtn").addEventListener("click", login);
   document.getElementById("registerBtn").addEventListener("click", register);
 
@@ -83,15 +81,13 @@
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    if (!email || !password) {
-      msg.textContent = "Моля, въведи имейл и парола.";
-      return;
-    }
-
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
 
     if (error) {
-      msg.textContent = error.message;
+      document.getElementById("authMessage").textContent = error.message;
     } else {
       window.location.href = "index.html";
     }
@@ -101,21 +97,21 @@
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    if (!email || !password) {
-      msg.textContent = "Моля, въведи имейл и парола.";
-      return;
-    }
-
-    const { error } = await supabase.auth.signUp({ email, password });
+    const { error } = await supabase.auth.signUp({
+      email,
+      password
+    });
 
     if (error) {
-      msg.textContent = error.message;
+      document.getElementById("authMessage").textContent = error.message;
     } else {
-      msg.style.color = "green";
-      msg.textContent = "Регистрацията е успешна. Сега можеш да влезеш.";
+      document.getElementById("authMessage").style.color = "green";
+      document.getElementById("authMessage").textContent =
+        "Регистрацията е успешна. Влез сега.";
     }
   }
 </script>
+
 
 </body>
 </html>
