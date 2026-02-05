@@ -74,6 +74,8 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
   const SUPABASE_URL = "https://aujswymolniwtdxyangf.supabase.co";
   const SUPABASE_KEY = "sb_publishable_UNykLLkp5Jzb9TQlq-qijg_U94miJxS";
@@ -83,15 +85,15 @@
     SUPABASE_KEY
   );
 
-  const loginBtn = document.getElementById("loginBtn");
-  const registerBtn = document.getElementById("registerBtn");
-  const msg = document.getElementById("auth-msg");
-
-  loginBtn.addEventListener("click", async () => {
+  async function login() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    msg.textContent = "";
+    if (!email || !password) {
+      document.getElementById("auth-msg").textContent =
+        "Моля, въведи имейл и парола.";
+      return;
+    }
 
     const { error } = await supabase.auth.signInWithPassword({
       email,
@@ -99,17 +101,21 @@
     });
 
     if (error) {
-      msg.textContent = error.message;
+      document.getElementById("auth-msg").textContent = error.message;
     } else {
       window.location.href = "index.html";
     }
-  });
+  }
 
-  registerBtn.addEventListener("click", async () => {
+  async function register() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
 
-    msg.textContent = "";
+    if (!email || !password) {
+      document.getElementById("auth-msg").textContent =
+        "Моля, въведи имейл и парола.";
+      return;
+    }
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -117,13 +123,18 @@
     });
 
     if (error) {
-      msg.textContent = error.message;
+      document.getElementById("auth-msg").textContent = error.message;
     } else {
-      msg.style.color = "green";
-      msg.textContent = "Регистрацията е успешна. Влез сега.";
+      document.getElementById("auth-msg").style.color = "green";
+      document.getElementById("auth-msg").textContent =
+        "Регистрацията е успешна. Сега можеш да влезеш.";
     }
-  });
+  }
 </script>
+
+
+
+  
 
 
 </body>
